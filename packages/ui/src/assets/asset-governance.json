@@ -1,0 +1,136 @@
+{
+  "version": "1.0.0",
+  "kinds": ["image", "video", "audio", "pdf", "other"],
+  "rooms": ["journeys", "navicues", "toolkit", "wellbeing", "state", "library", "dashboard"],
+  "proof_fit": ["receipt_ready", "pre", "post", "micro_win", "checklist", "before_after"],
+  "delivery_fit_defaults": {
+    "sense": true,
+    "route": true,
+    "deliver": false,
+    "seal": false,
+    "heat_band": "amber",
+    "dose": "glance"
+  },
+  "governance": {
+    "locked": {
+      "pillars": [
+        { "id": "pillar_ER", "labels": ["emotional regulation", "ER"] },
+        { "id": "pillar_SR", "labels": ["self regulation", "self-regulation", "SR"] },
+        { "id": "pillar_SC", "labels": ["social connection", "SC"] },
+        { "id": "pillar_CR", "labels": ["cognitive reframing", "CR"] },
+        { "id": "pillar_II", "labels": ["identity integration", "II"] },
+        { "id": "pillar_DM", "labels": ["decision making", "DM"] }
+      ],
+      "kbe": [],
+      "sparks_flames_embers": []
+    },
+    "controlled": {
+      "concepts": [
+        { "id": "concept_attention_orienting", "labels": ["orienting", "attention orienting", "orient"] },
+        { "id": "concept_arousal_regulation", "labels": ["arousal regulation", "calm down", "downshift"] },
+        { "id": "concept_repair_reconnection", "labels": ["repair", "reconnection", "relationship repair"] },
+        { "id": "concept_choice_architecture", "labels": ["choice architecture", "choice space", "decision shaping"] }
+      ],
+      "themes": [
+        { "id": "theme_create_choice_space", "labels": ["create choice space", "choice space"] },
+        { "id": "theme_downshift_under_load", "labels": ["downshift under load", "downshift"] },
+        { "id": "theme_repair_the_moment", "labels": ["repair the moment", "repair"] },
+        { "id": "theme_proof_capture", "labels": ["proof capture", "receipts", "before after", "checklist"] }
+      ],
+      "schemas": [
+        { "id": "schema_proof_capture", "labels": ["proof", "receipt", "before-after", "checklist", "timeline"] },
+        { "id": "schema_spine_feed", "labels": ["spine feed", "feed with a spine", "order from noise"] },
+        { "id": "schema_real_life_run", "labels": ["runs in real life", "continuity", "motion loop"] },
+        { "id": "schema_one_os_three_worlds", "labels": ["one os", "three worlds", "lens refraction"] }
+      ]
+    },
+    "expandable": {
+      "families": [],
+      "mindblocks": []
+    }
+  },
+  "asset_classes": ["atmosphere", "hero", "system", "icon", "proof"],
+  "placement_rules": [
+    { "match": { "route_contains": "/journey" }, "usage_tags_add": ["journeys"] },
+    { "match": { "route_contains": "/navicue" }, "usage_tags_add": ["navicues"] },
+    { "match": { "component_matches": "WalkthroughPresenter" }, "asset_class": "hero" },
+    { "match": { "component_matches": "SpineExplorer" }, "asset_class": "system" },
+    { "match": { "component_matches": "OrchestrationFeed" }, "usage_tags_add": ["dashboard"] },
+    { "match": { "component_matches": "ContinuityStream" }, "usage_tags_add": ["state"] },
+    { "match": { "component_matches": "TraceTravel" }, "usage_tags_add": ["library"], "schema_id": "schema_one_os_three_worlds" }
+  ],
+  "label_map": [
+    {
+      "labels": ["breathing", "meditation", "grounding", "box breath"],
+      "concept_id": "concept_arousal_regulation",
+      "theme_id": "theme_downshift_under_load",
+      "usage_tags_add": ["wellbeing"]
+    },
+    {
+      "labels": ["proof", "receipt", "before after", "checklist", "timeline"],
+      "schema_id": "schema_proof_capture",
+      "theme_id": "theme_proof_capture",
+      "proof_fit_add": ["receipt_ready", "before_after", "checklist"]
+    },
+    {
+      "labels": ["orient", "attention", "focus", "cue"],
+      "concept_id": "concept_attention_orienting",
+      "theme_id": "theme_create_choice_space"
+    },
+    {
+      "labels": ["apology", "repair", "relationship", "reconnect"],
+      "concept_id": "concept_repair_reconnection",
+      "theme_id": "theme_repair_the_moment"
+    },
+    {
+      "labels": ["spine", "order", "noise", "feed"],
+      "schema_id": "schema_spine_feed"
+    },
+    {
+      "labels": ["continuity", "loop", "glide", "motion"],
+      "schema_id": "schema_real_life_run"
+    }
+  ],
+  "tokens": {
+    "asset_class_tokens": {
+      "atmosphere": ["field.base", "field.pillar.*", "field.lens.*", "glass.base", "grain.overlay"],
+      "hero": ["hero.scene.*.poster", "hero.scene.*.loop"],
+      "system": ["thread.overlay.default", "halo.pillar.*", "seal.pulse.*", "altitude.refraction"],
+      "icon": ["icon.*"],
+      "proof": ["receipt.texture", "seal.mark", "vault.bg"]
+    }
+  },
+  "budgets": {
+    "image": {
+      "hero_poster_kb_max": 400,
+      "section_poster_kb_max": 200,
+      "primary": "avif",
+      "fallback": "webp"
+    },
+    "video": {
+      "hero_loop_mb_max": 1.8,
+      "micro_loop_kb_max": 600,
+      "duration_s_range": [8, 12],
+      "primary": "webm",
+      "fallback": "mp4"
+    }
+  },
+  "mapping_preferences": {
+    "decision_order": ["placement", "text", "visual"],
+    "schema_relevance_default": "primary",
+    "min_confidence_to_set_locked": 0.7,
+    "min_confidence_to_set_controlled": 0.65,
+    "propose_below_threshold": true
+  },
+  "delivery_fit_hints": {
+    "hero": { "sense": true, "route": true, "deliver": false, "seal": false, "dose": "glance", "heat_band": "amber" },
+    "proof": { "sense": true, "route": true, "deliver": true, "seal": true, "dose": "focus", "heat_band": "green" },
+    "system": { "sense": true, "route": true, "deliver": false, "seal": false, "dose": "seed", "heat_band": "amber" },
+    "atmosphere": { "sense": true, "route": false, "deliver": false, "seal": false, "dose": "glance", "heat_band": "purple" },
+    "icon": { "sense": true, "route": true, "deliver": false, "seal": false, "dose": "glance", "heat_band": "amber" }
+  },
+  "link_defaults": {
+    "relation": "illustrates",
+    "weights": { "illustrates": 4.0, "reinforces": 3.0 }
+  }
+}

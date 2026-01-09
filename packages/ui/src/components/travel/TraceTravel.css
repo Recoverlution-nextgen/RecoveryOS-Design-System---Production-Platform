@@ -1,0 +1,201 @@
+/**
+ * TraceTravel styles
+ * Altitude transformation with spine visualization
+ */
+
+.trace-travel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+  padding: var(--space-xlarge);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface-base);
+}
+
+/* Altitude selector */
+.trace-travel__selector {
+  display: flex;
+  gap: var(--space-small);
+  padding: 4px;
+  border-radius: var(--radius-small);
+  background: hsla(0, 0%, 0%, 0.2);
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.trace-travel__view-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xsmall);
+  padding: var(--space-small) var(--space-medium);
+  border: none;
+  border-radius: var(--radius-xsmall);
+  background: transparent;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 180ms var(--ease-out);
+}
+
+.trace-travel__view-button:hover {
+  color: var(--color-text-primary);
+  background: hsla(0, 0%, 100%, 0.05);
+}
+
+.trace-travel__view-button--active {
+  color: var(--color-text-primary);
+  background: hsla(0, 0%, 100%, 0.12);
+}
+
+.trace-travel__view-icon {
+  font-size: var(--font-size-base);
+  line-height: 1;
+}
+
+/* Trace container */
+.trace-travel__container {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trace-travel__trace {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* Spine visualization (right side) */
+.trace-travel__spine {
+  position: absolute;
+  right: var(--space-large);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-large);
+}
+
+.trace-travel__spine-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    hsla(160, 70%, 48%, 0.3),
+    hsla(200, 60%, 55%, 0.3),
+    hsla(40, 80%, 60%, 0.3)
+  );
+  transform: translateX(-50%);
+  transform-origin: top;
+}
+
+.trace-travel__spine-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: hsla(0, 0%, 100%, 0.2);
+  border: 2px solid hsla(0, 0%, 100%, 0.3);
+  transition: all 300ms var(--ease-out);
+  z-index: 1;
+}
+
+.trace-travel__spine-node--me {
+  background: hsla(160, 70%, 48%, 0.2);
+}
+
+.trace-travel__spine-node--care {
+  background: hsla(200, 60%, 55%, 0.2);
+}
+
+.trace-travel__spine-node--system {
+  background: hsla(40, 80%, 60%, 0.2);
+}
+
+.trace-travel__spine-node--active {
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 4px hsla(0, 0%, 0%, 0.3);
+}
+
+.trace-travel__spine-node--me.trace-travel__spine-node--active {
+  background: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  box-shadow: 0 0 0 4px hsla(160, 70%, 48%, 0.2);
+}
+
+.trace-travel__spine-node--care.trace-travel__spine-node--active {
+  background: hsla(200, 60%, 55%, 1);
+  border-color: hsla(200, 60%, 55%, 1);
+  box-shadow: 0 0 0 4px hsla(200, 60%, 55%, 0.2);
+}
+
+.trace-travel__spine-node--system.trace-travel__spine-node--active {
+  background: hsla(40, 80%, 60%, 1);
+  border-color: hsla(40, 80%, 60%, 1);
+  box-shadow: 0 0 0 4px hsla(40, 80%, 60%, 0.2);
+}
+
+/* Principle visualization */
+.trace-travel__principle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xsmall);
+  padding: var(--space-medium);
+  border-radius: var(--radius-small);
+  background: hsla(0, 0%, 100%, 0.03);
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+}
+
+.trace-travel__principle-text {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.trace-travel__principle-text code {
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-size: var(--font-size-xsmall);
+  padding: 2px 6px;
+  border-radius: var(--radius-xsmall);
+  background: hsla(0, 0%, 100%, 0.08);
+  color: var(--color-accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trace-travel {
+    padding: var(--space-large);
+  }
+
+  .trace-travel__selector {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trace-travel__spine {
+    display: none; /* Hide spine on mobile for cleaner layout */
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .trace-travel__view-button {
+    transition: none;
+  }
+  
+  .trace-travel__spine-node {
+    transition: none;
+  }
+}

@@ -1,0 +1,202 @@
+/* GovernanceLockMap: Show stability contract LOCKED/CONTROLLED/EXPANDABLE */
+
+.governance-lock-map {
+  --lock-bg: rgba(var(--glass-base), 0.4);
+  --lock-border: rgba(var(--glass-base), 0.5);
+  --lock-locked: #ef4444;
+  --lock-controlled: #f59e0b;
+  --lock-expandable: #22c55e;
+  
+  width: 100%;
+  max-width: 800px;
+  background: var(--lock-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--lock-border);
+  border-radius: var(--radius-large);
+  padding: var(--space-large);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+}
+
+/* Header */
+.governance-lock-map__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+}
+
+.governance-lock-map__title {
+  font-size: var(--text-xlarge);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.governance-lock-map__subtitle {
+  font-size: var(--text-medium);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Rings Container */
+.governance-lock-map__rings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+}
+
+/* Ring */
+.governance-lock-map__ring {
+  background: rgba(var(--glass-base), 0.2);
+  border-radius: var(--radius-medium);
+  padding: var(--space-medium);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.governance-lock-map__ring--locked {
+  border-color: var(--lock-locked);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.governance-lock-map__ring--controlled {
+  border-color: var(--lock-controlled);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.governance-lock-map__ring--expandable {
+  border-color: var(--lock-expandable);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.governance-lock-map__ring-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  margin-bottom: var(--space-medium);
+}
+
+.governance-lock-map__ring-icon {
+  font-size: var(--text-large);
+  flex-shrink: 0;
+}
+
+.governance-lock-map__ring-title {
+  font-size: var(--text-medium);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Items */
+.governance-lock-map__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-small);
+}
+
+.governance-lock-map__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xsmall);
+  padding: var(--space-small);
+  background: rgba(var(--glass-base), 0.2);
+  border-radius: var(--radius-small);
+  border: 1px solid var(--lock-border);
+}
+
+.governance-lock-map__item-label {
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.governance-lock-map__item-description {
+  font-size: var(--text-xsmall);
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+/* Principle */
+.governance-lock-map__principle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-medium);
+  padding: var(--space-medium);
+  background: rgba(var(--glass-base), 0.3);
+  border-radius: var(--radius-medium);
+  border-left: 3px solid var(--accent-primary);
+}
+
+.governance-lock-map__principle-icon {
+  font-size: var(--text-xlarge);
+  flex-shrink: 0;
+}
+
+.governance-lock-map__principle-text {
+  font-size: var(--text-medium);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Lens Variations */
+.governance-lock-map--professional .governance-lock-map__title {
+  font-size: var(--text-large);
+}
+
+.governance-lock-map--professional .governance-lock-map__subtitle {
+  font-size: var(--text-small);
+}
+
+.governance-lock-map--organisation .governance-lock-map__title {
+  font-size: var(--text-large);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.governance-lock-map--organisation .governance-lock-map__subtitle {
+  font-size: var(--text-small);
+  font-family: var(--font-mono);
+}
+
+.governance-lock-map--organisation .governance-lock-map__ring-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  text-transform: uppercase;
+}
+
+.governance-lock-map--organisation .governance-lock-map__item-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xsmall);
+}
+
+.governance-lock-map--organisation .governance-lock-map__principle-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .governance-lock-map {
+    max-width: 100%;
+    padding: var(--space-medium);
+  }
+
+  .governance-lock-map__items {
+    grid-template-columns: 1fr;
+  }
+
+  .governance-lock-map__principle {
+    flex-direction: column;
+    gap: var(--space-small);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .governance-lock-map__ring {
+    transition: none;
+  }
+}

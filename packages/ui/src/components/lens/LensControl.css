@@ -1,0 +1,102 @@
+/**
+ * LensControl styles
+ * Segmented control with sliding active indicator
+ */
+
+.lens-control {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: var(--radius-small);
+  background: hsla(0, 0%, 0%, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.lens-control__track {
+  position: relative;
+  display: flex;
+  gap: 2px;
+}
+
+.lens-control__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xsmall);
+  padding: var(--space-small) var(--space-medium);
+  border: none;
+  border-radius: var(--radius-xsmall);
+  background: transparent;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 180ms var(--ease-out);
+  z-index: 1;
+}
+
+.lens-control__option:hover {
+  color: var(--color-text-primary);
+}
+
+.lens-control__option--active {
+  color: var(--color-text-primary);
+}
+
+.lens-control__icon {
+  font-size: var(--font-size-base);
+  line-height: 1;
+}
+
+.lens-control__label {
+  white-space: nowrap;
+}
+
+.lens-control__active-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xsmall);
+  background: hsla(0, 0%, 100%, 0.12);
+  z-index: 0;
+}
+
+/* Size variants */
+.lens-control--compact .lens-control__option {
+  padding: 6px 12px;
+  font-size: var(--font-size-xsmall);
+}
+
+.lens-control--comfortable .lens-control__option {
+  padding: var(--space-small) var(--space-medium);
+}
+
+/* Lens-specific colors (subtle) */
+.lens-control__option[data-lens="individual"]:hover .lens-control__icon {
+  color: hsla(160, 70%, 48%, 1);
+}
+
+.lens-control__option[data-lens="professional"]:hover .lens-control__icon {
+  color: hsla(200, 60%, 55%, 1);
+}
+
+.lens-control__option[data-lens="organisation"]:hover .lens-control__icon {
+  color: hsla(40, 80%, 60%, 1);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .lens-control__option {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .lens-control__label {
+    display: none;
+  }
+  
+  .lens-control__option {
+    padding: var(--space-small);
+  }
+}

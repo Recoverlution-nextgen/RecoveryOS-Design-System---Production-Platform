@@ -1,0 +1,64 @@
+/* ============================================================
+   CONTAINER - Content constraint
+   ============================================================ */
+
+.ro-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* Size variants */
+.ro-container--sm {
+  max-width: 640px;
+}
+
+.ro-container--md {
+  max-width: 768px;
+}
+
+.ro-container--lg {
+  max-width: 1024px;
+}
+
+.ro-container--xl {
+  max-width: 1280px;
+}
+
+.ro-container--full {
+  max-width: 100%;
+}
+
+/* Lens adaptations */
+[data-lens="individual"] .ro-container--lg {
+  max-width: 960px;
+}
+
+[data-lens="individual"] .ro-container--xl {
+  max-width: 1200px;
+}
+
+[data-lens="organisation"] .ro-container--lg {
+  max-width: 1120px;
+}
+
+[data-lens="organisation"] .ro-container--xl {
+  max-width: 1400px;
+}
+
+/* Responsive padding */
+@media (min-width: 768px) {
+  .ro-container {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1280px) {
+  .ro-container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}

@@ -1,0 +1,119 @@
+/**
+ * ReturnButton styles
+ * Universal action surface with glow, hold indicator, drift awareness
+ */
+
+.return-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-large) var(--space-xxlarge);
+  border: none;
+  border-radius: var(--radius-medium);
+  background: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.return-button__glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-medium);
+  background: radial-gradient(
+    circle at center,
+    hsla(160, 70%, 48%, 0.4),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.return-button__label {
+  position: relative;
+  z-index: 1;
+}
+
+.return-button__hold-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-text-inverse);
+  transform-origin: left;
+  opacity: 0.5;
+}
+
+/* States */
+.return-button--hover {
+  background: hsla(160, 70%, 48%, 0.85);
+}
+
+.return-button--press {
+  background: var(--color-accent-secondary);
+}
+
+.return-button--confirm {
+  background: var(--color-accent-primary);
+}
+
+/* Drift awareness */
+.return-button--drift-medium {
+  border: 1px solid var(--color-state-caution);
+}
+
+.return-button--drift-high {
+  border: 2px solid var(--color-state-alert);
+  animation: return-pulse 2s ease-in-out infinite;
+}
+
+@keyframes return-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsla(0, 70%, 55%, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px hsla(0, 70%, 55%, 0);
+  }
+}
+
+/* Attention modes */
+.return-button--calm {
+  padding: calc(var(--space-large) * 1.5) calc(var(--space-xxlarge) * 1.5);
+}
+
+.return-button--focus {
+  padding: var(--space-base) var(--space-large);
+}
+
+/* Lens variants (tone only, structure stays consistent) */
+.return-button--individual .return-button__label {
+  font-weight: 600; /* Warmer, approachable */
+}
+
+.return-button--professional .return-button__label {
+  font-weight: 500; /* Balanced, clear */
+}
+
+.return-button--organisation .return-button__label {
+  font-weight: 400; /* Measured, infrastructure */
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .return-button {
+    transition: none;
+  }
+  
+  .return-button--drift-high {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--color-state-alert);
+  }
+}

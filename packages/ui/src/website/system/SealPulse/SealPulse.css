@@ -1,0 +1,122 @@
+/* ============================================================
+   SEAL PULSE - Proof sealing animation
+   ============================================================ */
+
+.ro-seal-pulse {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Size variants */
+.ro-seal-pulse--sm {
+  width: var(--space-10);
+  height: var(--space-10);
+}
+
+.ro-seal-pulse--md {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+.ro-seal-pulse--lg {
+  width: var(--space-14);
+  height: var(--space-14);
+}
+
+/* Pulse rings animation */
+.ro-seal-pulse--animated .ro-seal-pulse__outer {
+  animation: sealPulseOuter 2s ease-out infinite;
+}
+
+.ro-seal-pulse--animated .ro-seal-pulse__middle {
+  animation: sealPulseMiddle 2s ease-out infinite 0.3s;
+}
+
+@keyframes sealPulseOuter {
+  0% {
+    r: 30;
+    opacity: 0.6;
+  }
+  100% {
+    r: 50;
+    opacity: 0;
+  }
+}
+
+@keyframes sealPulseMiddle {
+  0% {
+    r: 25;
+    opacity: 0.8;
+  }
+  100% {
+    r: 35;
+    opacity: 0;
+  }
+}
+
+/* Core breathing animation */
+.ro-seal-pulse--animated .ro-seal-pulse__core {
+  animation: sealBreath 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sealBreath {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Variant: Active (faster pulse) */
+.ro-seal-pulse--active.ro-seal-pulse--animated .ro-seal-pulse__outer {
+  animation-duration: 1.5s;
+}
+
+.ro-seal-pulse--active.ro-seal-pulse--animated .ro-seal-pulse__middle {
+  animation-duration: 1.5s;
+}
+
+.ro-seal-pulse--active .ro-seal-pulse__core {
+  opacity: 1;
+}
+
+/* Variant: Sealed (checkmark reveal) */
+.ro-seal-pulse--sealed .ro-seal-pulse__outer,
+.ro-seal-pulse--sealed .ro-seal-pulse__middle {
+  opacity: 0.2;
+}
+
+.ro-seal-pulse--sealed .ro-seal-pulse__core {
+  opacity: 0.8;
+}
+
+.ro-seal-pulse--sealed.ro-seal-pulse--animated .ro-seal-pulse__check {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: checkReveal 0.6s ease-out forwards;
+}
+
+@keyframes checkReveal {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ro-seal-pulse--animated .ro-seal-pulse__outer,
+  .ro-seal-pulse--animated .ro-seal-pulse__middle,
+  .ro-seal-pulse--animated .ro-seal-pulse__core,
+  .ro-seal-pulse--animated .ro-seal-pulse__check {
+    animation: none;
+  }
+  
+  .ro-seal-pulse--sealed .ro-seal-pulse__check {
+    stroke-dashoffset: 0;
+  }
+}
