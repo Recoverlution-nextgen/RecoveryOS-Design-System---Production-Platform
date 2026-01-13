@@ -1,0 +1,6 @@
+{
+  "extends": ["./packages/lint/stylelint.config.js"],
+  "rules": {
+    // Additional project-specific rules can go here
+  }
+}

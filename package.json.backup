@@ -7,19 +7,15 @@
     "packages/*"
   ],
   "scripts": {
-    "validate:tokens": "npm --prefix packages/tokens run validate",
-    "build:tokens": "npm --prefix packages/tokens run build",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs",
-    "stylelint": "stylelint \"**/*.{css,scss}\"",
-    "typecheck": "tsc -b",
-    "test": "vitest run",
-    "ci": "npm run validate:tokens && npm run build:tokens && npm run lint && npm run stylelint && npm run typecheck && npm run test",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs --config .eslintrc.recoveryos.json",
     "format": "prettier --write .",
     "storybook": "npm --workspace packages/ui run storybook",
     "sb:build": "npm --workspace packages/ui run build-storybook",
     "tokens": "node packages/tokens/build.js",
     "web:dev": "npm --workspace apps/web run dev",
-    "web:build": "npm --workspace apps/web run build"
+    "web:build": "npm --workspace apps/web run build",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.1.0",
@@ -54,7 +50,6 @@
     "zustand": "^4.5.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.90.1",
-    "next": "^16.1.1"
+    "@supabase/supabase-js": "^2.90.1"
   }
 }

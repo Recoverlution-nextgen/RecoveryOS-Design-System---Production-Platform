@@ -1,0 +1,18 @@
+{
+  "name": "@recoveryos/contracts",
+  "version": "0.1.0",
+  "description": "Canonical source of truth for RecoveryOS design system contracts, events, and data models",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

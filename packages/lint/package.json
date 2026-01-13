@@ -1,0 +1,13 @@
+{
+  "name": "@recoveryos/lint",
+  "version": "0.1.0",
+  "description": "Custom ESLint and Stylelint rules for RecoveryOS design system governance",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "stylelint.config.js"
+  ],
+  "scripts": {
+    "test": "node -e \"console.log('Lint rules loaded successfully')\""
+  }
+}

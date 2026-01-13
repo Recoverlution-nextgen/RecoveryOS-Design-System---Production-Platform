@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    // Basic rules for now - governance rules will be added once plugin system is working
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  }
+}
