@@ -1,6 +1,6 @@
 # RecoveryOS Design System
 
-**Single Source of Truth** - Last updated: January 2026
+**Single Source of Truth** - Last updated: January 2026 - MAJOR EXPANSION: Consolidated 15+ core design documents
 
 ## Overview
 
