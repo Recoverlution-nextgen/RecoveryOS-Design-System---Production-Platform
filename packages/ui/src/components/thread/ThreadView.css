@@ -1,0 +1,159 @@
+/**
+ * ThreadView styles
+ * Vertical timeline with continuity line + trace nodes
+ */
+
+.thread-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+  padding: var(--space-large);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface-base);
+}
+
+.thread-view__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-medium);
+  padding-bottom: var(--space-medium);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.thread-view__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xlarge);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.thread-view__week {
+  padding: 4px 12px;
+  border-radius: var(--radius-xsmall);
+  background: hsla(160, 70%, 48%, 0.14);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-accent-primary);
+}
+
+.thread-view__count {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.thread-view__timeline {
+  position: relative;
+  display: flex;
+  gap: var(--space-large);
+}
+
+.thread-view__line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-primary),
+    hsla(160, 70%, 48%, 0.2)
+  );
+  transform-origin: top;
+}
+
+.thread-view__traces {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  padding-left: var(--space-large);
+}
+
+.thread-view__node {
+  position: relative;
+  display: flex;
+  gap: var(--space-medium);
+}
+
+.thread-view__node-dot {
+  position: absolute;
+  left: calc(var(--space-large) * -1 - 5px);
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  box-shadow: 0 0 0 4px var(--color-surface-base);
+  z-index: 1;
+}
+
+.thread-view__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: var(--space-xxlarge);
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: var(--radius-medium);
+}
+
+.thread-view__empty-text {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* States */
+.thread-view--new .thread-view__line {
+  background: hsla(160, 70%, 48%, 0.2);
+}
+
+.thread-view--reviewable .thread-view__line {
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-primary),
+    var(--color-state-safe)
+  );
+}
+
+.thread-view--shareable .thread-view__line {
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-primary),
+    hsla(200, 60%, 55%, 1)
+  );
+}
+
+/* Lens variants */
+.thread-view--individual {
+  padding: calc(var(--space-large) * 1.5);
+}
+
+.thread-view--individual .thread-view__title {
+  font-size: var(--font-size-xxlarge);
+}
+
+.thread-view--professional .thread-view__title {
+  font-size: var(--font-size-xlarge);
+}
+
+.thread-view--organisation .thread-view__title {
+  font-size: var(--font-size-large);
+  font-weight: 500;
+}
+
+.thread-view--organisation .thread-view__header {
+  padding-bottom: var(--space-small);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .thread-view__line {
+    transition: none;
+  }
+}

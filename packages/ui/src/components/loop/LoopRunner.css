@@ -1,0 +1,218 @@
+/**
+ * LoopRunner styles
+ * 4-beat ring + center move execution + seal animation
+ */
+
+.loop-runner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+  padding: var(--space-xxlarge);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface-base);
+}
+
+/* 4-beat ring (peripheral, subtle) */
+.loop-runner__ring {
+  position: absolute;
+  inset: var(--space-large);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-xlarge);
+  pointer-events: none;
+}
+
+.loop-runner__beat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-small);
+  border-radius: var(--radius-small);
+  background: hsla(0, 0%, 100%, 0.03);
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: all 300ms var(--ease-out);
+}
+
+.loop-runner__beat--active {
+  background: hsla(160, 70%, 48%, 0.08);
+  border-color: hsla(160, 70%, 48%, 0.3);
+}
+
+.loop-runner__beat-label {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.loop-runner__beat--active .loop-runner__beat-label {
+  color: var(--color-accent-primary);
+}
+
+/* Center: Move execution */
+.loop-runner__center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 240px;
+}
+
+.loop-runner__phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-medium);
+  text-align: center;
+}
+
+.loop-runner__icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.loop-runner__status {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-large);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Routing phase */
+.loop-runner__contract {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xsmall);
+  padding: var(--space-medium);
+  border-radius: var(--radius-small);
+  background: hsla(160, 70%, 48%, 0.08);
+  border: 1px solid hsla(160, 70%, 48%, 0.2);
+}
+
+.loop-runner__contract-label {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-accent-primary);
+}
+
+.loop-runner__contract-duration {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Delivering phase */
+.loop-runner__player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-large);
+  width: 100%;
+}
+
+.loop-runner__breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    hsla(160, 70%, 48%, 0.2),
+    hsla(160, 70%, 48%, 0.05)
+  );
+  border: 2px solid hsla(160, 70%, 48%, 0.3);
+}
+
+.loop-runner__move-label {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xlarge);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  max-width: 480px;
+}
+
+.loop-runner__progress {
+  width: 100%;
+  max-width: 320px;
+  height: 4px;
+  border-radius: 2px;
+  background: hsla(0, 0%, 100%, 0.08);
+  overflow: hidden;
+}
+
+.loop-runner__progress-bar {
+  height: 100%;
+  background: var(--color-accent-primary);
+  transform-origin: left;
+}
+
+/* Sealing phase */
+.loop-runner__seal-icon {
+  font-size: 64px;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px hsla(160, 70%, 48%, 0.6));
+}
+
+/* Sealed phase */
+.loop-runner__phase--sealed {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Lens variants */
+.loop-runner--professional .loop-runner__status {
+  font-size: var(--font-size-base);
+}
+
+.loop-runner--organisation .loop-runner__status {
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.loop-runner--organisation .loop-runner__move-label {
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-size: var(--font-size-base);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .loop-runner__beat {
+    transition: none;
+  }
+  
+  .loop-runner__breath-circle {
+    animation: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loop-runner {
+    min-height: 400px;
+    padding: var(--space-large);
+  }
+
+  .loop-runner__ring {
+    gap: var(--space-medium);
+  }
+
+  .loop-runner__beat-label {
+    font-size: var(--font-size-xsmall);
+  }
+
+  .loop-runner__move-label {
+    font-size: var(--font-size-large);
+  }
+}

@@ -1,0 +1,236 @@
+/* ============================================================
+   AMBIENT FIELD - Cinematic background wrapper
+   ============================================================ */
+
+.ro-ambient {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ro-ambient__glow {
+  position: absolute;
+  inset: -120px;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: blur(0px);
+  transition: opacity var(--motion-glide) var(--ease-regulate);
+}
+
+.ro-ambient__glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(251, 250, 255, 0.78),
+    rgba(251, 250, 255, 0.92)
+  );
+}
+
+[data-theme="dark"] .ro-ambient__glass {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 10, 20, 0.72),
+    rgba(11, 10, 20, 0.88)
+  );
+}
+
+/* Variant glows */
+.ro-ambient--calm .ro-ambient__glow {
+  background: radial-gradient(
+      600px 420px at 20% 20%,
+      var(--return-glow),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      520px 380px at 80% 30%,
+      var(--thread-pulse),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      520px 380px at 60% 80%,
+      var(--drift-stable),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--heat .ro-ambient__glow {
+  background: radial-gradient(
+      600px 420px at 30% 25%,
+      var(--handrail-escalate),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      520px 380px at 75% 35%,
+      var(--drift-active),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      520px 380px at 50% 75%,
+      var(--return-glow),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--return .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--return-glow),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 20% 70%,
+      var(--return-press),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--thread .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--thread-pulse),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 70% 60%,
+      var(--thread-depth-fg),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--trace .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--trace-seal),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 30% 70%,
+      var(--trace-stamp),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--handrail .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--handrail-callout),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 60% 70%,
+      var(--handrail-escalate),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+/* Pillar-specific glows */
+.ro-ambient--pillar[data-pillar="ER"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--return-glow),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 30% 65%,
+      var(--return-press),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--pillar[data-pillar="SR"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--drift-stable),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 70% 65%,
+      var(--return-glow),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--pillar[data-pillar="SC"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--thread-pulse),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 60% 70%,
+      var(--thread-depth-fg),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--pillar[data-pillar="CR"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--lens-professional),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 40% 70%,
+      var(--thread-pulse),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--pillar[data-pillar="II"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--lens-organisation),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 55% 75%,
+      var(--trace-seal),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+.ro-ambient--pillar[data-pillar="DM"] .ro-ambient__glow {
+  background: radial-gradient(
+      700px 500px at 50% 40%,
+      var(--drift-noticing),
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(
+      600px 400px at 45% 70%,
+      var(--lens-individual),
+      rgba(0, 0, 0, 0)
+    );
+}
+
+/* Intensity */
+.ro-ambient--low .ro-ambient__glow {
+  opacity: 0.45;
+}
+
+.ro-ambient--medium .ro-ambient__glow {
+  opacity: 0.75;
+}
+
+.ro-ambient--high .ro-ambient__glow {
+  opacity: 1;
+}
+
+/* Lens adaptations */
+[data-lens="individual"] .ro-ambient__glow {
+  opacity: 0.65;
+}
+
+[data-lens="organisation"] .ro-ambient__glow {
+  opacity: 0.35;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ro-ambient__glow {
+    animation: none;
+    filter: blur(0px);
+  }
+}

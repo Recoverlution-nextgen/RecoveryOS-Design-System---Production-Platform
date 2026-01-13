@@ -1,0 +1,68 @@
+/* ============================================================
+   RECOVERYOS ICON SYSTEM - OS-grade glyphs
+   ============================================================ */
+
+.ro-icon {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--ink-primary);
+  line-height: 0;
+}
+
+.ro-icon svg {
+  display: block;
+}
+
+/* Tone variants */
+.ro-icon--muted {
+  color: var(--ink-secondary);
+}
+
+.ro-icon--ink {
+  color: var(--ink-primary);
+}
+
+.ro-icon--cyan {
+  color: var(--c-cyan-500);
+}
+
+.ro-icon--purple {
+  color: var(--c-purple-500);
+}
+
+/* Pillar tone: inherits from pillar tokens if parent sets --p-base */
+.ro-icon--pillar {
+  color: var(--p-base, var(--c-purple-500));
+}
+
+/* Live state (for active indicators) */
+.ro-icon--live {
+  color: var(--c-cyan-500);
+}
+
+/* Impact pulse animation (for seal moments) */
+.ro-icon--pulse {
+  animation: roIconPulse 520ms var(--ease-regulate, cubic-bezier(0.2, 0.8, 0.2, 1)) 1;
+}
+
+@keyframes roIconPulse {
+  0% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+  35% {
+    transform: scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ro-icon--pulse {
+    animation: none;
+  }
+}

@@ -1,0 +1,309 @@
+/* SpineAtlas: Framework explorer (Pillars → Concepts → Mindblocks) */
+
+.spine-atlas {
+  --atlas-bg: rgba(var(--glass-base), 0.4);
+  --atlas-border: rgba(var(--glass-base), 0.5);
+  --atlas-node-bg: rgba(var(--glass-base), 0.3);
+  --atlas-node-border: rgba(var(--glass-base), 0.4);
+  
+  width: 100%;
+  max-width: 1200px;
+  background: var(--atlas-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--atlas-border);
+  border-radius: var(--radius-large);
+  padding: var(--space-large);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+}
+
+/* Header */
+.spine-atlas__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-large);
+}
+
+.spine-atlas__title {
+  font-size: var(--text-xlarge);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-xsmall) 0;
+}
+
+.spine-atlas__subtitle {
+  font-size: var(--text-medium);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Level Navigator */
+.spine-atlas__level-nav {
+  display: flex;
+  gap: var(--space-small);
+  background: rgba(var(--glass-base), 0.2);
+  padding: var(--space-xsmall);
+  border-radius: var(--radius-medium);
+}
+
+.spine-atlas__level-button {
+  padding: var(--space-small) var(--space-medium);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  color: var(--text-tertiary);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spine-atlas__level-button:hover {
+  background: rgba(var(--glass-base), 0.3);
+  color: var(--text-primary);
+}
+
+.spine-atlas__level-button--active {
+  background: var(--accent-primary);
+  color: var(--surface-base);
+  border-color: var(--accent-primary);
+}
+
+/* Breadcrumb */
+.spine-atlas__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-medium);
+  padding: var(--space-small) var(--space-medium);
+  background: rgba(var(--glass-base), 0.2);
+  border-radius: var(--radius-medium);
+}
+
+.spine-atlas__breadcrumb-button {
+  background: transparent;
+  border: none;
+  color: var(--accent-primary);
+  font-size: var(--text-small);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.spine-atlas__breadcrumb-button:hover {
+  opacity: 0.8;
+}
+
+.spine-atlas__breadcrumb-path {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+/* Node Grid */
+.spine-atlas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-medium);
+}
+
+/* Node Card */
+.spine-atlas__node {
+  background: var(--atlas-node-bg);
+  border: 1px solid var(--atlas-node-border);
+  border-radius: var(--radius-medium);
+  padding: var(--space-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+}
+
+.spine-atlas__node:hover {
+  background: rgba(var(--glass-base), 0.4);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.spine-atlas__node--selected {
+  border-color: var(--accent-primary);
+  background: rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.spine-atlas__node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-small);
+}
+
+.spine-atlas__node-label {
+  font-size: var(--text-medium);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.spine-atlas__node-expand {
+  width: 24px;
+  height: 24px;
+  background: rgba(var(--glass-base), 0.3);
+  border: 1px solid var(--atlas-node-border);
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  font-size: var(--text-medium);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.spine-atlas__node-expand:hover {
+  background: var(--accent-primary);
+  color: var(--surface-base);
+  border-color: var(--accent-primary);
+}
+
+.spine-atlas__node-description {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Node Details */
+.spine-atlas__node-details {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+  padding-top: var(--space-small);
+  border-top: 1px solid var(--atlas-node-border);
+}
+
+.spine-atlas__node-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xsmall);
+}
+
+.spine-atlas__node-detail-label {
+  font-size: var(--text-xsmall);
+  font-weight: var(--weight-medium);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.spine-atlas__node-detail-value {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Node Actions */
+.spine-atlas__node-actions {
+  display: flex;
+  gap: var(--space-small);
+  margin-top: var(--space-small);
+}
+
+.spine-atlas__node-action {
+  flex: 1;
+  padding: var(--space-small) var(--space-medium);
+  background: var(--accent-primary);
+  border: none;
+  border-radius: var(--radius-small);
+  color: var(--surface-base);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spine-atlas__node-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--accent-primary-rgb), 0.3);
+}
+
+/* Empty State */
+.spine-atlas__empty {
+  padding: var(--space-xxlarge);
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: var(--text-medium);
+}
+
+/* Depth Variations */
+.spine-atlas--glance .spine-atlas__node-description {
+  display: none;
+}
+
+.spine-atlas--journey .spine-atlas__node-details {
+  display: flex;
+}
+
+/* Lens Variations */
+.spine-atlas--professional .spine-atlas__title {
+  font-size: var(--text-large);
+}
+
+.spine-atlas--professional .spine-atlas__subtitle {
+  font-size: var(--text-small);
+}
+
+.spine-atlas--organisation .spine-atlas__title {
+  font-size: var(--text-large);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.spine-atlas--organisation .spine-atlas__subtitle {
+  font-size: var(--text-small);
+  font-family: var(--font-mono);
+}
+
+.spine-atlas--organisation .spine-atlas__node-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .spine-atlas {
+    max-width: 100%;
+    padding: var(--space-medium);
+  }
+
+  .spine-atlas__header {
+    flex-direction: column;
+  }
+
+  .spine-atlas__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spine-atlas__level-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .spine-atlas__node {
+    transition: none;
+  }
+
+  .spine-atlas__node:hover {
+    transform: none;
+  }
+
+  .spine-atlas__node-action:hover {
+    transform: none;
+  }
+}

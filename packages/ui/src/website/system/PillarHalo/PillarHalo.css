@@ -1,0 +1,88 @@
+/* ============================================================
+   PILLAR HALO - Framework node glows
+   ============================================================ */
+
+.ro-pillar-halo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glow layer */
+.ro-pillar-halo__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--pillar-primary) 0%,
+    var(--pillar-secondary) 50%,
+    transparent 100%
+  );
+  filter: blur(var(--space-4));
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content wrapper */
+.ro-pillar-halo__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Size variants */
+.ro-pillar-halo--sm {
+  width: var(--space-10);
+  height: var(--space-10);
+}
+
+.ro-pillar-halo--md {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+.ro-pillar-halo--lg {
+  width: var(--space-14);
+  height: var(--space-14);
+}
+
+.ro-pillar-halo--xl {
+  width: var(--space-16);
+  height: var(--space-16);
+}
+
+/* Intensity variants */
+.ro-pillar-halo--low .ro-pillar-halo__glow {
+  opacity: 0.3;
+  filter: blur(var(--space-3));
+}
+
+.ro-pillar-halo--high .ro-pillar-halo__glow {
+  opacity: 0.9;
+  filter: blur(var(--space-5));
+}
+
+/* Animated pulse */
+.ro-pillar-halo--animated .ro-pillar-halo__glow {
+  animation: pillarPulse 3s ease-in-out infinite;
+}
+
+@keyframes pillarPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ro-pillar-halo--animated .ro-pillar-halo__glow {
+    animation: none;
+  }
+}

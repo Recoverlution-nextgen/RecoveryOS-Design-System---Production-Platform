@@ -1,0 +1,71 @@
+/* ============================================================
+   SECTION - Page section wrapper
+   ============================================================ */
+
+.ro-section {
+  position: relative;
+  width: 100%;
+  padding: var(--space-16) var(--space-4);
+  background: var(--return-surface);
+  color: var(--return-ink);
+  overflow: hidden;
+}
+
+/* Variants */
+.ro-section--hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--return-surface);
+  padding: var(--space-12) var(--space-4);
+}
+
+.ro-section--feature {
+  background: var(--thread-surface);
+  color: var(--thread-ink);
+}
+
+.ro-section--dark {
+  background: var(--trace-vault-surface);
+  color: var(--trace-stamp);
+}
+
+.ro-section--ambient {
+  background: transparent;
+}
+
+/* Lens adaptations */
+[data-lens="individual"] .ro-section {
+  padding: var(--space-14) var(--space-4);
+}
+
+[data-lens="professional"] .ro-section {
+  padding: var(--space-12) var(--space-4);
+}
+
+[data-lens="organisation"] .ro-section {
+  padding: var(--space-10) var(--space-4);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .ro-section {
+    padding: var(--space-16) var(--space-8);
+  }
+
+  .ro-section--hero {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+@media (min-width: 1280px) {
+  .ro-section {
+    padding: var(--space-16) var(--space-12);
+  }
+
+  .ro-section--hero {
+    padding: var(--space-12) var(--space-12);
+  }
+}
