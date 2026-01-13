@@ -120,3 +120,26 @@ All changes require:
 
 **Last Updated**: January 2026
 **Version**: 1.0.0
+
+### Shell & Interface
+Complete UI shell and interface specifications:
+- **Portal Shell** - Main UI shell with room switcher, lens control, artifact rail
+- **Extended Portal Shell** - Advanced shell features and room-specific panels
+- *Interface chrome, overlays, and navigation systems...*
+
+### Messages & Notifications  
+System messaging and notification patterns:
+- **System Messages** - iOS-style toast notifications and system alerts
+- *Notification patterns, error states, and user feedback...*
+
+### Diagnostics & Console
+Developer tools and debugging interfaces:
+- **Console Overlay** - Diagnostics pane and developer console
+- *Debugging tools, system monitoring, and developer interfaces...*
+
+### Brand & Identity
+Brand identity and visual standards:
+- **Brand Kit Map** - Complete brand kit architecture
+- **Brand AI Approach** - AI-powered brand development  
+- **Brand Integration** - Brand system integration
+- *Brand guidelines, identity systems, and visual standards...*
