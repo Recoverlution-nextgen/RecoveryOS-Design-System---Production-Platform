@@ -1,0 +1,67 @@
+{
+  "version": "v1",
+  "assets": [
+    {
+      "id": "KV_COMPANION_RETURN_MOMENT",
+      "association": "brand_hero",
+      "world": "companion",
+      "state": "anchorage",
+      "contentType": "neutral",
+      "format": "hero_wide",
+      "brush": "duotone_purple_base",
+      "tags": {
+        "pillars": ["pillar.identity_integration"],
+        "concepts": ["concept.self_compassion_shame_soothing"],
+        "themes": ["theme.proof_capture"],
+        "universal": ["intent.return", "tone.calm", "context.moment"]
+      },
+      "intent": "A calm visual metaphor for Return — turning the moment into a move.",
+      "files": {
+        "src": "/assets/__exports/webp/KV_COMPANION_RETURN_MOMENT__anchorage__companion__hero-wide__light__v1.webp",
+        "src2x": "/assets/__exports/webp/KV_COMPANION_RETURN_MOMENT__anchorage__companion__hero-wide__light__v1@2x.webp"
+      },
+      "version": "v1",
+      "priority": 90
+    },
+    {
+      "id": "COVER_INSIGHT_SIGNAL_MAP",
+      "association": "cover",
+      "world": "console",
+      "state": "clarity",
+      "contentType": "insight",
+      "format": "tile",
+      "brush": "duotone_purple_cyan",
+      "tags": {
+        "pillars": ["pillar.cognitive_reframing"],
+        "concepts": ["concept.attention_orienting", "concept.cognitive_defusion"],
+        "themes": ["theme.name_the_pattern", "theme.create_choice_space"]
+      },
+      "intent": "Signal-forward cover for insights — precision without noise.",
+      "files": {
+        "src": "/assets/__exports/webp/COVER_INSIGHT_SIGNAL_MAP__clarity__console__tile__light__v1.webp"
+      },
+      "version": "v1",
+      "priority": 70
+    },
+    {
+      "id": "STAMP_PROOF_HELD",
+      "association": "proof_receipt",
+      "world": "neutral",
+      "state": "energy",
+      "contentType": "proof",
+      "format": "stamp",
+      "brush": "vector_stamp",
+      "tags": {
+        "pillars": ["pillar.stress_resilience"],
+        "concepts": ["concept.arousal_regulation"],
+        "themes": ["theme.downshift_under_load", "theme.proof_capture"]
+      },
+      "intent": "A proof stamp that signals: it held under real life.",
+      "files": {
+        "svg": "/assets/__exports/svg/STAMP_PROOF_HELD__energy__neutral__stamp__v1.svg"
+      },
+      "version": "v1",
+      "priority": 85
+    }
+  ]
+}

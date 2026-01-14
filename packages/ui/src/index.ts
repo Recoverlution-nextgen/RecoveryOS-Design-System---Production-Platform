@@ -95,3 +95,17 @@ export * from './lib/supabase';
 // Asset governance
 export * from './assets/asset-governance';
 export { useAssetsByComponent, useAssetsByLabels, useAssetsByClass, useHeroScene } from './hooks/useAssetPlacement';
+
+// Founding Objects (RecoveryOS Core)
+export { ReturnButton } from "./objects/ReturnButton/ReturnButton";
+
+export { RoomHeader } from "./objects/RoomHeader/RoomHeader";
+export { RoomFrame } from "./objects/RoomFrame/RoomFrame";
+
+export { PortalShell } from "./objects/PortalShell/PortalShell";
+
+export { PrimaryRail, ContextRail, ArtifactRail } from "./objects/Rails/Rails";
+
+export { SystemMessageToastHost } from "./objects/SystemMessageToast/SystemMessageToastHost";
+
+export { ReceiptCard } from "./objects/ReceiptCard/ReceiptCard";

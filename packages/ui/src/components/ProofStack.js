@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { ProofPill } from './ProofPill';
+export const ProofStack = ({ title = 'Proof stack', entries }) => {
+    return (_jsx("div", { className: "card", role: "list", "aria-label": "Proof stack", children: _jsxs("div", { className: "stack", children: [_jsxs("div", { className: "row", style: { justifyContent: 'space-between' }, children: [_jsx("h3", { className: "title", style: { margin: 0 }, children: title }), _jsx("span", { className: "label", children: "Receipts" })] }), _jsx("div", { className: "list", children: entries.map((entry) => (_jsxs("div", { className: "row", role: "listitem", style: { gap: 12 }, children: [_jsx(ProofPill, { label: entry.label, status: entry.status, timestamp: entry.timestamp, intent: entry.intent }), _jsxs("div", { className: "stack", style: { gap: 4 }, children: [entry.target ? (_jsxs("span", { className: "label", children: ["Target \u00B7 ", entry.target] })) : null, entry.dose ? _jsxs("span", { className: "subtitle", children: ["Dose \u00B7 ", entry.dose] }) : null] })] }, entry.id))) })] }) }));
+};

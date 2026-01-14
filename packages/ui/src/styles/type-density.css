@@ -1,0 +1,14 @@
+/* Density mode (org-only policy will turn this on) */
+.ros-type-dense {
+  font-family: var(--semantic-type-uiDenseFontFamily);
+  letter-spacing: var(--base-letterSpacing-normal);
+}
+
+/* For dense labels/headers specifically */
+.ros-type-dense-label {
+  font-family: var(--semantic-type-uiDenseFontFamily);
+  font-size: var(--semantic-text-label-fontSize);
+  font-weight: var(--semantic-text-label-fontWeight);
+  line-height: var(--semantic-text-label-lineHeight);
+  letter-spacing: var(--semantic-text-label-letterSpacing);
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecoveryOS Asset Meta v1",
+  "type": "object",
+  "required": ["id", "association", "world", "state", "format", "files", "version"],
+  "properties": {
+    "id": { "type": "string" },
+    "association": {
+      "type": "string",
+      "enum": ["brand_hero", "journey", "navicue", "baseline", "sentient_baseline", "proof_receipt", "system_diagram", "cover", "icon", "motion"]
+    },
+    "world": { "type": "string", "enum": ["companion", "console", "command_centre", "neutral"] },
+    "state": { "type": "string", "enum": ["energy", "clarity", "anchorage", "neutral"] },
+    "contentType": {
+      "type": "string",
+      "enum": ["navicue", "journey", "article", "insight", "practice", "audio", "series", "proof", "neutral"]
+    },
+    "format": {
+      "type": "string",
+      "enum": ["hero_wide", "card", "square", "tile", "diagram", "stamp", "timeline", "icon_16", "icon_24", "lottie"]
+    },
+    "brush": { "type": "string" },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "pillars": { "type": "array", "maxItems": 1, "items": { "type": "string" } },
+        "concepts": { "type": "array", "maxItems": 3, "items": { "type": "string" } },
+        "themes": { "type": "array", "maxItems": 3, "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "intent": { "type": "string" },
+    "files": {
+      "type": "object",
+      "required": ["src"],
+      "properties": {
+        "src": { "type": "string" },
+        "src2x": { "type": "string" },
+        "src3x": { "type": "string" },
+        "svg": { "type": "string" },
+        "lottie": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "version": { "type": "string" },
+    "priority": { "type": "integer", "minimum": 0, "maximum": 100 }
+  },
+  "additionalProperties": false
+}

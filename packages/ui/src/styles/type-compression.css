@@ -1,0 +1,30 @@
+/* Default (no compression) */
+:root {
+  --ros-title-as: title;
+  --ros-headline-as: headline;
+  --ros-caption-opacity: 1;
+  --ros-body-lineheight: var(--semantic-text-body-lineHeight);
+  --ros-label-tracking: var(--semantic-text-label-letterSpacing);
+}
+
+/* Apply compression by flipping variables (container sets [data-band="high"]) */
+[data-band="high"] {
+  --ros-title-as: var(--semantic-typeCompression-high-titleAs);
+  --ros-headline-as: var(--semantic-typeCompression-high-headlineAs);
+  --ros-caption-opacity: var(--semantic-typeCompression-high-captionOpacity);
+  --ros-body-lineheight: var(--semantic-typeCompression-high-bodyLineHeight);
+  --ros-label-tracking: var(--semantic-typeCompression-high-labelTracking);
+}
+
+/* Roles read from the indirection variables */
+.ros-type-body {
+  line-height: var(--ros-body-lineheight);
+}
+
+.ros-type-caption {
+  opacity: var(--ros-caption-opacity);
+}
+
+.ros-type-label {
+  letter-spacing: var(--ros-label-tracking);
+}

@@ -1,0 +1,71 @@
+/* Token-driven type roles (no literals). */
+
+/* Global knobs */
+:root {
+  font-optical-sizing: var(--semantic-type-opticalSizing, auto);
+  font-variant-numeric: var(--semantic-type-numbers-ui, proportional-nums);
+}
+
+/* Role: Display */
+.ros-type-display {
+  font-family: var(--semantic-text-display-fontFamily);
+  font-size: var(--semantic-text-display-fontSize);
+  font-weight: var(--semantic-text-display-fontWeight);
+  line-height: var(--semantic-text-display-lineHeight);
+  letter-spacing: var(--semantic-text-display-letterSpacing);
+}
+
+/* Role: Title */
+.ros-type-title {
+  font-family: var(--semantic-text-title-fontFamily);
+  font-size: var(--semantic-text-title-fontSize);
+  font-weight: var(--semantic-text-title-fontWeight);
+  line-height: var(--semantic-text-title-lineHeight);
+  letter-spacing: var(--semantic-text-title-letterSpacing);
+}
+
+/* Role: Headline */
+.ros-type-headline {
+  font-family: var(--semantic-text-headline-fontFamily);
+  font-size: var(--semantic-text-headline-fontSize);
+  font-weight: var(--semantic-text-headline-fontWeight);
+  line-height: var(--semantic-text-headline-lineHeight);
+  letter-spacing: var(--semantic-text-headline-letterSpacing);
+}
+
+/* Role: Body */
+.ros-type-body {
+  font-family: var(--semantic-text-body-fontFamily);
+  font-size: var(--semantic-text-body-fontSize);
+  font-weight: var(--semantic-text-body-fontWeight);
+  line-height: var(--semantic-text-body-lineHeight);
+  letter-spacing: var(--semantic-text-body-letterSpacing);
+}
+
+/* Role: Caption */
+.ros-type-caption {
+  font-family: var(--semantic-text-caption-fontFamily);
+  font-size: var(--semantic-text-caption-fontSize);
+  font-weight: var(--semantic-text-caption-fontWeight);
+  line-height: var(--semantic-text-caption-lineHeight);
+  letter-spacing: var(--semantic-text-caption-letterSpacing);
+}
+
+/* Role: Label */
+.ros-type-label {
+  font-family: var(--semantic-text-label-fontFamily);
+  font-size: var(--semantic-text-label-fontSize);
+  font-weight: var(--semantic-text-label-fontWeight);
+  line-height: var(--semantic-text-label-lineHeight);
+  letter-spacing: var(--semantic-text-label-letterSpacing);
+}
+
+/* Role: Code (Diagnostics) */
+.ros-type-code {
+  font-family: var(--semantic-text-code-fontFamily);
+  font-size: var(--semantic-text-code-fontSize);
+  font-weight: var(--semantic-text-code-fontWeight);
+  line-height: var(--semantic-text-code-lineHeight);
+  letter-spacing: var(--semantic-text-code-letterSpacing);
+  font-variant-numeric: var(--semantic-type-numbers-data, tabular-nums);
+}

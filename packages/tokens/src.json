@@ -25,6 +25,13 @@
     }
   },
   "semantic": {
+    "focus": {
+      "ring": {
+        "color": { "value": "#4FB3FF", "type": "color" },
+        "width": { "value": "{base.outline.width.2.value}", "type": "dimension" },
+        "offset": { "value": "{base.outline.offset.1.value}", "type": "dimension" }
+      }
+    },
     "return": {
       "surface": "#1A1C1F",
       "ink": "#F7F7F5",
@@ -38,14 +45,7 @@
       "pulse": "#FFB677"
     },
     "trace": {
-      "surface": "#1A1C1F",,
-    "semantic": {
-      "arrive": { "duration": 240, "easing": "cubic-bezier(0.19, 0.8, 0.2, 1)" },
-      "glide": { "duration": 360, "easing": "cubic-bezier(0.4, 0, 0.2, 1)" },
-      "settle": { "duration": 480, "easing": "cubic-bezier(0.19, 1, 0.22, 1)" },
-      "confirm": { "duration": 180, "easing": "cubic-bezier(0.19, 0.8, 0.2, 1)" },
-      "carry": { "duration": 300, "easing": "cubic-bezier(0.4, 0, 0.2, 1)" }
-    }
+      "surface": "#1A1C1F",
       "border": "#2A2D33",
       "stamp": "#4FB3FF",
       "seal": "#FFB677",
@@ -66,6 +66,16 @@
       "stable": "#7EE0A3",
       "noticing": "#F6D365",
       "active": "#FF6F61"
+    }
+  },
+  "base": {
+    "outline": {
+      "width": {
+        "2": { "value": "2px", "type": "dimension", "description": "Default focus ring width" }
+      },
+      "offset": {
+        "1": { "value": "2px", "type": "dimension", "description": "Default focus ring offset" }
+      }
     }
   },
   "spacing": {
@@ -94,27 +104,13 @@
   "motion": {
     "fast": 120,
     "base": 180,
-    "slow": 240,,
-      "semantic": {
-        "returnGlow": "rgba(79, 179, 255, 0.15)",
-        "threadPulse": "rgba(255, 182, 119, 0.3)"
-      }
-    },
-    "heat": {
-      "surface": { "base": "#050607", "elevated": "#0E1012" },
-      "text": { "primary": "#FFFFFF", "secondary": "#D1D5DC" },
-      "accent": { "primary": "#7BD2FF", "warm": "#FFC38D" },
-      "semantic": {
-        "returnGlow": "rgba(123, 210, 255, 0.3)",
-        "threadPulse": "rgba(255, 195, 141, 0.4)"
-     F" },
-      "text": { "primary": "#F7F7F5", "secondary": "#B7BCC6" },
-      "accent": { "primary": "#4FB3FF", "warm": "#FFB677" }
-    },
-    "heat": {
-      "surface": { "base": "#050607", "elevated": "#0E1012" },
-      "text": { "primary": "#FFFFFF", "secondary": "#D1D5DC" },
-      "accent": { "primary": "#7BD2FF", "warm": "#FFC38D" }
+    "slow": 240,
+    "semantic": {
+      "arrive": { "duration": 240, "easing": "cubic-bezier(0.19, 0.8, 0.2, 1)" },
+      "glide": { "duration": 360, "easing": "cubic-bezier(0.4, 0, 0.2, 1)" },
+      "settle": { "duration": 480, "easing": "cubic-bezier(0.19, 1, 0.22, 1)" },
+      "confirm": { "duration": 180, "easing": "cubic-bezier(0.19, 0.8, 0.2, 1)" },
+      "carry": { "duration": 300, "easing": "cubic-bezier(0.4, 0, 0.2, 1)" }
     }
   }
 }

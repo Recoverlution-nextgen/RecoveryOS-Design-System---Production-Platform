@@ -6,9 +6,14 @@
     "dev": "next dev --hostname 127.0.0.1 --port 4173",
     "build": "next build",
     "start": "next start --port 4173",
-    "preview": "next build && next start --port 4173"
+    "preview": "next build && next start --port 4173",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@fontsource/ibm-plex-sans-condensed": "^5.2.8",
+    "@fontsource/ibm-plex-serif": "^5.2.7",
     "next": "^14.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

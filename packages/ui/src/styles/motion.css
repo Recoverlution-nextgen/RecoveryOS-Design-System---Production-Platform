@@ -1,0 +1,12 @@
+/* RecoveryOS motion helpers (optional) — components still decide */
+.ros-settle {
+  transition-property: opacity, transform, background-color, border-color;
+  transition-duration: var(--motion-dur-settle);
+  transition-timing-function: var(--motion-ease-settle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ros-settle {
+    transition: none !important;
+  }
+}

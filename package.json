@@ -9,7 +9,8 @@
   "scripts": {
     "validate:tokens": "npm --prefix packages/tokens run validate",
     "build:tokens": "npm --prefix packages/tokens run build",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs",
+    "lint": "npm run lint:asset && eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs",
+    "lint:asset": "node scripts/asset-lint.js",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "typecheck": "tsc -b",
     "test": "vitest run",
@@ -19,7 +20,11 @@
     "sb:build": "npm --workspace packages/ui run build-storybook",
     "tokens": "node packages/tokens/build.js",
     "web:dev": "npm --workspace apps/web run dev",
-    "web:build": "npm --workspace apps/web run build"
+    "web:build": "npm --workspace apps/web run build",
+    "validate:assets": "npx tsx scripts/asset-manifest-validate.ts",
+    "generate:assets": "npx tsx scripts/asset-manifest-generate.ts",
+    "build:assets": "npx tsx scripts/asset-manifest-build.ts",
+    "sync:supabase-assets": "npx tsx scripts/sync-supabase-assets.ts"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.1.0",
