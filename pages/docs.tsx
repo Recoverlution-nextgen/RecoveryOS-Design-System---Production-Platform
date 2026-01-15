@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import ReactMarkdown from 'react-markdown'
@@ -22,12 +23,12 @@ export default function Docs({ operatingTruth, recoveryos }: DocsProps) {
             <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent mb-4">
               Documentation
             </h1>
-            <a 
+            <Link 
               href="/" 
               className="text-purple-600 hover:text-purple-700 underline"
             >
               ← Back to Home
-            </a>
+            </Link>
           </div>
 
           {/* Tab Navigation */}
@@ -58,7 +59,7 @@ export default function Docs({ operatingTruth, recoveryos }: DocsProps) {
 
           {/* Content */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <article className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-purple-600 prose-strong:text-gray-900 prose-code:text-purple-600 prose-code:bg-purple-50 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
+            <article className="prose prose-lg max-w-none">
               {activeTab === 'operating-truth' && (
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {operatingTruth}

@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Button } from '../lib/design-system'
 
 export default function Home() {
@@ -18,11 +19,11 @@ export default function Home() {
             <Button variant="primary" size="lg">
               Explore Components
             </Button>
-            <a href="/docs">
+            <Link href="/docs">
               <Button variant="secondary" size="lg">
                 View Documentation
               </Button>
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
