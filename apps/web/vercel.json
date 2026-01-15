@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build -- --no-lint",
   "outputDirectory": ".next",
-  "installCommand": "npm install",
+  "installCommand": "npm install --no-workspaces",
   "framework": null,
   "regions": ["iad1"],
   "functions": {

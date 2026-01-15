@@ -1,6 +1,5 @@
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   // RecoveryOS Design System Configuration
   experimental: {
     // Enable experimental features if needed
@@ -16,4 +15,4 @@ const nextConfig: NextConfig = {
   }
 }
 
-export default nextConfig
+module.exports = nextConfig
