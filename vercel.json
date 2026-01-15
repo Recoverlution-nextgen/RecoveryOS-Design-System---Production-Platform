@@ -1,38 +1,15 @@
 {
-  "rootDirectory": "apps/web",
-  "buildCommand": "npm run build -- --no-lint",
-  "outputDirectory": ".next",
-  "installCommand": "npm install --no-workspaces",
-  "framework": null,
-  "regions": ["iad1"],
-  "functions": {
-    "app/**/*.ts": {
-      "maxDuration": 10
-    }
-  },
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "apps/web/package.json",
+      "use": "@vercel/next"
     }
   ],
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "apps/web/$1"
     }
   ]
 }
