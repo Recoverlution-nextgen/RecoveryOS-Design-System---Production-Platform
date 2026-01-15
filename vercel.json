@@ -1,9 +1,8 @@
 {
-  "buildCommand": "npm run web:build",
+  "buildCommand": "cd apps/web && npm run build",
   "outputDirectory": "apps/web/.next",
-  "framework": null,
   "installCommand": "npm install",
-  "devCommand": "npm run web:dev",
+  "framework": "nextjs",
   "regions": ["iad1"],
   "functions": {
     "apps/web/app/**/*.ts": {
