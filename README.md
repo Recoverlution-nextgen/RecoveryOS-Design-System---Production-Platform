@@ -1,62 +1,56 @@
-# Recoverlution Platform
+# RecoveryOS Web App
 
-A governed design system and asset management platform for therapeutic visual experiences.
+A Next.js application showcasing the RecoveryOS Design System.
 
-## What This Is
+## Features
 
-- **Design System**: Token-based component library with TypeScript, React, and Supabase integration
-- **Asset Management**: Governed therapeutic asset catalog with universal tagging and governance
-- **Performance Optimized**: CDN-ready with image optimization, caching, and responsive delivery
-- **Developer Experience**: Monorepo with automated tooling, testing, and documentation
+- **Design System Showcase**: Interactive component library
+- **Documentation Hub**: Cross-referenced governance documentation
+- **Therapeutic Assets**: Governed visual content integration
+- **Performance Optimized**: CDN-ready with optimal loading
 
-## What This Isn't
-
-- A general-purpose UI library (RecoveryOS-specific therapeutic focus)
-- A CMS or content management system (asset governance only)
-- A marketing website builder (platform components only)
-- A data visualization library (therapeutic assets only)
-
-## Repository Structure
-
-```
-/packages              # Governed design system packages
-  /schema             # Asset schemas and taxonomy registries
-  /tokens             # Design tokens (colors, typography, motion)
-  /ui                 # React component library
-  /assets             # Asset runtime helpers and utilities
-  /copy               # Glass carve overlay copy system
-  /config             # Build and tooling configuration
-/scripts              # Asset generation, validation, and governance
-/docs                 # Design system documentation and specifications
-/assets               # Asset specifications and local mirrors
-/apps                 # Reference implementations and snapshots
-```
-
-## Quick Start
+## Development
 
 ```bash
 # Install dependencies
 npm install
 
-# Validate assets and tokens
-npm run validate:assets
-npm run lint:color
+# Start development server
+npm run dev
 
-# Build design system
+# Build for production
 npm run build
 
-# Start documentation
-npm run docs
+# Start production server
+npm start
 ```
 
-## Governance
+## Deployment
 
-This repository enforces design system governance through:
+This app is configured for Vercel deployment with:
 
-- **Asset Governance**: Universal tagging, taxonomy validation, manifest generation
-- **Color Governance**: Token usage validation, linting, and matrix compliance
-- **Component Governance**: Type safety, accessibility standards, and testing
-- **Performance Governance**: CDN optimization, caching strategies, and monitoring
+- **Framework**: Next.js 14
+- **Build Command**: `npm run build`
+- **Root Directory**: `apps/web`
+- **Node Version**: 18+
 
-See [DESIGN_SYSTEM_CONSTITUTION.md](DESIGN_SYSTEM_CONSTITUTION.md) for complete governance rules.</content>
-<parameter name="filePath">/Users/danielfincham/recoverlution-platform/README.md
+## Environment Variables
+
+Add these to your Vercel project settings:
+
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Asset Configuration
+NEXT_PUBLIC_ASSET_CDN_URL=your_cdn_url
+```
+
+## Architecture
+
+- **Framework**: Next.js with App Router
+- **Styling**: CSS custom properties with design tokens
+- **Components**: RecoveryOS UI component library
+- **Assets**: Supabase-powered asset management
+- **TypeScript**: Full type safety throughout
