@@ -1,3 +1,5 @@
+import React from 'react'
+import Link from 'next/link'
 import { Button } from '../lib/design-system'
 
 export default function Home() {
@@ -13,27 +15,35 @@ export default function Home() {
             Sense → Route → Deliver → Seal
           </p>
 
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center flex-wrap">
             <Button variant="primary" size="lg">
               Explore Components
             </Button>
-            <Button variant="secondary" size="lg">
-              View Documentation
-            </Button>
+            <Link href="/docs">
+              <Button variant="secondary" size="lg">
+                View Documentation
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <h3 className="text-lg font-semibold mb-2">🎨 Design Tokens</h3>
-              <p className="text-gray-600">Comprehensive color, typography, and motion tokens following RecoveryOS constitution.</p>
+              <p className="text-gray-600">
+                Comprehensive color, typography, and motion tokens following RecoveryOS constitution.
+              </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <h3 className="text-lg font-semibold mb-2">🧩 Component Library</h3>
-              <p className="text-gray-600">Accessible, therapeutic UI components built with React and TypeScript.</p>
+              <p className="text-gray-600">
+                Accessible, therapeutic UI components built with React and TypeScript.
+              </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <h3 className="text-lg font-semibold mb-2">🎯 Asset Governance</h3>
-              <p className="text-gray-600">Universal tagging system for therapeutic visual content with Supabase integration.</p>
+              <p className="text-gray-600">
+                Universal tagging system for therapeutic visual content with Supabase integration.
+              </p>
             </div>
           </div>
         </div>
