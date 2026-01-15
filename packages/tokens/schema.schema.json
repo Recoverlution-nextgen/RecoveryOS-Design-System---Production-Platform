@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design tokens schema (minimal stub)",
+  "type": "object",
+  "properties": {
+    "color": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "required": ["color", "spacing"]
+}

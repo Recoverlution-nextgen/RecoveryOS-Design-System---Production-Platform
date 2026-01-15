@@ -1,0 +1,13 @@
+{
+  "color": {
+    "brand-500": "#0a84ff",
+    "brand-600": "#0060df",
+    "text": "#0b1320"
+  },
+  "spacing": {
+    "xxs": "4px",
+    "xs": "8px",
+    "sm": "12px",
+    "md": "16px"
+  }
+}

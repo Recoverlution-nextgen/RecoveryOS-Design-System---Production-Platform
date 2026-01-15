@@ -1,0 +1,16 @@
+# CODEOWNERS
+
+# Replace the placeholders below with real GitHub usernames or teams.
+
+# Owners for core packages
+
+/packages/tokens/ @your-org/design-system-team
+/packages/ui/ @your-org/design-system-team
+
+# Apps and snapshots
+
+/apps/ @your-org/frontend-team
+
+# Docs and governance
+
+/designsystem/ @your-org/product-team

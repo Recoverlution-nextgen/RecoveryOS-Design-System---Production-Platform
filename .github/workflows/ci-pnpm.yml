@@ -1,0 +1,75 @@
+name: CI — pnpm enforcement
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-package-manager:
+    name: Enforce package manager
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fail if npm package-lock exists
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "package-lock.json detected — repository must use pnpm. Remove package-lock.json and commit pnpm-lock.yaml instead.";
+            exit 1;
+          fi
+
+  setup-and-validate-pnpm:
+    name: Setup pnpm and validate
+    runs-on: ubuntu-latest
+    needs: check-package-manager
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+
+      - name: Verify pnpm
+        run: |
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+          pnpm --version
+
+      - name: Install workspace dependencies (pnpm)
+        run: |
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+          if [ -f pnpm-lock.yaml ]; then
+            pnpm install --frozen-lockfile
+          else
+            pnpm install
+          fi
+
+      - name: Run lint (if available)
+        run: |
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+          if pnpm -s -w -r -v run -s lint 2>/dev/null; then
+            echo "lint passed";
+          else
+            echo "lint target not found or failed — adjust package scripts as needed";
+          fi
+
+      - name: Validate tokens
+        run: |
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+          echo "Running token validation..."
+          pnpm --filter @recoverlution/tokens run validate
+
+      - name: Build tokens
+        run: |
+          export PATH="$HOME/.local/share/pnpm:$PATH"
+          echo "Building tokens..."
+          pnpm --filter @recoverlution/tokens run build
