@@ -59,9 +59,5 @@
     "vite": "^5.2.0",
     "vitest": "^1.4.0",
     "zustand": "^4.5.0"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.90.1",
-    "next": "^16.1.1"
   }
 }
