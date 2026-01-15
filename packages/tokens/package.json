@@ -1,0 +1,13 @@
+{
+  "name": "@recoverlution/tokens",
+  "version": "1.0.0",
+  "description": "Design tokens for RecoveryOS Design System",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "private": true,
+  "sideEffects": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  }
+}
