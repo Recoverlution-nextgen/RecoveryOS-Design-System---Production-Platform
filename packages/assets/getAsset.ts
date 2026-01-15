@@ -1,5 +1,31 @@
-import { supabaseClient, ImageOptimizationUtils } from '@recoverlution/supabase';
-import type { StorageAsset, AssetQueryOptions } from '@recoverlution/supabase';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+// Simple image optimization utilities
+const ImageOptimizationUtils = {
+  getOptimizedUrl: (url: string, options?: any) => url,
+  getPlaceholder: (url: string) => url,
+};
+
+// Type definitions
+export interface StorageAsset {
+  id: string;
+  url: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
+export interface AssetQueryOptions {
+  format?: string;
+  quality?: number;
+  width?: number;
+  height?: number;
+}
 
 /**
  * Asset query and fallback rules for Recoverlution platform

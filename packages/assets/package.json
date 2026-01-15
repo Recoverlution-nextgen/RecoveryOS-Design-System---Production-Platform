@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@recoverlution/supabase": "^1.0.0"
+    "@supabase/supabase-js": "^2.90.1"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
