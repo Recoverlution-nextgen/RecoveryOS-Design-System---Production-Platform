@@ -12,11 +12,7 @@
   "dependencies": {
     "next": "^14.0.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@recoverlution/tokens": "file:../../packages/tokens",
-    "@recoverlution/ui": "file:../../packages/ui",
-    "@recoverlution/assets": "file:../../packages/assets",
-    "@recoverlution/copy": "file:../../packages/copy"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

@@ -1,4 +1,4 @@
-@import '@recoverlution/tokens/css/tokens.css';
+@import '../lib/design-system/tokens.css';
 
 /* RecoveryOS Design System Global Styles */
 @layer base {

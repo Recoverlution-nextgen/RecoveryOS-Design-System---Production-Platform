@@ -1,4 +1,4 @@
-import { Button } from '@recoverlution/ui'
+import { Button } from '../lib/design-system'
 
 export default function Home() {
   return (

@@ -10,8 +10,6 @@ const nextConfig: NextConfig = {
     domains: ['localhost'], // Add your asset domains
     unoptimized: process.env.NODE_ENV === 'development'
   },
-  // Performance optimizations
-  swcMinify: true,
   // Environment variables
   env: {
     // Add your environment variables
