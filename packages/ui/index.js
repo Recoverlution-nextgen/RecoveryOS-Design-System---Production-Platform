@@ -1,5 +1,11 @@
 // UI components stub implementation
-const React = require('react');
+// Note: React must be installed by the consuming application (declared as peer dependency)
+let React;
+try {
+  React = require('react');
+} catch (e) {
+  throw new Error('@recoverlution/ui requires react as a peer dependency. Please install react ^18.0.0');
+}
 
 // Placeholder component
 const Placeholder = ({ children, className = '', style = {} }) => {

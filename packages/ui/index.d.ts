@@ -7,7 +7,7 @@ export interface PlaceholderProps {
 }
 
 export interface ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'danger';
   disabled?: boolean;
