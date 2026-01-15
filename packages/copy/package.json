@@ -1,0 +1,13 @@
+{
+  "name": "@recoverlution/copy",
+  "version": "1.0.0",
+  "description": "Copy text for RecoveryOS Design System",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "private": true,
+  "sideEffects": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  }
+}
