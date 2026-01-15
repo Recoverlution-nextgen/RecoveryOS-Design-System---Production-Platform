@@ -1,0 +1,22 @@
+{
+  "name": "@recoverlution/assets",
+  "version": "1.0.0",
+  "description": "Asset runtime helpers and utilities for the Recoverlution design system",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "getAsset.js",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@recoverlution/supabase": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -89,7 +89,8 @@ function generateTypeScriptTypes(tokens: Tokens): string {
   for (const [groupName, group] of Object.entries(tokens)) {
     types += `export interface ${capitalize(groupName)}Tokens {\n`;
     for (const tokenName of Object.keys(group)) {
-      types += `  ${tokenName}: string;\n`;
+      const quotedName = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(tokenName) ? tokenName : `"${tokenName}"`;
+      types += `  ${quotedName}: string;\n`;
     }
     types += '}\n\n';
   }
@@ -97,7 +98,8 @@ function generateTypeScriptTypes(tokens: Tokens): string {
   // Generate main Tokens interface
   types += 'export interface RecoveryOSTokens {\n';
   for (const groupName of Object.keys(tokens)) {
-    types += `  ${groupName}: ${capitalize(groupName)}Tokens;\n`;
+    const quotedName = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(groupName) ? groupName : `"${groupName}"`;
+    types += `  ${quotedName}: ${capitalize(groupName)}Tokens;\n`;
   }
   types += '}\n\n';
 
@@ -150,4 +152,4 @@ function main() {
   }
 }
 
-main().catch(console.error);
+main();

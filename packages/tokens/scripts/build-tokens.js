@@ -3,85 +3,118 @@
  * Token Build Script
  * Generates CSS variables and TypeScript types from tokens.json
  */
-import fs from "node:fs";
-import path from "node:path";
-const TOKENS_PATH = path.resolve(process.cwd(), "tokens.json");
-const OUT_CSS = path.resolve(process.cwd(), "dist/tokens.css");
-const OUT_DTS = path.resolve(process.cwd(), "dist/tokens.d.ts");
-function loadJson(p) {
-    return JSON.parse(fs.readFileSync(p, "utf8"));
-}
-function isLeaf(x) {
-    return x && typeof x === "object" && "value" in x;
-}
-function isPrimitiveValue(x) {
-    return typeof x === "string" || typeof x === "number";
-}
-function flattenTokens(root, prefix = []) {
-    const out = [];
-    for (const [k, v] of Object.entries(root)) {
-        const kp = [...prefix, k];
-        if (isLeaf(v)) {
-            const tokenPath = kp.join(".");
-            const cssVar = "--" + kp.join("-"); // primitive-colors-black etc
-            out.push({ path: tokenPath, cssVar, value: v.value });
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// Load tokens
+const tokensPath = join(dirname(__filename), '../tokens.json');
+const tokens = JSON.parse(readFileSync(tokensPath, 'utf8'));
+function resolveRefs(tokens) {
+    const resolved = new Map();
+    function resolveValue(value) {
+        if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
+            const ref = value.slice(1, -1);
+            if (resolved.has(ref)) {
+                return resolved.get(ref);
+            }
+            const refValue = getTokenValue(ref);
+            if (refValue !== undefined) {
+                resolved.set(ref, refValue);
+                return refValue;
+            }
+            throw new Error(`Unresolved reference: ${ref}`);
         }
-        else if (isPrimitiveValue(v)) {
-            const tokenPath = kp.join(".");
-            const cssVar = "--" + kp.join("-");
-            out.push({ path: tokenPath, cssVar, value: v });
+        return value;
+    }
+    function getTokenValue(path) {
+        const parts = path.split('.');
+        let current = tokens;
+        for (const part of parts) {
+            if (current && typeof current === 'object' && part in current) {
+                current = current[part];
+            }
+            else {
+                return undefined;
+            }
         }
-        else if (v && typeof v === "object") {
-            out.push(...flattenTokens(v, kp));
+        return current;
+    }
+    // Resolve all token values
+    for (const [groupName, group] of Object.entries(tokens)) {
+        for (const [tokenName, tokenValue] of Object.entries(group)) {
+            const fullPath = `${groupName}.${tokenName}`;
+            resolved.set(fullPath, resolveValue(tokenValue));
         }
     }
-    return out;
+    return resolved;
 }
-function resolveValue(tokens, v) {
-    if (typeof v === "string" && /^\{[a-zA-Z0-9_.-]+\}$/.test(v)) {
-        const ref = v.slice(1, -1);
-        const parts = ref.split(".");
-        let cur = tokens;
-        for (const p of parts)
-            cur = cur?.[p];
-        if (cur && typeof cur === "object" && "value" in cur)
-            return resolveValue(tokens, cur.value);
-        return v;
+function generateCSSVariables(resolved) {
+    let css = ':root {\n';
+    for (const [path, value] of resolved) {
+        const cssVarName = `--${path.replace(/\./g, '-')}`;
+        css += `  ${cssVarName}: ${value};\n`;
     }
-    return v;
+    css += '}\n';
+    return css;
+}
+function generateTypeScriptTypes(tokens) {
+    let types = '// Auto-generated RecoveryOS token types\n\n';
+    // Generate type for each group
+    for (const [groupName, group] of Object.entries(tokens)) {
+        types += `export interface ${capitalize(groupName)}Tokens {\n`;
+        for (const tokenName of Object.keys(group)) {
+            const quotedName = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(tokenName) ? tokenName : `"${tokenName}"`;
+            types += `  ${quotedName}: string;\n`;
+        }
+        types += '}\n\n';
+    }
+    // Generate main Tokens interface
+    types += 'export interface RecoveryOSTokens {\n';
+    for (const groupName of Object.keys(tokens)) {
+        const quotedName = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(groupName) ? groupName : `"${groupName}"`;
+        types += `  ${quotedName}: ${capitalize(groupName)}Tokens;\n`;
+    }
+    types += '}\n\n';
+    // Generate utility types
+    types += '// Utility types for token references\nexport type TokenReference = `{${string}}`;\n';
+    types += 'export type ResolvedTokenValue = string | number;\n';
+    return types;
+}
+function capitalize(str) {
+    return str.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
 }
 function main() {
-    fs.mkdirSync(path.resolve(process.cwd(), "dist"), { recursive: true });
-    const tokens = loadJson(TOKENS_PATH);
-    const flat = [];
-    // Flatten all top-level groups
-    for (const [groupName, group] of Object.entries(tokens)) {
-        if (groupName === "$schema")
-            continue; // Skip schema reference
-        if (group && typeof group === "object") {
-            flat.push(...flattenTokens(group, [groupName]));
-        }
+    console.log('🔨 Building RecoveryOS tokens...\n');
+    try {
+        // Resolve references
+        console.log('🔗 Resolving token references...');
+        const resolved = resolveRefs(tokens);
+        console.log(`✅ Resolved ${resolved.size} tokens`);
+        // Generate CSS
+        console.log('🎨 Generating CSS variables...');
+        const css = generateCSSVariables(resolved);
+        const cssPath = join(dirname(__filename), '../dist/tokens.css');
+        mkdirSync(dirname(cssPath), { recursive: true });
+        writeFileSync(cssPath, css);
+        console.log(`✅ Generated ${cssPath}`);
+        // Generate TypeScript types
+        console.log('📝 Generating TypeScript types...');
+        const types = generateTypeScriptTypes(tokens);
+        const typesPath = join(dirname(__filename), '../dist/index.d.ts');
+        writeFileSync(typesPath, types);
+        console.log(`✅ Generated ${typesPath}`);
+        // Copy resolved tokens as JSON
+        const resolvedTokens = Object.fromEntries(resolved);
+        const jsonPath = join(dirname(__filename), '../dist/tokens.json');
+        writeFileSync(jsonPath, JSON.stringify(resolvedTokens, null, 2));
+        console.log(`✅ Generated ${jsonPath}`);
+        console.log('\n🎉 Token build complete!');
     }
-    const lines = [];
-    lines.push("/* Generated. Do not edit by hand. */");
-    lines.push(":root {");
-    for (const t of flat) {
-        const val = resolveValue(tokens, t.value);
-        // Values can be numbers or strings; stringify safely
-        lines.push(`  ${t.cssVar}: ${typeof val === "number" ? String(val) : String(val)};`);
+    catch (error) {
+        console.error('❌ Token build failed:', error.message);
+        process.exit(1);
     }
-    lines.push("}");
-    fs.writeFileSync(OUT_CSS, lines.join("\n"), "utf8");
-    // Typings: export union of token paths and css vars
-    const dts = `
-/* Generated. Do not edit by hand. */
-export type TokenPath =
-${flat.map(t => `  | "${t.path}"`).join("\n")};
-
-export type CssVar =
-${flat.map(t => `  | "${t.cssVar}"`).join("\n")};
-`;
-    fs.writeFileSync(OUT_DTS, dts.trim() + "\n", "utf8");
-    console.log("✅ Built dist/tokens.css and dist/tokens.d.ts");
 }
 main();

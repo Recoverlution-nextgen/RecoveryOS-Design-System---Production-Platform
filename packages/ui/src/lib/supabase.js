@@ -163,3 +163,105 @@ export function getTokensForAssetClass(assetClass) {
 export function validateAssetBudget(asset) {
     return governance.validateAssetBudget(asset);
 }
+// === STORAGE ASSETS QUERIES (Supabase storage_assets table) ===
+// Query storage assets with flexible filtering
+export async function queryStorageAssets(options) {
+    let query = supabase
+        .from('storage_assets')
+        .select('*');
+    if (options.style) {
+        query = query.eq('style', options.style);
+    }
+    if (options.dimension) {
+        query = query.eq('dimension', options.dimension);
+    }
+    if (options.type) {
+        query = query.eq('type', options.type);
+    }
+    if (options.search) {
+        query = query.ilike('description', `%${options.search}%`);
+    }
+    if (options.limit) {
+        query = query.limit(options.limit);
+    }
+    if (options.offset) {
+        query = query.range(options.offset, (options.offset + (options.limit || 20)) - 1);
+    }
+    query = query.order('style').order('description');
+    const { data, error } = await query;
+    if (error) {
+        console.error('Error querying storage assets:', error);
+        return [];
+    }
+    return data;
+}
+// Get assets by style (your 5 types: evolvingforms, flowstate, etc.)
+export async function getStorageAssetsByStyle(style, options = {}) {
+    return queryStorageAssets({
+        style,
+        type: options.type,
+        limit: options.limit || 50
+    });
+}
+// Get hero-worthy assets (prioritize beautiful ones like neural_flower)
+export async function getHeroStorageAssets(options = {}) {
+    // Prioritize neural_flower for heroes, then flowstate, then others
+    const heroPriority = ['neural_flower', 'flowstate', 'evolvingforms'];
+    if (options.style && heroPriority.includes(options.style)) {
+        return getStorageAssetsByStyle(options.style, { limit: options.limit });
+    }
+    // Get mix of hero-worthy assets
+    const assets = [];
+    const limit = options.limit || 20;
+    const perStyle = Math.ceil(limit / heroPriority.length);
+    for (const style of heroPriority) {
+        const styleAssets = await getStorageAssetsByStyle(style, { limit: perStyle });
+        assets.push(...styleAssets);
+    }
+    return assets.slice(0, limit);
+}
+// Get assets for therapeutic contexts
+export async function getStorageAssetsForContext(context, limit = 20) {
+    // Map contexts to likely styles
+    const contextMappings = {
+        'meditation': ['neural_flower', 'flowstate', 'neural_flow'],
+        'reflection': ['neural_flower', 'evolvingforms', 'mindblock'],
+        'healing': ['neural_flower', 'evolvingforms', 'flowstate'],
+        'focus': ['flowstate', 'neural_flow', 'mindblock'],
+        'growth': ['evolvingforms', 'neural_flower', 'neural_flow'],
+        'calm': ['flowstate', 'neural_flower', 'neural_flow'],
+        'breakthrough': ['mindblock', 'evolvingforms', 'neural_flower']
+    };
+    const relevantStyles = contextMappings[context.toLowerCase()] || ['neural_flower', 'flowstate'];
+    const assets = [];
+    const perStyle = Math.ceil(limit / relevantStyles.length);
+    for (const style of relevantStyles) {
+        const styleAssets = await getStorageAssetsByStyle(style, { limit: perStyle });
+        assets.push(...styleAssets);
+    }
+    return assets.slice(0, limit);
+}
+// Get distinct facet values for filtering UI
+export async function getStorageAssetFacets() {
+    const [stylesResult, dimensionsResult, typesResult] = await Promise.all([
+        supabase.from('storage_assets').select('style').neq('style', null),
+        supabase.from('storage_assets').select('dimension').neq('dimension', null),
+        supabase.from('storage_assets').select('type').neq('type', null)
+    ]);
+    const styles = [...new Set(stylesResult.data?.map(d => d.style).filter(Boolean))].sort();
+    const dimensions = [...new Set(dimensionsResult.data?.map(d => d.dimension).filter(Boolean))].sort();
+    const types = [...new Set(typesResult.data?.map(d => d.type).filter(Boolean))].sort();
+    return { styles, dimensions, types };
+}
+// Get responsive image URLs for an asset
+export function getResponsiveImageUrls(asset) {
+    const baseName = asset.description;
+    const style = asset.style;
+    // Try to find related formats in the same style
+    // This is a simplified version - in practice you'd query for related assets
+    return {
+        avif: asset.type === 'avif' ? asset.url : undefined,
+        webp: asset.type === 'webp' ? asset.url : undefined,
+        jpg: asset.type === 'JPG' ? asset.url : undefined
+    };
+}

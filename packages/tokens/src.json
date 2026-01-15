@@ -112,5 +112,65 @@
       "confirm": { "duration": 180, "easing": "cubic-bezier(0.19, 0.8, 0.2, 1)" },
       "carry": { "duration": 300, "easing": "cubic-bezier(0.4, 0, 0.2, 1)" }
     }
+  },
+  "asset": {
+    "overlay": {
+      "paper-white": {
+        "background": { "value": "rgba(255, 255, 255, 0.9)", "type": "color" },
+        "text": { "value": "rgba(255, 255, 255, 0.95)", "type": "color" },
+        "shadow": { "value": "rgba(0, 0, 0, 0.3)", "type": "color" },
+        "opacity": { "value": 0.9, "type": "number" }
+      },
+      "rim": {
+        "background": { "value": "rgba(255, 255, 255, 0.8)", "type": "color" },
+        "text": { "value": "rgba(255, 255, 255, 0.85)", "type": "color" },
+        "shadow": { "value": "rgba(0, 0, 0, 0.4)", "type": "color" },
+        "opacity": { "value": 0.8, "type": "number" }
+      },
+      "bloom": {
+        "background": { "value": "rgba(255, 255, 255, 0.7)", "type": "color" },
+        "text": { "value": "rgba(255, 255, 255, 0.75)", "type": "color" },
+        "shadow": { "value": "rgba(0, 0, 0, 0.2)", "type": "color" },
+        "opacity": { "value": 0.7, "type": "number" }
+      },
+      "frost": {
+        "background": { "value": "rgba(248, 250, 252, 0.85)", "type": "color" },
+        "text": { "value": "rgba(248, 250, 252, 0.9)", "type": "color" },
+        "shadow": { "value": "rgba(15, 23, 42, 0.4)", "type": "color" },
+        "opacity": { "value": 0.85, "type": "number" }
+      }
+    },
+    "typography": {
+      "scale": {
+        "xs": { "value": "clamp(0.75rem, 2vw, 1rem)", "type": "fontSize" },
+        "sm": { "value": "clamp(1rem, 3vw, 1.25rem)", "type": "fontSize" },
+        "base": { "value": "clamp(1.25rem, 4vw, 1.5rem)", "type": "fontSize" },
+        "lg": { "value": "clamp(1.5rem, 5vw, 2rem)", "type": "fontSize" },
+        "xl": { "value": "clamp(2rem, 6vw, 2.5rem)", "type": "fontSize" }
+      },
+      "weight": {
+        "thin": { "value": 100, "type": "fontWeight" },
+        "light": { "value": 300, "type": "fontWeight" },
+        "normal": { "value": 400, "type": "fontWeight" },
+        "medium": { "value": 500, "type": "fontWeight" },
+        "semibold": { "value": 600, "type": "fontWeight" }
+      },
+      "tracking": {
+        "tight": { "value": "-0.025em", "type": "letterSpacing" },
+        "normal": { "value": "0", "type": "letterSpacing" },
+        "wide": { "value": "0.025em", "type": "letterSpacing" },
+        "wider": { "value": "0.05em", "type": "letterSpacing" }
+      }
+    },
+    "layout": {
+      "safe-zone": { "value": "5%", "type": "dimension" },
+      "focal-zone": { "value": "20%", "type": "dimension" }
+    },
+    "animation": {
+      "enter": {
+        "duration": { "value": "0.6s", "type": "duration" },
+        "easing": { "value": "cubic-bezier(0.4, 0, 0.2, 1)", "type": "easing" }
+      }
+    }
   }
 }

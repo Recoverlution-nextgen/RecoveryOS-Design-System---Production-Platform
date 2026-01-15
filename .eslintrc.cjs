@@ -5,12 +5,10 @@ module.exports = {
     es2022: true,
     node: true,
   },
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
-    project: ['./tsconfig.base.json'],
   },
   settings: {
     react: {
@@ -20,7 +18,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y'],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
@@ -28,6 +25,20 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['./tsconfig.base.json'],
+      },
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+      ],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
+  ],
 };

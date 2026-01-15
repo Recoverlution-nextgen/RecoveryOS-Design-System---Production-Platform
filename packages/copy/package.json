@@ -1,0 +1,19 @@
+{
+  "name": "@recoverlution/copy",
+  "version": "1.0.0",
+  "description": "Glass carve overlay copy system for the Recoverlution design system",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "ASSET_COPY_LIBRARY.md",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

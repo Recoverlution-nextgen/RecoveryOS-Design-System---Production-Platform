@@ -1,39 +1,62 @@
-# RecoveryOS Design System
+# Recoverlution Platform
 
-A comprehensive design system for RecoveryOS, providing tokens, components, and guidelines for consistent UI development.
+A governed design system and asset management platform for therapeutic visual experiences.
 
-## Packages
+## What This Is
 
-- **[@recoveryos/tokens](packages/tokens/)** - Design tokens (colors, typography, spacing, etc.)
-- **[@design-principle/ui](packages/ui/)** - React component library
-- **[@recoveryos/contracts](packages/contracts/)** - API contracts and types
-- **[docs](packages/docs/)** - Documentation
-- **[lint](packages/lint/)** - Linting rules
+- **Design System**: Token-based component library with TypeScript, React, and Supabase integration
+- **Asset Management**: Governed therapeutic asset catalog with universal tagging and governance
+- **Performance Optimized**: CDN-ready with image optimization, caching, and responsive delivery
+- **Developer Experience**: Monorepo with automated tooling, testing, and documentation
 
-## Development
+## What This Isn't
+
+- A general-purpose UI library (RecoveryOS-specific therapeutic focus)
+- A CMS or content management system (asset governance only)
+- A marketing website builder (platform components only)
+- A data visualization library (therapeutic assets only)
+
+## Repository Structure
+
+```
+/packages              # Governed design system packages
+  /schema             # Asset schemas and taxonomy registries
+  /tokens             # Design tokens (colors, typography, motion)
+  /ui                 # React component library
+  /assets             # Asset runtime helpers and utilities
+  /copy               # Glass carve overlay copy system
+  /config             # Build and tooling configuration
+/scripts              # Asset generation, validation, and governance
+/docs                 # Design system documentation and specifications
+/assets               # Asset specifications and local mirrors
+/apps                 # Reference implementations and snapshots
+```
+
+## Quick Start
 
 ```bash
 # Install dependencies
 npm install
 
-# Run linting
-npm run lint
+# Validate assets and tokens
+npm run validate:assets
+npm run lint:color
 
-# Build tokens
-npm run tokens
+# Build design system
+npm run build
 
-# Run Storybook
-npm run storybook
-
-# Run tests
-npm run test
+# Start documentation
+npm run docs
 ```
 
-## Scripts
+## Governance
 
-- `npm run lint` - Run all linting
-- `npm run tokens` - Build design tokens
-- `npm run storybook` - Start Storybook
-- `npm run test` - Run tests
-- `npm run typecheck` - Type checking</content>
+This repository enforces design system governance through:
+
+- **Asset Governance**: Universal tagging, taxonomy validation, manifest generation
+- **Color Governance**: Token usage validation, linting, and matrix compliance
+- **Component Governance**: Type safety, accessibility standards, and testing
+- **Performance Governance**: CDN optimization, caching strategies, and monitoring
+
+See [DESIGN_SYSTEM_CONSTITUTION.md](DESIGN_SYSTEM_CONSTITUTION.md) for complete governance rules.</content>
 <parameter name="filePath">/Users/danielfincham/recoverlution-platform/README.md

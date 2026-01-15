@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/tokens" },
+    { "path": "./packages/components" },
+    { "path": "./packages/supabase" },
+    { "path": "./packages/docs" }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true
+  }
+}
