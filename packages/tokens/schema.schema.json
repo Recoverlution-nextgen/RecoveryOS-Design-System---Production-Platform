@@ -1,19 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Design tokens schema (minimal stub)",
+  "title": "Design tokens schema (nested)",
   "type": "object",
   "properties": {
-    "color": {
+    "primitive": { "$ref": "#/definitions/nested" },
+    "semantic": { "$ref": "#/definitions/nested" },
+    "component": { "$ref": "#/definitions/nested" },
+    "motion": { "$ref": "#/definitions/nested" },
+    "axis": { "$ref": "#/definitions/nested" },
+    "brush": { "$ref": "#/definitions/nested" }
+  },
+  "required": ["primitive", "semantic", "motion"],
+  "additionalProperties": false,
+  "definitions": {
+    "nested": {
       "type": "object",
       "additionalProperties": {
-        "type": "string",
-        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "$ref": "#/definitions/nested" }
+        ]
       }
-    },
-    "spacing": {
-      "type": "object",
-      "additionalProperties": { "type": "string" }
     }
-  },
-  "required": ["color", "spacing"]
+  }
 }

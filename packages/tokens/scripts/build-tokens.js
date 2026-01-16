@@ -2,40 +2,80 @@
 const fs = require("fs");
 const path = require("path");
 
-const schema = require("../schema.schema.json");
-
 const TOKENS_SRC = path.resolve(__dirname, "../tokens.source.json");
 const OUT_DIR = path.resolve(__dirname, "../dist");
+const ROOT = path.resolve(__dirname, "../../..");
+const SYNC_TARGETS = [
+  path.join(ROOT, "packages/ui/src/tokens.css"),
+  path.join(ROOT, "lib/design-system/tokens.css"),
+];
 
 function loadJSON(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
-function validate(tokens) {
-  // Minimal validation according to schema.schema.json: ensure color and spacing exist and colors are hex
-  if (!tokens.color || !tokens.spacing) {
-    throw new Error("tokens must include `color` and `spacing` top-level keys");
+function toKebab(key) {
+  return key
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replace(/_/g, "-")
+    .toLowerCase();
+}
+
+function flattenTokens(value, prefix = [], acc = []) {
+  if (typeof value === "string" || typeof value === "number") {
+    acc.push({ name: `--${prefix.join("-")}`, value });
+    return acc;
   }
-  const hexRe = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-  for (const [k, v] of Object.entries(tokens.color)) {
-    if (typeof v !== "string" || !hexRe.test(v)) {
-      throw new Error(`color.${k} must be a hex color string, got: ${v}`);
+  if (Array.isArray(value)) {
+    throw new Error(`Tokens should be objects, not arrays at ${prefix.join(".")}`);
+  }
+  if (value && typeof value === "object") {
+    for (const [key, nested] of Object.entries(value)) {
+      flattenTokens(nested, [...prefix, toKebab(key)], acc);
+    }
+    return acc;
+  }
+  throw new Error(`Unsupported token shape at ${prefix.join(".")}`);
+}
+
+function hasPath(obj, pathSegments) {
+  let current = obj;
+  for (const segment of pathSegments) {
+    if (!current || typeof current !== "object" || !(segment in current)) return false;
+    current = current[segment];
+  }
+  return true;
+}
+
+function validate(tokens) {
+  const requiredPaths = [
+    ["primitive", "colors"],
+    ["primitive", "spacing"],
+    ["semantic", "colors"],
+    ["semantic", "spacing"],
+    ["motion"],
+  ];
+  for (const pathSegments of requiredPaths) {
+    if (!hasPath(tokens, pathSegments)) {
+      throw new Error(`Missing required token path: ${pathSegments.join(".")}`);
     }
   }
   return true;
 }
 
+function ensureDir(filePath) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+}
+
 function ensureOutDir() {
-  if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+  ensureDir(path.join(OUT_DIR, "placeholder"));
 }
 
 function generateCSS(tokens) {
+  const pairs = flattenTokens(tokens);
   const lines = [":root {"];
-  for (const [k, v] of Object.entries(tokens.color)) {
-    lines.push(`  --color-${k}: ${v};`);
-  }
-  for (const [k, v] of Object.entries(tokens.spacing)) {
-    lines.push(`  --spacing-${k}: ${v};`);
+  for (const { name, value } of pairs) {
+    lines.push(`  ${name}: ${value};`);
   }
   lines.push("}");
   return lines.join("\n");
@@ -56,6 +96,11 @@ function writeOutputs(tokens) {
     `declare const tokens: any; export = tokens;\n`,
     "utf8"
   );
+
+  for (const target of SYNC_TARGETS) {
+    ensureDir(target);
+    fs.writeFileSync(target, css, "utf8");
+  }
 }
 
 function main() {

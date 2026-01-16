@@ -2,9 +2,12 @@
   "name": "@recoverlution/storybook",
   "version": "0.0.1",
   "private": true,
+  "dependencies": {
+    "@recoverlution/ui": "workspace:*"
+  },
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "dev": "storybook dev -p 6006 -c .storybook",
+    "build": "storybook build -c .storybook"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.1.11",

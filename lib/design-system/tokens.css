@@ -157,10 +157,5 @@
   --brush-variations-aurora-start: #3E2BB8;
   --brush-variations-aurora-end: #0F0D1A;
   --brush-variations-micro-glow: rgba(87, 57, 251, 0.2);
-  --brush-variations-iridescent: linear-gradient(
-    90deg,
-    var(--semantic-colors-brand-primary-bright),
-    var(--semantic-colors-brand-precision),
-    var(--semantic-colors-brand-primary-bright)
-  );
+  --brush-variations-iridescent: linear-gradient(90deg, var(--semantic-colors-brand-primary-bright), var(--semantic-colors-brand-precision), var(--semantic-colors-brand-primary-bright));
 }

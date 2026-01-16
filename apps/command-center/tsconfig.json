@@ -10,6 +10,12 @@
     "node_modules"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "designsystem/*": ["../../designsystem/*"],
+      "@recoverlution/ui": ["../../packages/ui/src"],
+      "@recoverlution/ui/*": ["../../packages/ui/src/*"]
+    },
     "incremental": true,
     "plugins": [
       {

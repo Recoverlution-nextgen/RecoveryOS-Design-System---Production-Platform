@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "../../packages/ui/src/tokens.css";
+import "@recoverlution/ui/tokens.css";
 
 const preview: Preview = {
   parameters: {

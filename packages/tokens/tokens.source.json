@@ -1,13 +1,49 @@
 {
-  "color": {
-    "brand-500": "#0a84ff",
-    "brand-600": "#0060df",
-    "text": "#0b1320"
+  "primitive": {
+    "colors": {
+      "black": "#0F0D1A",
+      "white": "#F9F8FF",
+      "blue": { "400": "#4FB3FF", "500": "#3B82F6", "600": "#2563EB" },
+      "orange": { "400": "#FFB677", "500": "#F97316" },
+      "green": { "400": "#7EE0A3", "500": "#22C55E" },
+      "yellow": { "400": "#F6D365", "500": "#EAB308" },
+      "red": { "400": "#FF6F61", "500": "#EF4444" },
+      "purple": { "50": "#F8F7FF", "100": "#F0EEFF", "200": "#E1DDFF", "300": "#C9C1FF", "400": "#A89BFF", "500": "#8573FF", "600": "#6B52FF", "700": "#5739FB", "800": "#4A2ED8", "900": "#3E2BB8", "950": "#2A1F7A" },
+      "cyan": { "50": "#F0FFFF", "100": "#E0FFFF", "200": "#C0FFFF", "300": "#80FFFF", "400": "#40E0D0", "500": "#26C9B8", "600": "#1FB2A0", "700": "#00CCE0", "800": "#00B3CC", "900": "#0099B8", "950": "#006680" },
+      "recovery-green": { "50": "#F0FFF8", "100": "#E0FFF0", "200": "#C0FFE8", "300": "#80FFD0", "400": "#2FE6A6", "500": "#25D494", "600": "#1BBF82", "700": "#00CC78", "800": "#00B364", "900": "#009950", "950": "#006630" },
+      "neutral": { "50": "#F9F8FF", "100": "#F0EFF8", "200": "#E1DEF0", "300": "#C9C4D8", "400": "#A89FB8", "500": "#8A8499", "600": "#6B677A", "700": "#4B495B", "800": "#373541", "900": "#1F1D27", "950": "#0F0D1A" }
+    },
+    "spacing": { "0": "0px", "1": "1px", "2": "2px", "4": "4px", "6": "6px", "8": "8px", "12": "12px", "16": "16px", "20": "20px", "24": "24px", "32": "32px", "40": "40px", "48": "48px", "64": "64px", "80": "80px", "96": "96px", "128": "128px" },
+    "radius": { "none": "0px", "sm": "2px", "md": "4px", "lg": "6px", "xl": "8px", "full": "9999px" },
+    "font-size": { "xs": "12px", "sm": "14px", "base": "16px", "lg": "18px", "xl": "20px", "2xl": "24px", "3xl": "30px", "4xl": "36px" },
+    "font-weight": { "normal": 400, "medium": 500, "semibold": 600, "bold": 700 }
   },
-  "spacing": {
-    "xxs": "4px",
-    "xs": "8px",
-    "sm": "12px",
-    "md": "16px"
+  "semantic": {
+    "colors": {
+      "surface": { "base": "#1F1D27", "elevated": "#373541" },
+      "ink": { "primary": "#F9F8FF", "secondary": "#C9C4D8", "tertiary": "#A89FB8", "inverse": "#1F1D27" },
+      "brand": { "primary": "#3E2BB8", "primary-bright": "#6B52FF", "precision": "#40E0D0", "growth": "#2FE6A6" },
+      "accent": { "primary": "#3E2BB8", "warm": "#FFB677" },
+      "border": { "subtle": "#4B495B", "default": "#6B677A" }
+    },
+    "spacing": { "xs": "2px", "sm": "4px", "md": "8px", "lg": "12px", "xl": "16px", "2xl": "24px", "3xl": "32px", "4xl": "48px", "5xl": "64px", "6xl": "96px" }
+  },
+  "component": {
+    "colors": {
+      "return": { "surface": "#373541", "ink": "#F9F8FF", "focus-ring": "#3E2BB8", "press": "#FFB677", "glow": "rgba(79, 179, 255, 0.2)" },
+      "thread": { "line": "#4B495B", "node": "#3E2BB8", "pulse": "#FFB677" },
+      "trace": { "surface": "#373541", "border": "#4B495B", "stamp": "#3E2BB8" }
+    },
+    "spacing": { "return": { "padding": "8px", "margin": "4px" }, "thread": { "node-spacing": "12px" }, "trace": { "padding": "8px" } }
+  },
+  "motion": { "arrive": "160ms cubic-bezier(0.2, 0.8, 0.3, 1)", "glide": "220ms cubic-bezier(0.2, 0.8, 0.25, 1)", "settle": "260ms cubic-bezier(0.18, 0.8, 0.24, 1)", "confirm": "180ms cubic-bezier(0.16, 0.8, 0.24, 1.1)", "carry": "320ms cubic-bezier(0.16, 0.84, 0.24, 1)" },
+  "axis": { "world": { "companion": "#3E2BB8", "console": "#40E0D0", "command": "#2FE6A6" }, "framework": { "baseline": "#3E2BB8", "pillars": "#40E0D0", "concepts": "#2FE6A6" }, "state": { "energy": "#2FE6A6", "clarity": "#40E0D0", "anchorage": "#3E2BB8" }, "contenttype": { "navicue": "#3E2BB8", "journey": "#40E0D0", "article": "#C9C4D8", "insight": "#2FE6A6", "practice": "#40E0D0", "audio": "#2FE6A6", "story": "#3E2BB8", "series": "#40E0D0" } },
+  "brush": {
+    "variations": {
+      "duotone": { "shadow": "#3E2BB8", "highlight": "#40E0D0" },
+      "aurora": { "start": "#3E2BB8", "end": "#0F0D1A" },
+      "micro-glow": "rgba(87, 57, 251, 0.2)",
+      "iridescent": "linear-gradient(90deg, var(--semantic-colors-brand-primary-bright), var(--semantic-colors-brand-precision), var(--semantic-colors-brand-primary-bright))"
+    }
   }
 }

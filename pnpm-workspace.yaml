@@ -4,6 +4,3 @@ packages:
   - "stories/*"
   - "designsystem/*"
   - "apps/storybook"
-
-public-hoist-pattern:
-  - "*"

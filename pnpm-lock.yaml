@@ -137,6 +137,10 @@ importers:
         version: 18.3.1(react@18.3.1)
 
   apps/storybook:
+    dependencies:
+      '@recoverlution/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
     devDependencies:
       '@storybook/addon-a11y':
         specifier: ^10.1.11
