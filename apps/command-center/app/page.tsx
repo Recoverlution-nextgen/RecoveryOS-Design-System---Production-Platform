@@ -6,8 +6,9 @@ type Signal = { title: string; detail: string; time: string; tone?: "neutral" | 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const feed = await fetchFeedPreview(7);
-  const source = feed.some((item) => !item.id.startsWith("demo-")) ? "Live" : "Demo";
+  let feed = await fetchFeedPreview(7);
+  if (!Array.isArray(feed)) feed = [];
+  const source = feed.some((item) => (item?.id ?? "").toString().startsWith("demo-") === false) ? "Live" : "Demo";
 
   const signals: Signal[] = [
     { title: "RLS policy updated", detail: "Journey Studio editors: publish window locked to 7d.", time: "2m", tone: "success" },
@@ -122,34 +123,36 @@ export default async function Page() {
                 { key: "state", label: "State", align: "right" },
               ]}
               rows={feed.map((item) => {
-                const priority = item.priority ?? 0;
+                const priority = typeof item?.priority === "number" ? item.priority : 0;
                 const priorityClass = priority >= 8 ? "cc-priority-high" : priority >= 6 ? "cc-priority-medium" : "cc-priority-low";
                 const priorityLabel = priority >= 8 ? "High" : priority >= 6 ? "Med" : "Low";
                 const stateLabel = source === "Live" ? "Ready" : "Preview";
+                const tags = Array.isArray(item?.context_tags) ? item.context_tags : [];
+                const itemId = (item?.id ?? "—").toString();
 
                 return {
                   item: (
                     <div>
-                      <div style={{ fontWeight: 700, color: "var(--cc-text)" }}>{item.item_kind}</div>
-                      <div style={{ fontSize: 12, color: "var(--cc-muted)" }}>{item.id}</div>
+                      <div style={{ fontWeight: 700, color: "var(--cc-text)" }}>{item?.item_kind ?? "—"}</div>
+                      <div style={{ fontSize: 12, color: "var(--cc-muted)" }}>{itemId}</div>
                     </div>
                   ),
                   content: (
                     <div>
-                      <div style={{ color: "var(--cc-text)" }}>{item.content_type}</div>
-                      <div style={{ fontSize: 12, color: "var(--cc-muted)" }}>{item.content_ref || item.content_id || "—"}</div>
+                      <div style={{ color: "var(--cc-text)" }}>{item?.content_type ?? "—"}</div>
+                      <div style={{ fontSize: 12, color: "var(--cc-muted)" }}>{item?.content_ref || item?.content_id || "—"}</div>
                     </div>
                   ),
-                  score: item.score?.toFixed(2) ?? "—",
+                  score: typeof item?.score === "number" ? item.score.toFixed(2) : "—",
                   priority: <span className={priorityClass}>{priority ? `${priority} · ${priorityLabel}` : "—"}</span>,
                   tags: (
                     <div className="cc-tag-stack">
-                      {(item.context_tags || []).map((tag) => (
+                      {tags.map((tag) => (
                         <span key={tag} className="cc-tag" style={{ borderColor: "var(--cc-border-strong)" }}>
                           {tag}
                         </span>
                       ))}
-                      {(item.context_tags || []).length === 0 && <span className="cc-tag">—</span>}
+                      {tags.length === 0 && <span className="cc-tag">—</span>}
                     </div>
                   ),
                   state: <span className="cc-pill subtle" style={{ padding: "4px 10px" }}>{stateLabel}</span>,
