@@ -14,5 +14,6 @@
     "**/.pnpm": true,
     "**/dist": true,
     "**/build": true
-  }
+  },
+  "stylelint.validate": ["css", "scss", "postcss"]
 }
