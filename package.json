@@ -12,6 +12,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "pnpm lint && pnpm build",
     "storybook": "pnpm --filter @recoverlution/storybook dev",
     "build-storybook": "pnpm --filter @recoverlution/storybook build"
   },
