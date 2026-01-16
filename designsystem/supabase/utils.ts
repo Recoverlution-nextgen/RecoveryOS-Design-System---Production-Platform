@@ -27,7 +27,8 @@ export class ImageOptimizationUtils {
     return {
       avif: this.generateSrcSet(asset, breakpoints, 'avif'),
       webp: this.generateSrcSet(asset, breakpoints, 'webp'),
-      fallback: asset.storage_path
+      // Ensure fallback is always a string for type safety
+      fallback: asset.storage_path ?? ''
     };
   }
 
@@ -60,8 +61,8 @@ export class ImageOptimizationUtils {
    * Generate cache-busting version string based on asset metadata
    */
   static generateCacheVersion(asset: StorageAsset): string {
-    const { updated_at, file_size, checksum } = asset;
-    return `${updated_at}_${file_size}_${checksum?.slice(0, 8) || 'no-checksum'}`;
+    const { updated_at, size_bytes, checksum } = asset;
+    return `${updated_at}_${size_bytes ?? 'unknown'}_${checksum?.slice(0, 8) || 'no-checksum'}`;
   }
 
   /**
