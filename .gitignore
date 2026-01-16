@@ -79,6 +79,9 @@ web_modules/
 .next
 out
 
+# Vercel metadata
+.vercel
+
 # Nuxt.js build / generate output
 .nuxt
 dist
