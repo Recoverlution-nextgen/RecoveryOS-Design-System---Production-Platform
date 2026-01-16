@@ -1,0 +1,8 @@
+{
+  "name": "@recoverlution/data",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "license": "MIT",
+  "description": "Data access helpers (Supabase client + typed queries)."
+}

@@ -1,0 +1,35 @@
+Issue Type,Summary,Description,Labels,Priority,Story Points,Epic Link
+Story,"App shell layout + navigation spine","Global nav: Rooms, LUMA, Search, Bag, State, SOS; consistent motion transitions; responsive patterns.","platform,nav,motion,responsive",High,5,E7
+Story,"Room entry/exit ritual","Threshold animation, context header (why/what changes), exit receipt preview.","platform,rooms,ux,motion",High,5,E7
+Story,"Identity + consent surfaces","Consent/safety surfaces, ""why this"" microcopy, system status visible.","platform,consent,safety,ux",High,3,E7
+Story,"Player runtime (state machine)","XState-governed runtime: start/pause/resume/stop/rewind/checkpoint; governed events for receipts/defensibility.","player,xstate,runtime,telemetry",High,8,E5
+Story,"Screen engine (config-driven cues)","Schema-driven screens (Zod), branching/conditional/timed screens, accessibility baked in.","player,schema,zod,a11y",High,8,E5
+Story,"Input capture layer","Text + quick replies + voice note capture to Supabase Storage; retry/offline-tolerant queue.","player,input,voice,storage",High,8,E5
+Story,"Receipt system (Seal)","Generate/store receipts per session; minimal, privacy-safe payload; view in Momentum/Bag.","player,receipts,privacy",High,5,E5
+Story,"Bag integration (save anything)","Save cues/practices/soundbites; tags + search; replay via same runtime.","bag,player,search",High,5,E5
+Story,"LUMA home feed (spine)","Dynamic feed: next moves, nudges, receipts, reminders; routes without feeling like nav.","luma,feed,personalization",High,8,E6
+Story,"LUMA Play (Soundbites engine)","Audio mode with tempo/mood/intent controls; future-safe beat option.","luma,audio,player",High,8,E6
+Story,"LUMA Talk (guided corridor)","Structured prompts + branching; summaries + receipts; escalation surfaces.","luma,chat,receipts,safety",High,8,E6
+Story,"LUMA Voice (capture)","One-tap capture; optional prompts; voice notes become routing signals with consent.","luma,voice,capture,consent",High,5,E6
+Story,"Journey sprint schema + builder","Config defines screens, prompts, reflection points; supports Baseline Builds/Guided Exposures/Pattern Maps.","journey,schema,authoring",High,8,E8
+Story,"Sprint playback + reflection capture","Experience→Reflect→Recognize→Reflect→Align→Reflect; feedback loop; wrap-up + receipt.","journey,player,reflection,receipts",High,8,E8
+Story,"Weekly receipts view","Timeline of receipts, ""what changed"" highlights, links to saved items.","journey,receipts,analytics",High,5,E8
+Story,"NaviCue request-next API","Endpoint returns next cue based on state/history/consent/cadence limits.","navicues,api,routing",High,8,E9
+Story,"NaviCues stream UI","Swipe/next/hold; save/share-to-self (Bag); ""why this?"" explanation.","navicues,ui,bag",High,8,E9
+Story,"Cue variety system","Supports cue types: mirrors, probes, scans, paradox keys, myth busters; each with visual identity and interaction model.","navicues,cues,ux",High,5,E9
+Story,"Content type rendering","Articles/Insights/Practices schemas rendered consistently via player when applicable.","toolkit,content,player",High,5,E10
+Story,"Soundbites playback + queue","Audio playback with queue; resume/save (Bag); receipts.","audio,queue,bag",High,8,E10
+Story,"State logging (Energy/Clarity/Anchorage)","3-signal logging in <10s; trend view with meaning, not generic charts.","state,logging,ux",High,5,E11
+Story,"Momentum dashboard","Continuity curves, integrity logs, consent adherence, delivery reliability; proof via receipts.","metrics,dashboard,receipts",High,8,E11
+Story,"Support graph (people + permissions)","Add professional/alumni/peer/emergency contacts; roles/permissions; context packaging.","navigate,contacts,permissions",High,5,E12
+Story,"SOS flow","Permissioned ping + context; notifications; escalation copy.","sos,safety,notifications",High,8,E12
+Story,"Auth + roles (admin/editor/coach)","Supabase auth with role claims; RLS-enforced access for Command Center.","admin,auth,rls",High,5,E13
+Story,"Component library + playground","Storybook integrated with tokens/variants; visual regression in CI.","storybook,designsystem,ci",High,8,E13
+Story,"Content Assembly Lab","Build content objects rendered as player screens; preview in runtime.","contentops,player,preview",High,8,E13
+Story,"Journey Studio + NaviCue Studio","Create/edit/test/publish configs; versioning/rollback; cadence/consent/escalation guardrails.","journey,navicue,studio,governance",High,13,E13
+Story,"Core schema (users, sessions, cues, receipts)","Tables for users, sessions, cue interactions, receipts, bag items; RLS-first.","supabase,db,rls",High,13,E14
+Story,"Storage buckets (voice, media, assets)","Signed URLs, size limits, lifecycle rules; voice/media buckets.","supabase,storage,security",High,8,E14
+Story,"Edge functions (routing + webhooks)","Edge functions for routing and webhooks (CRM/notifications).", "supabase,edge,webhooks",High,8,E14
+Story,"Prompt registry + versioning","Store prompts/policies with versions; rollbacks; experiments.","promptops,ai,governance",High,8,E15
+Story,"RAG pipeline (content + receipts)","Index approved content + receipts for retrieval with privacy rules.","rag,ai,privacy",High,13,E15
+Story,"Safety policy engine + crisis routing","Detect distress; enforce guardrails; route to SOS/resources.","safety,ai,routing",High,13,E15

@@ -3,6 +3,7 @@ packages:
   - "apps/*"
   - "stories/*"
   - "designsystem/*"
+  - "apps/storybook"
 
 public-hoist-pattern:
   - "*"

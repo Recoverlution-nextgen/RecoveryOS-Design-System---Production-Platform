@@ -1,0 +1,8 @@
+{
+  "name": "@recoverlution/player",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "license": "MIT",
+  "description": "Universal Player runtime scaffolding."
+}

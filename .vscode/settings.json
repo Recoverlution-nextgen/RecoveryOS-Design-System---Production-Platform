@@ -15,5 +15,6 @@
     "**/dist": true,
     "**/build": true
   },
-  "stylelint.validate": ["css", "scss", "postcss"]
+  "stylelint.validate": ["css", "scss", "postcss"],
+  "cSpell.enabled": false
 }

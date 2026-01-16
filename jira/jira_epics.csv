@@ -1,0 +1,16 @@
+Issue Type,Summary,Description,Labels,Priority,Epic Name,Story Points,Issue Id
+Epic,"Platform Foundations (monorepo, CI/CD, envs, auth wiring)","Monorepo shape, env/secret strategy, CI gates, previews, code quality, observability baseline.","platform,infra,dx,monorepo,ci,env,quality,observability",Highest,Platform Foundations,,E1
+Epic,"Design System, Motion & Accessibility","Tokens, primitives, motion language, accessibility defaults, iconography/illustration rules.","designsystem,ui,motion,a11y,icons",Highest,"Design System, Motion & Accessibility",,E2
+Epic,"Marketing Site Experience","High-conversion storytelling site with motion, demos, SEO, CMS, CRM capture, universal player previews.","marketing,seo,motion,cms,crm,demos",High,Marketing Site Experience,,E3
+Epic,"Auth, Identity & User Profile","Supabase auth, onboarding, profile/preferences, consent/safety signals.","auth,supabase,security,onboarding,profile",Highest,"Auth, Identity & User Profile",,E4
+Epic,"Universal Player Core","Room-agnostic player runtime, state machine, screen renderer, inputs, receipts, bag integration, telemetry.","player,runtime,luma,xstate,telemetry,bag,voice",Highest,Universal Player Core,,E5
+Epic,"LUMA UI/UX & Orchestration","Governed conductor: feed, Play/Talk/Voice corridors, routing spine.","luma,orchestration,feed,audio,chat,voice",Highest,"LUMA UI/UX & Orchestration",,E6
+Epic,"Platform Shell & Rooms UX","Dashboard shell, navigation, room registry, command palette.","platform,navigation,rooms,dashboard",Highest,Platform Shell & Rooms UX,,E7
+Epic,"Journey Room (E/R/A sprints)","Experience → Recognize → Align flows, sprint schema, playback, receipts.","journey,era,player,receipts",High,Journey Room (E/R/A Sprints),,E8
+Epic,"NaviCues Stream (always-on)","Request-next API, stream UI, cue variety and safety dosing.","navicues,feed,api,safety",High,NaviCues Stream,,E9
+Epic,"Toolkit & Soundbites","Content rendering (articles/insights/practices) and audio products via player.","toolkit,content,audio,player",Medium,Toolkit & Soundbites,,E10
+Epic,"STATE & Momentum Dashboards","State check-ins, momentum curves, integrity logs, defensibility.","state,metrics,dashboards",Medium,STATE & Momentum Dashboards,,E11
+Epic,"Navigate (Support Network + SOS)","Support graph, SOS flow, community/scheduling scaffolds.","navigate,sos,community",High,Navigate (Support Network + SOS),,E12
+Epic,"Command Center (Admin + Studios)","Admin auth/roles, component playground, content/journey/navicue studios.","admin,studio,contentops,storybook",High,Command Center,,E13
+Epic,"Backend Data Model & Governance (Supabase)","Schema, storage, edge functions, RLS and audit for Player/LUMA/content/telemetry.","supabase,db,rls,edge",Highest,Backend Data Model & Governance (Supabase),,E14
+Epic,"AI Infrastructure, Retrieval & Safety","Prompt registry/versioning, RAG, evals, safety policy engine, routing.","ai,rag,safety,promptops",High,"AI Infrastructure, Retrieval & Safety",,E15

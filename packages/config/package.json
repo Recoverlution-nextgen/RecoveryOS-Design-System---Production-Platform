@@ -1,0 +1,8 @@
+{
+  "name": "@recoverlution/config",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Shared configs for RecoveryOS monorepo",
+  "files": ["tsconfig.base.json"],
+  "license": "MIT"
+}
