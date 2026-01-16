@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build -- --no-lint",
-  "installCommand": "npm install --no-workspaces",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm build"
 }
