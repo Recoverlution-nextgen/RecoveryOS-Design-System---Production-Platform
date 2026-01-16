@@ -130,11 +130,11 @@
   --component-spacing-return-margin: 4px;
   --component-spacing-thread-node-spacing: 12px;
   --component-spacing-trace-padding: 8px;
-  --motion-arrive: [object Object];
-  --motion-glide: [object Object];
-  --motion-settle: [object Object];
-  --motion-confirm: [object Object];
-  --motion-carry: [object Object];
+  --motion-arrive: 160ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  --motion-glide: 220ms cubic-bezier(0.2, 0.8, 0.25, 1);
+  --motion-settle: 260ms cubic-bezier(0.18, 0.8, 0.24, 1);
+  --motion-confirm: 180ms cubic-bezier(0.16, 0.8, 0.24, 1.1);
+  --motion-carry: 320ms cubic-bezier(0.16, 0.84, 0.24, 1);
   --axis-world-companion: #3E2BB8;
   --axis-world-console: #40E0D0;
   --axis-world-command: #2FE6A6;
@@ -157,5 +157,10 @@
   --brush-variations-aurora-start: #3E2BB8;
   --brush-variations-aurora-end: #0F0D1A;
   --brush-variations-micro-glow: rgba(87, 57, 251, 0.2);
-  --brush-variations-iridescent: linear-gradient(90deg, {semantic-colors.brand-primary-bright}, {semantic-colors.brand-precision}, {semantic-colors.brand-primary-bright});
+  --brush-variations-iridescent: linear-gradient(
+    90deg,
+    var(--semantic-colors-brand-primary-bright),
+    var(--semantic-colors-brand-precision),
+    var(--semantic-colors-brand-primary-bright)
+  );
 }
