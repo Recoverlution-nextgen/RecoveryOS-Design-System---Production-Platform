@@ -273,3 +273,42 @@ export const Table: React.FC<TableProps> = ({ columns, rows, caption, dense, zeb
     </div>
   );
 };
+
+export const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="ui-shell">{children}</div>
+);
+
+export const Rail: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <aside className="ui-rail">{children}</aside>
+);
+
+export const Main: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <section className="ui-main">{children}</section>
+);
+
+export const Panel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="ui-panel">{children}</div>
+);
+
+export const SectionHeader: React.FC<{ eyebrow?: string; title: string; subtitle?: string }> = ({
+  eyebrow,
+  title,
+  subtitle,
+}) => (
+  <div className="ui-section-header">
+    {eyebrow && <div className="ui-section-eyebrow">{eyebrow}</div>}
+    <div className="ui-section-title">{title}</div>
+    {subtitle && <div className="ui-section-subtitle">{subtitle}</div>}
+  </div>
+);
+
+export const Pill: React.FC<{ label: string; tone?: "default" | "muted"; dotTone?: "default" | "success" | "warning" }> = ({
+  label,
+  tone = "default",
+  dotTone,
+}) => (
+  <span className="ui-pill" data-tone={tone}>
+    {dotTone && <span className="ui-dot" data-tone={dotTone === "default" ? undefined : dotTone} />}
+    {label}
+  </span>
+);
