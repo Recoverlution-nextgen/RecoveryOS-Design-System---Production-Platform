@@ -1,0 +1,47 @@
+/**
+ * DASHBOARD RESPONSIVE SCALING - infiniteK Design System
+ * 
+ * The dashboard uses a 1360×860 canvas with absolute positioning.
+ * CSS transforms scale the canvas for different screen sizes.
+ * Transform origin is TOP LEFT so scaling doesn't add extra left padding.
+ */
+
+/* Large Desktop (1800px+) - Full scale */
+@media (min-width: 1800px) {
+  .dashboard-canvas-desktop {
+    transform: scale(1);
+    transform-origin: top left;
+  }
+}
+
+/* Laptop Large (1600px - 1799px) - 95% scale */
+@media (min-width: 1600px) and (max-width: 1799px) {
+  .dashboard-canvas-desktop {
+    transform: scale(0.95);
+    transform-origin: top left;
+  }
+}
+
+/* Laptop Medium (1400px - 1599px) - 88% scale */
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .dashboard-canvas-desktop {
+    transform: scale(0.88);
+    transform-origin: top left;
+  }
+}
+
+/* Laptop Small (1300px - 1399px) - 78% scale */
+@media (min-width: 1300px) and (max-width: 1399px) {
+  .dashboard-canvas-desktop {
+    transform: scale(0.78);
+    transform-origin: top left;
+  }
+}
+
+/* Laptop Compact (1024px - 1299px) - 70% scale */
+@media (min-width: 1024px) and (max-width: 1299px) {
+  .dashboard-canvas-desktop {
+    transform: scale(0.70);
+    transform-origin: top left;
+  }
+}

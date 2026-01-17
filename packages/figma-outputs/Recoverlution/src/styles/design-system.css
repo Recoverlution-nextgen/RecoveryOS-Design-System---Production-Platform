@@ -1,0 +1,378 @@
+/**
+ * infiniteK Design System - Recoverlution Platform
+ * Centralized design tokens, spacing, typography, and component styles
+ * 
+ * THE ANCHOR RULE: NO CARD ON CARD. NO TILE ON TILE. NO BORDER ON BORDER.
+ * 
+ * Last Updated: November 12, 2025
+ */
+
+/* ========================================
+   SPACING SCALE - infiniteK System
+   Multiples of 8px for consistent rhythm
+   ======================================== */
+
+:root {
+  /* Base spacing unit */
+  --spacing-unit: 8px;
+  
+  /* Spacing scale */
+  --spacing-1: 8px;     /* 1x */
+  --spacing-2: 16px;    /* 2x */
+  --spacing-3: 24px;    /* 3x */
+  --spacing-4: 32px;    /* 4x */
+  --spacing-5: 40px;    /* 5x */
+  --spacing-6: 48px;    /* 6x */
+  --spacing-7: 56px;    /* 7x */
+  --spacing-8: 64px;    /* 8x */
+  --spacing-9: 72px;    /* 9x */
+  --spacing-10: 80px;   /* 10x */
+  --spacing-12: 96px;   /* 12x */
+  
+  /* Common padding patterns */
+  --padding-page-mobile: var(--spacing-4) var(--spacing-3) var(--spacing-12);
+  --padding-page-desktop: var(--spacing-6) var(--spacing-4) var(--spacing-12);
+  --padding-hero-mobile: var(--spacing-5) var(--spacing-3);
+  --padding-hero-desktop: var(--spacing-8) var(--spacing-6);
+  --padding-card-mobile: var(--spacing-4) var(--spacing-3);
+  --padding-card-desktop: var(--spacing-6) var(--spacing-6);
+  
+  /* Gap patterns */
+  --gap-tight: var(--spacing-2);
+  --gap-normal: var(--spacing-3);
+  --gap-relaxed: var(--spacing-4);
+  --gap-loose: var(--spacing-6);
+  
+  /* ========================================
+     TYPOGRAPHY SCALE - infiniteK System
+     ======================================== */
+  
+  /* Eyebrow (small uppercase labels) */
+  --type-eyebrow-size: 0.6875rem;        /* 11px */
+  --type-eyebrow-weight: 700;
+  --type-eyebrow-spacing: 0.15em;
+  --type-eyebrow-transform: uppercase;
+  
+  /* Hero headline (large display text) */
+  --type-hero-headline-size-mobile: 1.75rem;   /* 28px */
+  --type-hero-headline-size-desktop: 2.25rem;  /* 36px */
+  --type-hero-headline-weight: 600;
+  --type-hero-headline-line-height: 1.15;
+  --type-hero-headline-spacing: -0.025em;
+  
+  /* Section headline */
+  --type-section-headline-size-mobile: 1.5rem;   /* 24px */
+  --type-section-headline-size-desktop: 1.625rem; /* 26px */
+  --type-section-headline-weight: 600;
+  --type-section-headline-line-height: 1.25;
+  --type-section-headline-spacing: -0.02em;
+  
+  /* Body text (on hero/images) */
+  --type-body-hero-size-mobile: 0.875rem;  /* 14px */
+  --type-body-hero-size-desktop: 1rem;     /* 16px */
+  --type-body-hero-weight: 400;
+  --type-body-hero-line-height: 1.7;
+  --type-body-hero-spacing: 0.002em;
+  --type-body-hero-opacity: 0.95;
+  
+  /* Body text (regular) */
+  --type-body-size: 1rem;
+  --type-body-weight: 400;
+  --type-body-line-height: 1.6;
+  --type-body-spacing: 0;
+  
+  /* Small text */
+  --type-small-size: 0.875rem;  /* 14px */
+  --type-small-weight: 400;
+  --type-small-line-height: 1.5;
+  
+  /* Tiny text (labels, captions) */
+  --type-tiny-size: 0.75rem;    /* 12px */
+  --type-tiny-weight: 500;
+  --type-tiny-line-height: 1.4;
+  
+  /* ========================================
+     SHADOWS - infiniteK Elevation System
+     ======================================== */
+  
+  /* Card shadows */
+  --shadow-card-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card-default: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card-elevated: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card-hero: 0 8px 32px rgba(0, 0, 0, 0.12), 0 20px 60px rgba(62, 43, 184, 0.10);
+  
+  /* Glass shadows (with inset highlight) */
+  --shadow-glass-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  --shadow-glass-elevated: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  
+  /* ========================================
+     GLASS EFFECTS - infiniteK System
+     ======================================== */
+  
+  /* Glass backgrounds */
+  --glass-bg-light: rgba(255, 255, 255, 0.10);
+  --glass-bg-medium: rgba(255, 255, 255, 0.18);
+  --glass-bg-strong: rgba(255, 255, 255, 0.25);
+  
+  /* Glass borders */
+  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.15);
+  --glass-border-default: 1px solid rgba(255, 255, 255, 0.25);
+  --glass-border-strong: 1px solid rgba(255, 255, 255, 0.40);
+  
+  /* Glass blur */
+  --glass-blur-light: blur(20px);
+  --glass-blur-default: blur(30px);
+  --glass-blur-heavy: blur(48px);
+  
+  /* ========================================
+     BACKGROUNDS & GRADIENTS
+     ======================================== */
+  
+  /* Page backgrounds */
+  --bg-page-gradient: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);
+  --bg-white: #FFFFFF;
+  --bg-subtle: #F9FAFB;
+  
+  /* ========================================
+     BORDER RADIUS - infiniteK Standard
+     ======================================== */
+  
+  --radius-none: 0px;        /* Standard for infiniteK */
+  --radius-sm: 4px;          /* Rare use cases */
+  --radius-md: 8px;          /* Rare use cases */
+  
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  
+  --transition-fast: all 0.15s ease;
+  --transition-default: all 0.2s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   TYPOGRAPHY UTILITY CLASSES
+   ======================================== */
+
+@layer components {
+  
+  /* Eyebrow text (small uppercase labels) */
+  .text-eyebrow {
+    font-family: var(--font-display);
+    font-size: var(--type-eyebrow-size);
+    font-weight: var(--type-eyebrow-weight);
+    letter-spacing: var(--type-eyebrow-spacing);
+    text-transform: var(--type-eyebrow-transform);
+    margin: 0;
+  }
+  
+  /* Hero headline (responsive) */
+  .text-hero-headline {
+    font-family: var(--font-display);
+    font-size: var(--type-hero-headline-size-mobile);
+    font-weight: var(--type-hero-headline-weight);
+    line-height: var(--type-hero-headline-line-height);
+    letter-spacing: var(--type-hero-headline-spacing);
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .text-hero-headline {
+      font-size: var(--type-hero-headline-size-desktop);
+    }
+  }
+  
+  /* Section headline (responsive) */
+  .text-section-headline {
+    font-family: var(--font-display);
+    font-size: var(--type-section-headline-size-mobile);
+    font-weight: var(--type-section-headline-weight);
+    line-height: var(--type-section-headline-line-height);
+    letter-spacing: var(--type-section-headline-spacing);
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .text-section-headline {
+      font-size: var(--type-section-headline-size-desktop);
+    }
+  }
+  
+  /* Body text on hero/images (responsive) */
+  .text-body-hero {
+    font-family: var(--font-sans);
+    font-size: var(--type-body-hero-size-mobile);
+    font-weight: var(--type-body-hero-weight);
+    line-height: var(--type-body-hero-line-height);
+    letter-spacing: var(--type-body-hero-spacing);
+    opacity: var(--type-body-hero-opacity);
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .text-body-hero {
+      font-size: var(--type-body-hero-size-desktop);
+    }
+  }
+  
+  /* Regular body text */
+  .text-body {
+    font-family: var(--font-sans);
+    font-size: var(--type-body-size);
+    font-weight: var(--type-body-weight);
+    line-height: var(--type-body-line-height);
+    letter-spacing: var(--type-body-spacing);
+    margin: 0;
+  }
+  
+  /* ========================================
+     CARD COMPONENT CLASSES
+     ======================================== */
+  
+  /* Hero card (large prominent cards with images) */
+  .card-hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-card-hero);
+  }
+  
+  /* Hero card content wrapper */
+  .card-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--padding-hero-mobile);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 768px) {
+    .card-hero-content {
+      padding: var(--padding-hero-desktop);
+    }
+  }
+  
+  /* Standard content card */
+  .card-content {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-white);
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-card-default);
+    padding: var(--padding-card-mobile);
+  }
+  
+  @media (min-width: 768px) {
+    .card-content {
+      padding: var(--padding-card-desktop);
+    }
+  }
+  
+  /* ========================================
+     BUTTON COMPONENT CLASSES
+     ======================================== */
+  
+  /* Glass button on images (default state) */
+  .btn-glass {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    background: var(--glass-bg-medium);
+    backdrop-filter: var(--glass-blur-default);
+    -webkit-backdrop-filter: var(--glass-blur-default);
+    border: var(--glass-border-default);
+    color: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: var(--radius-none);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: var(--transition-default);
+  }
+  
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .btn-glass:active {
+    transform: translateY(1px);
+  }
+  
+  /* Small glass button */
+  .btn-glass-sm {
+    padding: 14px 28px;
+    font-size: 0.875rem;
+  }
+  
+  /* Large glass button */
+  .btn-glass-lg {
+    padding: 18px 40px;
+    font-size: 1rem;
+  }
+  
+  /* ========================================
+     LAYOUT UTILITY CLASSES
+     ======================================== */
+  
+  /* Page content wrapper */
+  .page-content {
+    flex: 1;
+    overflow-y: auto;
+    background: var(--bg-page-gradient);
+    padding: var(--padding-page-mobile);
+  }
+  
+  @media (min-width: 768px) {
+    .page-content {
+      padding: var(--padding-page-desktop);
+    }
+  }
+  
+  /* Content container (max-width wrapper) */
+  .content-container {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  
+  /* ========================================
+     SPACING UTILITY CLASSES
+     ======================================== */
+  
+  /* Gap utilities */
+  .gap-tight { gap: var(--gap-tight); }
+  .gap-normal { gap: var(--gap-normal); }
+  .gap-relaxed { gap: var(--gap-relaxed); }
+  .gap-loose { gap: var(--gap-loose); }
+  
+  /* Padding utilities */
+  .p-1 { padding: var(--spacing-1); }
+  .p-2 { padding: var(--spacing-2); }
+  .p-3 { padding: var(--spacing-3); }
+  .p-4 { padding: var(--spacing-4); }
+  .p-5 { padding: var(--spacing-5); }
+  .p-6 { padding: var(--spacing-6); }
+  .p-8 { padding: var(--spacing-8); }
+  
+  /* Margin utilities */
+  .m-1 { margin: var(--spacing-1); }
+  .m-2 { margin: var(--spacing-2); }
+  .m-3 { margin: var(--spacing-3); }
+  .m-4 { margin: var(--spacing-4); }
+  .m-6 { margin: var(--spacing-6); }
+  
+  /* ========================================
+     TEXT COLOR UTILITIES
+     ======================================== */
+  
+  .text-white { color: #FFFFFF; }
+  .text-white-90 { color: rgba(255, 255, 255, 0.9); }
+  .text-white-80 { color: rgba(255, 255, 255, 0.8); }
+  .text-white-60 { color: rgba(255, 255, 255, 0.6); }
+}

@@ -1,0 +1,965 @@
+/**
+ * ============================================================================
+ * PLATFORM.CSS - Recoverlution infiniteK Design System
+ * ============================================================================
+ * 
+ * VERSION: 1.0.0
+ * LAST UPDATED: November 27, 2024
+ * STATUS: ✅ Active - Single Source of Truth
+ * 
+ * PURPOSE:
+ * Universal patterns inherited by ALL 9 platform areas:
+ * Dashboard, Journey, Navicues, Wellbeing, State, Navigate, Momentum, Toolkit, Settings
+ * 
+ * ARCHITECTURE:
+ * globals.css (CSS variables)
+ *   ↓
+ * platform.css (THIS FILE - universal patterns)
+ *   ↓
+ * Area-specific CSS (journey.css, dashboard.css, etc.)
+ *   ↓
+ * Subdivision CSS (library.css, insights.css, practices.css)
+ * 
+ * THE ANCHOR RULE:
+ * "NO CARD ON CARD. NO TILE ON TILE. NO BORDER ON BORDER."
+ * Cards NEVER contain other cards. Use subtle backgrounds instead.
+ * 
+ * VERSIONING:
+ * See /docs/DESIGN-SYSTEM-CHANGELOG.md for version history
+ * Breaking changes = major version bump
+ * New patterns = minor version bump
+ * Bug fixes = patch version bump
+ * 
+ * DEPRECATION POLICY:
+ * Deprecated classes marked with @deprecated and migration path
+ * Removal happens 2 major versions after deprecation
+ * See /docs/MIGRATION-GUIDES/ for upgrade instructions
+ * 
+ * ============================================================================
+ */
+
+/* ============================================================================
+   SECTION 1: GLASS MORPHISM SYSTEM (3 Levels)
+   
+   Usage: Primary cards, secondary elements, tertiary backgrounds
+   Pattern discovered in: Journey, Dashboard, Navicues, Wellbeing, State
+   
+   THE ANCHOR RULE applies: Never nest same-level glass elements
+   ============================================================================ */
+
+/**
+ * LEVEL 1: Primary Glass Card
+ * 
+ * Use for: Hero cards, main content containers
+ * Examples: Journey primary card, Wellbeing video container, State hero
+ * 
+ * Characteristics:
+ * - Highest opacity (0.22 → 0.10)
+ * - Heaviest blur (50px)
+ * - Most prominent shadows
+ * - Brand-tinted purple radial gradient
+ */
+.glass-primary {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.22) 0%, 
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  ),
+  radial-gradient(circle at 30% 20%, rgba(87, 57, 251, 0.15) 0%, transparent 60%);
+  
+  backdrop-filter: blur(50px) saturate(180%);
+  -webkit-backdrop-filter: blur(50px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-none);
+  
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 6px 20px rgba(87, 57, 251, 0.18);
+  
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-primary:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.26) 0%, 
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.12) 100%
+  ),
+  radial-gradient(circle at 30% 20%, rgba(87, 57, 251, 0.18) 0%, transparent 60%);
+  
+  box-shadow: 
+    0 16px 64px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 8px 28px rgba(87, 57, 251, 0.22);
+}
+
+/**
+ * LEVEL 2: Secondary Glass Element
+ * 
+ * Use for: Buttons, badges, navigation elements
+ * Examples: ERA badges, glass buttons, filter pills
+ * 
+ * Characteristics:
+ * - Medium opacity (0.18 → 0.10)
+ * - Medium blur (30px)
+ * - Standard shadows
+ */
+.glass-secondary {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.18) 0%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-none);
+  
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-secondary:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.22) 0%, 
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  
+  border-color: rgba(255, 255, 255, 0.28);
+  
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/**
+ * LEVEL 3: Tertiary Glass Background
+ * 
+ * Use for: Content sections inside cards, text inputs, subtle backgrounds
+ * Examples: Journey content sections, reflection textareas, State metric backgrounds
+ * 
+ * Characteristics:
+ * - Low opacity (0.12 → 0.08)
+ * - Light blur (20px)
+ * - Inset shadows (subtle depth)
+ * 
+ * THE ANCHOR RULE: Use this INSIDE primary cards, never as standalone
+ */
+.glass-tertiary {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px; /* Subtle radius for internal elements */
+  
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-tertiary:focus,
+.glass-tertiary:focus-within {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.16) 0%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  
+  border-color: rgba(255, 255, 255, 0.22);
+  
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 3px rgba(87, 57, 251, 0.15),
+    0 4px 12px rgba(87, 57, 251, 0.2);
+}
+
+/**
+ * DARK GLASS VARIANT (for content sections inside glass cards)
+ * 
+ * Use for: Sections INSIDE primary glass cards that need visual separation
+ * Examples: Journey instruction blocks, Navicue response areas
+ * 
+ * THE ANCHOR RULE: NEVER use dark glass at same level as white glass
+ */
+.glass-dark {
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.12) 0%, 
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   SECTION 2: TEXT SHADOW HIERARCHY
+   
+   Usage: Ensures text readability on glass/images
+   Pattern discovered in: Journey, Dashboard tiles, Navicues
+   
+   Rule: Larger text = larger shadow for depth consistency
+   ============================================================================ */
+
+/**
+ * Text Shadow Scale (5 levels)
+ * 
+ * Usage:
+ * - Apply directly to text elements on glass/images
+ * - Do NOT apply to text on white backgrounds
+ */
+
+/* Level 1: Hero/Main Headlines */
+.text-shadow-hero {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Level 2: Subheadlines */
+.text-shadow-subhead {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Level 3: Body Text */
+.text-shadow-body {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Level 4: Labels */
+.text-shadow-label {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Level 5: Small Text */
+.text-shadow-small {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================
+   SECTION 3: SPACING SCALE (Responsive Clamp)
+   
+   Usage: Consistent spacing across all platform areas
+   Pattern discovered in: Journey padding, Dashboard gaps, content margins
+   
+   Philosophy: Fluid scaling prevents awkward breakpoint jumps
+   ============================================================================ */
+
+/**
+ * Responsive Spacing Utilities
+ * 
+ * Usage: Apply to padding, margin, gap
+ * Naming: --space-{size}-{min}to{max}px
+ */
+
+:root {
+  /* XXL - Hero sections */
+  --space-xxl: clamp(2.5rem, 7vw, 4rem);        /* 40px → 64px */
+  
+  /* XL - Primary card padding */
+  --space-xl: clamp(2rem, 6vw, 3rem);           /* 32px → 48px */
+  
+  /* L - Section spacing */
+  --space-l: clamp(1.5rem, 4vw, 2rem);          /* 24px → 32px */
+  
+  /* M - Content padding */
+  --space-m: clamp(1.25rem, 4vw, 1.5rem);       /* 20px → 24px */
+  
+  /* S - Element gap */
+  --space-s: clamp(1rem, 3vw, 1.25rem);         /* 16px → 20px */
+  
+  /* XS - Tight spacing */
+  --space-xs: clamp(0.625rem, 2vw, 0.75rem);    /* 10px → 12px */
+  
+  /* XXS - Minimal spacing */
+  --space-xxs: clamp(0.375rem, 1.5vw, 0.5rem);  /* 6px → 8px */
+}
+
+/* Utility classes for direct application */
+.p-fluid-xxl { padding: var(--space-xxl); }
+.p-fluid-xl { padding: var(--space-xl); }
+.p-fluid-l { padding: var(--space-l); }
+.p-fluid-m { padding: var(--space-m); }
+.p-fluid-s { padding: var(--space-s); }
+
+.gap-fluid-l { gap: var(--space-l); }
+.gap-fluid-m { gap: var(--space-m); }
+.gap-fluid-s { gap: var(--space-s); }
+.gap-fluid-xs { gap: var(--space-xs); }
+
+/* ============================================================================
+   SECTION 4: HOVER TRANSFORMATIONS
+   
+   Usage: Consistent hover states across interactive elements
+   Pattern discovered in: Dashboard tiles, content cards, buttons
+   
+   Rule: Larger elements = larger scale, smaller translateY
+   ============================================================================ */
+
+/**
+ * Hover Transform Utilities
+ * 
+ * Pattern:
+ * - Dashboard tiles: scale(1.012) + translateY(-3px)
+ * - Primary buttons: translateY(-3px)
+ * - Secondary buttons: translateY(-2px)
+ * - Content tiles: translateY(-4px)
+ * - Badges: translateY(-1px)
+ */
+
+.hover-lift-large:hover {
+  transform: scale(1.012) translateY(-3px);
+}
+
+.hover-lift-medium:hover {
+  transform: translateY(-3px);
+}
+
+.hover-lift-small:hover {
+  transform: translateY(-2px);
+}
+
+.hover-lift-minimal:hover {
+  transform: translateY(-1px);
+}
+
+.hover-lift-tile:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================================================
+   SECTION 5: TRANSITION TIMING
+   
+   Usage: Consistent animation curves across platform
+   Pattern discovered in: All refined areas
+   
+   Philosophy: 3 curves for 3 contexts
+   ============================================================================ */
+
+/**
+ * Transition Utilities
+ * 
+ * --transition-glass: For heavy glass elements (slow, luxurious)
+ * --transition-smooth: For buttons, interactions (standard)
+ * --transition-tile: For dashboard tiles (slightly slower for quality feel)
+ */
+
+:root {
+  /* Glass elements - Slow, luxurious */
+  --transition-glass: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Buttons, interactions - Standard smooth */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Dashboard tiles - Premium feel */
+  --transition-tile: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  
+  /* Content tiles - Quick response */
+  --transition-content: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Utility classes */
+.transition-glass { transition: var(--transition-glass); }
+.transition-smooth { transition: var(--transition-smooth); }
+.transition-tile { transition: var(--transition-tile); }
+.transition-content { transition: var(--transition-content); }
+
+/* ============================================================================
+   SECTION 6: BORDER RADIUS SYSTEM
+   
+   Usage: Consistent corner rounding across platform
+   Pattern discovered in: Dashboard (0px), Journey (0px primary, 4px internal)
+   
+   THE RULE: Main cards/tiles = 0px. Internal elements = 4px max.
+   ============================================================================ */
+
+/**
+ * Border Radius Philosophy
+ * 
+ * - Primary cards/tiles: 0px (sharp, modern, infiniteK signature)
+ * - Content sections inside cards: 4px (subtle, doesn't compete)
+ * - Inputs/textareas: 4px (familiar, usable)
+ * - Buttons: 0px (matches tiles)
+ * - Badges: 0px (sharp, system-wide consistency)
+ */
+
+.radius-sharp {
+  border-radius: 0px;
+}
+
+.radius-subtle {
+  border-radius: 4px;
+}
+
+/* 
+ * @deprecated v1.0.0 - Use .radius-sharp instead
+ * Will be removed in v3.0.0
+ */
+.radius-none {
+  border-radius: 0px;
+}
+
+/* ============================================================================
+   SECTION 7: BUTTON SYSTEM
+   
+   Usage: Universal button styles across platform
+   Pattern discovered in: Journey primary/secondary, Navicues glass, Wellbeing CTAs
+   
+   Variants: primary, secondary, glass-lg, glass-md
+   ============================================================================ */
+
+/**
+ * PRIMARY BUTTON (Journey-style forward movement)
+ * 
+ * Use for: Main CTAs, "Begin" actions, forward progress
+ * Examples: Journey "Continue", Navicues "Begin", Wellbeing "Watch"
+ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  padding: clamp(1rem, 3.5vw, 1.25rem) clamp(2rem, 6vw, 3rem);
+  
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.28) 0%, 
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-none);
+  
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.25vw, 1.125rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 4px 16px rgba(87, 57, 251, 0.2);
+  
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.35) 0%, 
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  
+  border-color: rgba(255, 255, 255, 0.45);
+  
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 24px rgba(87, 57, 251, 0.28);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+/**
+ * SECONDARY BUTTON (Gentle option)
+ * 
+ * Use for: Back buttons, skip actions, secondary choices
+ */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  padding: clamp(1rem, 3.5vw, 1.25rem) clamp(2rem, 6vw, 3rem);
+  
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-none);
+  
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.25vw, 1.125rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.18) 0%, 
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  
+  border-color: rgba(255, 255, 255, 0.28);
+  
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/**
+ * GLASS BUTTON LARGE (Navicues/Wellbeing style)
+ * 
+ * Use for: Hero CTAs on page headers
+ */
+.btn-glass-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  
+  padding: 16px 32px;
+  
+  background: var(--glass-bg-medium);
+  backdrop-filter: var(--glass-blur-default);
+  -webkit-backdrop-filter: var(--glass-blur-default);
+  
+  border: var(--glass-border-default);
+  border-radius: var(--radius-none);
+  
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-glass-lg:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ============================================================================
+   SECTION 8: BADGE SYSTEM
+   
+   Usage: Pillar badges, status badges, ERA badges
+   Pattern discovered in: Journey ERA, Momentum pillars, Content tiles
+   
+   Variants: pillar, status (red/orange/green), era (experience/recognize/align)
+   ============================================================================ */
+
+/**
+ * STATUS BADGES (Block Progress)
+ * 
+ * Use for: Block status display (red/orange/green)
+ * Colors: From brain state system
+ */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+  
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-status-red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.badge-status-orange {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-status-green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.08) 100%);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/**
+ * ERA PHASE BADGES (Journey)
+ * 
+ * Use for: Journey phase indicators
+ * Variants: experience, recognize, align, flow (integrate)
+ */
+.badge-era {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  
+  padding: 0.625rem 1.25rem;
+  
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.75vw, 0.875rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.18) 0%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  
+  transition: var(--transition-smooth);
+}
+
+.badge-era:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.22) 0%, 
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ERA specific borders */
+.badge-era-experience {
+  border-left: 3px solid var(--era-experience);
+  box-shadow: 
+    0 4px 16px rgba(139, 125, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.badge-era-recognize {
+  border-left: 3px solid var(--era-recognize);
+  box-shadow: 
+    0 4px 16px rgba(87, 57, 251, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.badge-era-align,
+.badge-era-integrate {
+  border-left: 3px solid var(--era-align);
+  box-shadow: 
+    0 4px 16px rgba(62, 43, 184, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.badge-era-flow {
+  border-left: 3px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================================
+   SECTION 9: EYEBROW SYSTEM
+   
+   Usage: Small uppercase labels above headlines
+   Pattern discovered in: Navicues, Wellbeing, Journey headers
+   
+   Format: "SECTION · CONTEXT" with middot separator
+   ============================================================================ */
+
+/**
+ * EYEBROW TEXT
+ * 
+ * Use for: Section labels, category indicators
+ * Pattern: ALL CAPS with middot separator (·)
+ * 
+ * Examples:
+ * - "INNER COMPASS · TIMELESS TRUTH"
+ * - "WEEK 3 · EXPERIENCE"
+ * - "PILLAR · EMOTIONAL REGULATION"
+ */
+.text-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  
+  font-family: var(--font-display);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-spacing);
+  text-transform: var(--type-eyebrow-transform);
+  
+  opacity: 0.85;
+}
+
+/* Color variants */
+.text-eyebrow-white {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-eyebrow-brand {
+  color: var(--brand-mid);
+}
+
+.text-eyebrow-muted {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================================
+   SECTION 10: CONTENT PAGE LAYOUT
+   
+   Usage: Universal layout for all platform pages
+   Pattern discovered in: Navicues, Wellbeing, State, Momentum
+   
+   Structure: Header (320px) + Content + Padding
+   ============================================================================ */
+
+/**
+ * PAGE CONTENT WRAPPER
+ * 
+ * Use for: Main content area below PlatformPageHeader
+ * Provides consistent padding and container width
+ */
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--color-background);
+  padding: var(--space-l) var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    padding: var(--space-xl) var(--spacing-6);
+  }
+}
+
+/**
+ * CONTENT CONTAINER
+ * 
+ * Use for: Centering content with max-width constraint
+ */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================================================
+   SECTION 11: SHIMMER ANIMATION
+   
+   Usage: Premium shimmer effect for dashboard tiles
+   Pattern discovered in: DashboardTileClass
+   
+   Timing: 12s cycle for subtle, luxurious movement
+   ============================================================================ */
+
+/**
+ * SHIMMER OVERLAY
+ * 
+ * Use for: Dashboard tiles, premium cards
+ * Apply as overlay div with absolute positioning
+ */
+@keyframes shimmer-glass {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 30%, 
+    rgba(255, 255, 255, 0.05) 50%, 
+    rgba(255, 255, 255, 0.1) 70%, 
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  
+  animation: shimmer-glass 12s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+/* ============================================================================
+   SECTION 12: FOCUS STATES (Accessibility)
+   
+   Usage: Consistent focus indicators across platform
+   Pattern: Purple ring with offset
+   
+   WCAG 2.1 Level AA compliant
+   ============================================================================ */
+
+/**
+ * FOCUS RING
+ * 
+ * Universal focus state for interactive elements
+ */
+.focus-ring:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-glass-lg:focus-visible,
+.glass-tertiary:focus-visible {
+  outline: 3px solid rgba(87, 57, 251, 0.5);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   SECTION 13: ACCESSIBILITY (Motion)
+   
+   Usage: Respect user's motion preferences
+   Pattern: Disable animations if prefers-reduced-motion
+   
+   WCAG 2.1 Level AAA compliant
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .shimmer-overlay {
+    animation: none !important;
+  }
+  
+  .hover-lift-large:hover,
+  .hover-lift-medium:hover,
+  .hover-lift-small:hover,
+  .hover-lift-minimal:hover,
+  .hover-lift-tile:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================================================
+   SECTION 14: PRINT STYLES
+   
+   Usage: Ensure platform content prints cleanly
+   Pattern: Remove glass, convert to white cards, black text
+   
+   Discovered in: Journey print styles
+   ============================================================================ */
+
+@media print {
+  .glass-primary,
+  .glass-secondary,
+  .glass-tertiary,
+  .glass-dark {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Convert white text to black */
+  .text-eyebrow,
+  .text-hero-headline,
+  .text-section-headline,
+  .text-body-hero,
+  [class*="text-shadow"] {
+    color: #1A1A1A !important;
+    text-shadow: none !important;
+  }
+  
+  /* Hide interactive elements */
+  .btn-primary,
+  .btn-secondary,
+  .btn-glass-lg,
+  button {
+    display: none !important;
+  }
+  
+  /* Prevent page breaks inside cards */
+  .glass-primary,
+  .card-hero,
+  .card-content {
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================================================
+   SECTION 15: DEPRECATION NOTICES
+   
+   These classes are marked for removal in future versions
+   See /docs/MIGRATION-GUIDES/ for upgrade paths
+   ============================================================================ */
+
+/**
+ * @deprecated v1.0.0
+ * Use .radius-sharp instead
+ * Will be removed in v3.0.0
+ */
+.radius-none {
+  border-radius: 0px;
+}
+
+/* ============================================================================
+   END OF PLATFORM.CSS v1.0.0
+   
+   Next steps:
+   1. Import this file in globals.css
+   2. Area-specific CSS files inherit these patterns
+   3. Update /docs/DESIGN-SYSTEM-CHANGELOG.md with version notes
+   4. Run QA checklist before deploying changes
+   
+   Questions? See /docs/PLATFORM-CSS-GUIDE.md
+   ============================================================================ */

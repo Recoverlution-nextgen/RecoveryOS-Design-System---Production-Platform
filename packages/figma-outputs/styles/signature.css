@@ -1,0 +1,203 @@
+/* 
+  RECOVERLUTION SIGNATURE DNA
+  Subtle design elements that distinguish our hand-crafted headers
+*/
+
+/* ============================================
+   1. ANIMATED GRADIENT UNDERLINE
+   Thin shimmer under colored headline words
+   ============================================ */
+
+.signature-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.signature-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    currentColor 20%,
+    currentColor 80%,
+    transparent 100%
+  );
+  opacity: 0.4;
+  animation: signature-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes signature-shimmer {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleX(1.02);
+  }
+}
+
+
+/* ============================================
+   2. PULSING SQUARE DOT
+   Breathing animation for badge square
+   ============================================ */
+
+.signature-square-pulse {
+  animation: signature-square-breath 2.5s ease-in-out infinite;
+}
+
+@keyframes signature-square-breath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+
+/* ============================================
+   3. SUBTLE TEXT SHIMMER
+   Shine passes over colored text
+   ============================================ */
+
+.signature-text-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-text-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: signature-text-shine 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes signature-text-shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+
+/* ============================================
+   4. BADGE ACCENT LINE (OPTIONAL)
+   Vertical line to left of badge
+   ============================================ */
+
+.signature-badge-accent {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.signature-badge-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    currentColor 20%,
+    currentColor 80%,
+    transparent 100%
+  );
+  opacity: 0.5;
+  animation: signature-accent-pulse 2s ease-in-out infinite;
+}
+
+@keyframes signature-accent-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    height: 60%;
+  }
+  50% {
+    opacity: 0.8;
+    height: 75%;
+  }
+}
+
+
+/* ============================================
+   5. PREMIUM GLASS GLOW
+   Enhanced glass effect for headers
+   ============================================ */
+
+.signature-glass-glow {
+  position: relative;
+}
+
+.signature-glass-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0px;
+}
+
+.signature-glass-glow:hover::after {
+  opacity: 1;
+}
+
+
+/* ============================================
+   6. BADGE TAG SIGNATURE
+   Standardized content category tags
+   ============================================ */
+
+.signature-badge-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-badge-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.signature-badge-tag:hover::before {
+  left: 100%;
+}

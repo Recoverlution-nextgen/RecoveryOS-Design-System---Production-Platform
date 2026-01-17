@@ -1,0 +1,203 @@
+/**
+ * DASHBOARD TILE STYLING STANDARDS
+ * Created: November 7, 2025
+ * 
+ * LOCKED AND ALIGNED TO MARKETING TILE CLASS SYSTEM
+ * 
+ * This file documents the CSS standards for dashboard tiles,
+ * ensuring consistency with the marketing site's TileClass component.
+ * 
+ * =================================================================
+ * DESIGN PRINCIPLES (THE ANCHOR)
+ * =================================================================
+ * 
+ * 1. NO CARD ON CARD. NO TILE ON TILE. NO BORDER ON BORDER.
+ *    - Tiles are Level 1 elevated elements
+ *    - Background is Level 0
+ *    - We NEVER go to Level 2 (nested cards)
+ * 
+ * 2. COMPOUND GLASS SYSTEM
+ *    - Background: Full-bleed 3D asset
+ *    - Overlay: Gradient for legibility
+ *    - Shimmer: 12s infinite animation
+ *    - Copy Container: Backdrop blur (4px)
+ *    - Watermark: Icon at 5% opacity
+ * 
+ * 3. BRAND VOICE IN COPY
+ *    - Lowercase (unless proper noun like JOURNEY, STATE)
+ *    - Periods end ALL copy
+ *    - No dashes, ever (Apple never uses dashes)
+ *    - Authority with heart
+ *    - "Seconds, not sessions. Practice over theory."
+ * 
+ * 4. EXHIBITION-GRADE SHADOWS
+ *    - Default: 0 20px 60px rgba(0,0,0,0.08), 0 8px 24px rgba(87,57,251,0.12)
+ *    - Hover: 0 28px 80px rgba(0,0,0,0.12), 0 12px 32px rgba(87,57,251,0.15)
+ * 
+ * 5. APPLE-GRADE ANIMATIONS
+ *    - Hover scale: 1.012
+ *    - Hover translate: -3px
+ *    - Duration: 0.7s cubic-bezier(0.19, 1, 0.22, 1)
+ * 
+ * =================================================================
+ * COLOR SYSTEM
+ * =================================================================
+ * 
+ * PRIMARY BRAND COLORS:
+ * - Purple: #3E2BB8 (dark), #5739FB (mid)
+ * - Cyan: #40E0D0 (accent)
+ * 
+ * TILE ICON COLORS:
+ * - Journey: #5739FB (purple mid)
+ * - Navicues: #40E0D0 (cyan)
+ * - Wellbeing: #5739FB (purple mid)
+ * - State: #40E0D0 (cyan)
+ * - Navigate: #40E0D0 (cyan)
+ * - Momentum: #40E0D0 (cyan)
+ * - Toolkit: #5739FB (purple mid)
+ * 
+ * =================================================================
+ * TYPOGRAPHY STANDARDS
+ * =================================================================
+ * 
+ * TITLE (Uppercase):
+ * - Font: var(--font-display)
+ * - Weight: 700
+ * - Letter-spacing: 0.08em
+ * - Color: #FFFFFF
+ * - Text-shadow: 0 2px 8px rgba(0,0,0,0.4)
+ * 
+ * SUBTITLE (Lowercase with period):
+ * - Weight: 500
+ * - Color: #FFFFFF
+ * - Text-shadow: 0 1px 4px rgba(0,0,0,0.3)
+ * 
+ * DESCRIPTION (Optional, for larger tiles):
+ * - Weight: 400
+ * - Color: #FFFFFF
+ * - Opacity: 0.9
+ * - Text-shadow: 0 1px 3px rgba(0,0,0,0.2)
+ * 
+ * ADAPTIVE SCALING:
+ * - Banner tiles (h<150): Smaller type, horizontal layout
+ * - Large tiles (area>300k): Larger type, description shown
+ * - Tall tiles (h>w*1.5): Compact vertical
+ * - Medium tiles: Balanced proportions
+ * 
+ * =================================================================
+ * COPY EXAMPLES (BRAND-ALIGNED)
+ * =================================================================
+ * 
+ * JOURNEY:
+ * Title: "JOURNEY"
+ * Subtitle: "Your path forward."
+ * Description: "One practice at a time, one moment at a time."
+ * 
+ * NAVICUES:
+ * Title: "NAVICUES"
+ * Subtitle: "Wisdom when you need it."
+ * Description: "Timely guidance that meets you where you are."
+ * 
+ * WELLBEING:
+ * Title: "WELLBEING"
+ * Subtitle: "Nourishment that sustains."
+ * Description: "Care for mind, body, and spirit."
+ * 
+ * STATE:
+ * Title: "STATE"
+ * Subtitle: "Your inner compass."
+ * 
+ * NAVIGATE:
+ * Title: "NAVIGATE"
+ * Subtitle: "Your care network."
+ * Description: "Connected support when you need it."
+ * 
+ * MOMENTUM:
+ * Title: "MOMENTUM"
+ * Subtitle: "Your progress."
+ * Description: "Growth that builds over time."
+ * 
+ * TOOLKIT:
+ * Title: "TOOLKIT"
+ * Subtitle: "Practices for everyday moments."
+ * 
+ * =================================================================
+ * COPY RULES
+ * =================================================================
+ * 
+ * ❌ WRONG:
+ * - "a timeless path to where you belong, as yourself" (too poetic, no period)
+ * - "timely wisdom" (no period, incomplete thought)
+ * - "nourishment for mind, body & soul" (ampersand instead of "and", no period)
+ * - "inner compass" (no period, missing "your")
+ * - "connected care network" (technical jargon, no period)
+ * - "guiding heartbeat" (metaphor without context, no period)
+ * - "precision practices for everyday moments" (too many adjectives, no period)
+ * 
+ * ✅ RIGHT:
+ * - "Your path forward." (clear, simple, period)
+ * - "Wisdom when you need it." (complete thought, period)
+ * - "Nourishment that sustains." (clear, period)
+ * - "Your inner compass." (ownership, period)
+ * - "Your care network." (clear, simple, period)
+ * - "Your progress." (ownership, period)
+ * - "Practices for everyday moments." (clear, period)
+ * 
+ * KEY PRINCIPLES:
+ * 1. Use "Your" for ownership and connection
+ * 2. Complete thoughts, not fragments
+ * 3. Simple over poetic
+ * 4. Clear over clever
+ * 5. ALWAYS end with a period
+ * 6. Lowercase unless proper noun
+ * 7. No dashes, no ampersands
+ * 
+ * =================================================================
+ * ANIMATION KEYFRAMES
+ * =================================================================
+ */
+
+@keyframes shimmer-glass {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+/**
+ * =================================================================
+ * USAGE NOTES
+ * =================================================================
+ * 
+ * This CSS file serves as documentation and reference.
+ * The actual implementation is in /components/DashboardTileClass.tsx
+ * 
+ * DO NOT:
+ * - Create inline tile implementations
+ * - Use different shadow values
+ * - Use different animation durations
+ * - Break the copy rules
+ * - Nest cards inside tiles
+ * 
+ * DO:
+ * - Use DashboardTileClass component
+ * - Follow the copy examples
+ * - Maintain the color system
+ * - Honor THE ANCHOR RULE
+ * - Test on all tile sizes
+ * 
+ * =================================================================
+ * UPDATES LOG
+ * =================================================================
+ * 
+ * November 7, 2025:
+ * - Created dashboard-tiles.css
+ * - Documented standards from marketing TileClass
+ * - Established copy rules and examples
+ * - Locked color system
+ * - Defined typography standards
+ * 
+ * =================================================================
+ */

@@ -1,0 +1,1249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================================
+   DESIGN SYSTEM IMPORT ORDER - VERSION 1.0.0
+   ============================================================================
+   
+   ARCHITECTURE:
+   1. Platform CSS (universal patterns - single source of truth)
+   2. Area-specific CSS (inherits from platform.css)
+   3. Component-specific CSS (signature, headers, content)
+   
+   See /docs/PLATFORM-CSS-GUIDE.md for usage
+   See /docs/DESIGN-SYSTEM-CHANGELOG.md for version history
+   ============================================================================ */
+
+/* UNIVERSAL PATTERNS - Single Source of Truth */
+@import './platform.css';
+
+/* COMPONENT SYSTEMS */
+@import './signature.css';      /* Recoverlution Signature DNA */
+@import './headers.css';        /* Universal Page Headers */
+@import './content.css';        /* Content System (Articles, Insights, Practices) */
+@import './luma.css';           /* LUMA Design System (glass, blur, voice) */
+
+/* AREA-SPECIFIC CSS (inherits from platform.css) */
+@import './journey.css';        /* Journey-specific patterns */
+@import './journey-immersive.css'; /* Journey Immersive experience */
+
+/* LEGACY DESIGN SYSTEM (will consolidate into platform.css in v2.0.0) */
+@import './design-system.css';
+
+/* infiniteK conversion rebuild - Oct 23, 2025 10:48pm */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Content System Spacing (for content.css) */
+  --spacing-1-5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2-5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  
+  /* Content System Colors */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  --color-text-tertiary: #9CA3AF;
+  --color-brand-primary: #3E2BB8;
+  --color-background: #FAFAFA;
+  
+  /* infiniteK Border Radius */
+  --radius-none: 0;
+  
+  /* Recoverlution Brand Colors */
+  --brand-dark: #3E2BB8;
+  --brand-mid: #5739FB;
+  --brand-light: #7C67FF;
+  --brand-accent: #9D8FFF;
+  
+  /* ========================================
+     PLATFORM PILLARS - Color & Identity System
+     ======================================== */
+  
+  /* JOURNEY - Compass - Deep exploration purple */
+  --pillar-journey: #5739FB;
+  --pillar-journey-light: rgba(87, 57, 251, 0.12);
+  --pillar-journey-glow: rgba(87, 57, 251, 0.25);
+  
+  /* NAVICUE - Heart - Connection blue-purple */
+  --pillar-navicue: #6B5CE8;
+  --pillar-navicue-light: rgba(107, 92, 232, 0.12);
+  --pillar-navicue-glow: rgba(107, 92, 232, 0.25);
+  
+  /* WELLBEING (TOOLKIT) - Sparkles - Lighter purple */
+  --pillar-wellbeing: #8B7DFF;
+  --pillar-wellbeing-light: rgba(139, 125, 255, 0.12);
+  --pillar-wellbeing-glow: rgba(139, 125, 255, 0.25);
+  
+  /* STATE - Activity - Present moment purple */
+  --pillar-state: #7C67FF;
+  --pillar-state-light: rgba(124, 103, 255, 0.12);
+  --pillar-state-glow: rgba(124, 103, 255, 0.25);
+  
+  /* NAVIGATE - Compass - Network purple-blue */
+  --pillar-navigate: #9D8FFF;
+  --pillar-navigate-light: rgba(157, 143, 255, 0.12);
+  --pillar-navigate-glow: rgba(157, 143, 255, 0.25);
+  
+  /* MOMENTUM - Zap - Forward energy deep purple */
+  --pillar-momentum: #6B5CE8;
+  --pillar-momentum-light: rgba(107, 92, 232, 0.12);
+  --pillar-momentum-glow: rgba(107, 92, 232, 0.25);
+  
+  /* ========================================
+     JOURNEY ERA PHILOSOPHY - Color System
+     Experience → Recognize → Align
+     ======================================== */
+  
+  /* EXPERIENCE - Body first - Softer purple */
+  --era-experience: #8B7DFF;
+  --era-experience-light: rgba(139, 125, 255, 0.08);
+  --era-experience-glow: rgba(139, 125, 255, 0.2);
+  
+  /* RECOGNIZE - Mind second - Mid purple */
+  --era-recognize: #5739FB;
+  --era-recognize-light: rgba(87, 57, 251, 0.08);
+  --era-recognize-glow: rgba(87, 57, 251, 0.2);
+  
+  /* ALIGN - Soul always - Deep purple */
+  --era-align: #3E2BB8;
+  --era-align-light: rgba(62, 43, 184, 0.08);
+  --era-align-glow: rgba(62, 43, 184, 0.2);
+  
+  /* ========================================
+     SIX PILLARS - Therapeutic Framework
+     Soft, safe colors (NO reds/oranges)
+     Blues, purples, lavenders - familiar & calming
+     ======================================== */
+  
+  /* Pillar 1: Emotional Regulation - Soft purple */
+  --pillar-emotional-regulation: #7C67FF;
+  --pillar-emotional-regulation-light: rgba(124, 103, 255, 0.12);
+  --pillar-emotional-regulation-glow: rgba(124, 103, 255, 0.25);
+  
+  /* Pillar 2: Stress Resilience - Soft mauve */
+  --pillar-stress-resilience: #C49DC4;
+  --pillar-stress-resilience-light: rgba(196, 157, 196, 0.12);
+  --pillar-stress-resilience-glow: rgba(196, 157, 196, 0.25);
+  
+  /* Pillar 3: Social Connectivity - Light lavender */
+  --pillar-social-connectivity: #9D8FFF;
+  --pillar-social-connectivity-light: rgba(157, 143, 255, 0.12);
+  --pillar-social-connectivity-glow: rgba(157, 143, 255, 0.25);
+  
+  /* Pillar 4: Cognitive Reframing - Deep purple */
+  --pillar-cognitive-reframing: #3E2BB8;
+  --pillar-cognitive-reframing-light: rgba(62, 43, 184, 0.12);
+  --pillar-cognitive-reframing-glow: rgba(62, 43, 184, 0.25);
+  
+  /* Pillar 5: Identity Integration - Brand purple */
+  --pillar-identity-integration: #5739FB;
+  --pillar-identity-integration-light: rgba(87, 57, 251, 0.12);
+  --pillar-identity-integration-glow: rgba(87, 57, 251, 0.25);
+  
+  /* Pillar 6: Decision Mastery - Soft blue */
+  --pillar-decision-mastery: #A8C4E1;
+  --pillar-decision-mastery-light: rgba(168, 196, 225, 0.12);
+  --pillar-decision-mastery-glow: rgba(168, 196, 225, 0.25);
+  
+  /* ========================================
+     COMMAND CENTER - Design Tokens
+     Universal tokens for all 6 Control Rooms
+     ======================================== */
+  
+  /* Backgrounds */
+  --cc-bg-primary: #0A0118;                    /* Deep purple-black */
+  --cc-bg-secondary: #1a0a2e;                  /* Lighter purple-black */
+  --cc-bg-card: rgba(255, 255, 255, 0.03);     /* Card background */
+  --cc-bg-card-hover: rgba(255, 255, 255, 0.05); /* Card hover state */
+  
+  /* Borders */
+  --cc-border-subtle: rgba(87, 57, 251, 0.1);  /* Subtle border */
+  --cc-border-medium: rgba(87, 57, 251, 0.2);  /* Medium border */
+  --cc-border-strong: rgba(87, 57, 251, 0.3);  /* Strong border */
+  
+  /* Text */
+  --cc-text-primary: #FFFFFF;                  /* Primary text */
+  --cc-text-secondary: rgba(255, 255, 255, 0.6); /* Secondary text */
+  --cc-text-tertiary: rgba(255, 255, 255, 0.4);  /* Tertiary text */
+  
+  /* Status Colors */
+  --cc-status-success: #10B981;                /* Green */
+  --cc-status-warning: #F59E0B;                /* Yellow */
+  --cc-status-error: #EF4444;                  /* Red */
+  --cc-status-neutral: #6B7280;                /* Gray */
+  
+  /* Brand (shared with platform) */
+  --cc-brand-primary: var(--brand-dark);       /* #3E2BB8 */
+  --cc-brand-secondary: var(--brand-mid);      /* #5739FB */
+  
+  /* Brain State - Using Pillar Colors for System Coherence */
+  --brain-state-healthy: #2ECC71;         /* Identity Integration = Wholeness */
+  --brain-state-shifting: #F39C12;        /* Cognitive Reframing = Transformation */
+  --brain-state-needs-support: #E74C3C;   /* Decision Mastery = Agency/Care */
+  
+  /* NOW State - Return · Rely · Shift */
+  --now-return: #5739FB;
+  --now-rely: #3B82F6;
+  --now-shift: #8B5CF6;
+  
+  /* Inner Metrics - Tempo · Flow · Sync */
+  --metric-tempo: #3E2BB8;
+  --metric-flow: #06B6D4;
+  --metric-sync: #EC4899;
+  
+  /* Content Types */
+  --content-navicue: #5739FB;
+  --content-video: #EF4444;
+  --content-article: #3B82F6;
+  --content-exercise: #10B981;
+  --content-journey: #8B5CF6;
+  --content-building-block: #F59E0B;
+  
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+  --card: #ffffff;
+  --card-foreground: #1A1A1A;
+  --popover: #ffffff;
+  --popover-foreground: #1A1A1A;
+  --primary: #3E2BB8;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F3FF;
+  --secondary-foreground: #3E2BB8;
+  --muted: #F5F5F5;
+  --muted-foreground: #6B7280;
+  --accent: #5739FB;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(62, 43, 184, 0.1);
+  --input: transparent;
+  --input-background: #FFFFFF;
+  --switch-background: #E5E5E5;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #5739FB;
+  --chart-1: #5739FB;
+  --chart-2: #7C67FF;
+  --chart-3: #9D8FFF;
+  --chart-4: #3E2BB8;
+  --chart-5: #C4B5FD;
+  --radius: 0.5rem;
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-primary: #3E2BB8;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F5F3FF;
+  --sidebar-accent-foreground: #3E2BB8;
+  --sidebar-border: rgba(62, 43, 184, 0.1);
+  --sidebar-ring: #5739FB;
+  
+  /* Frosted Glass System - v5.0 APPLE PRO DISPLAY XDR PRECISION */
+  /* Works on white backgrounds AND images */
+  
+  /* Glass Background Opacities */
+  --glass-white-subtle: rgba(255, 255, 255, 0.85);
+  --glass-white-strong: rgba(255, 255, 255, 0.95);
+  --glass-white-minimal: rgba(255, 255, 255, 0.7);
+  
+  /* Glass on Images */
+  --glass-image-light: rgba(255, 255, 255, 0.1);
+  --glass-image-medium: rgba(255, 255, 255, 0.15);
+  --glass-image-dark: rgba(0, 0, 0, 0.3);
+  
+  /* Glass Borders (BORDERS NOT GRADIENTS) */
+  --glass-border-white: 1px solid rgba(255, 255, 255, 0.2);
+  --glass-border-brand: 1px solid rgba(62, 43, 184, 0.15);
+  --glass-border-brand-strong: 2px solid rgba(62, 43, 184, 0.25);
+  
+  /* Glass Shadows (Double: outer lift + inner glow) */
+  --glass-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  --glass-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  --glass-shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --glass-shadow-colored: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(62, 43, 184, 0.1) inset;
+  
+  /* CLINICAL GLASS - Apple Pro Display XDR Precision */
+  /* Localized glass for text overlays - keeps assets CRISP */
+  --clinical-glass-blur: blur(20px) saturate(110%);
+  --clinical-glass-gradient: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6) 100%);
+  --clinical-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  --clinical-card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* Smooth fade-in animation for expanding content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Living Charts Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer-glass {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dashboard Breathing Animation - Canva v10 - Performance Optimized */
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1) translateY(0px);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.005) translateY(-0.5px);
+    filter: brightness(1.02);
+  }
+}
+
+/* Marketing Page Animations - Consolidated Nov 5, 2025 */
+@keyframes pulse-glow-soft {
+  0%, 100% { 
+    opacity: 0.2; 
+  }
+  50% { 
+    opacity: 0.4; 
+  }
+}
+
+/* Discovery Engine Animations */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes shimmer-asset {
+  0% { 
+    transform: translateX(-100%); 
+  }
+  100% { 
+    transform: translateX(200%); 
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-12px) scale(1.02); 
+  }
+}
+
+@keyframes float-gentle-dna {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+/* Performance optimization for breathe animation */
+.dashboard-tile-wrapper:not(:hover) {
+  will-change: transform, filter;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* Dashboard Tile Breathing - Staggered Delays */
+.dashboard-tile-wrapper:not(:hover) {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.dashboard-tile-wrapper:nth-child(1) { animation-delay: 0s; }
+.dashboard-tile-wrapper:nth-child(2) { animation-delay: 1.2s; }
+.dashboard-tile-wrapper:nth-child(3) { animation-delay: 2.4s; }
+.dashboard-tile-wrapper:nth-child(4) { animation-delay: 3.6s; }
+.dashboard-tile-wrapper:nth-child(5) { animation-delay: 4.8s; }
+.dashboard-tile-wrapper:nth-child(6) { animation-delay: 6s; }
+.dashboard-tile-wrapper:nth-child(7) { animation-delay: 7.2s; }
+
+/* Frosted Glass Utility Classes - v5.0 APPLE PRO DISPLAY XDR */
+@layer components {
+  /* Glass on White Background (body cards, tiles, buttons) */
+  .glass-card {
+    background: var(--glass-white-subtle);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border: var(--glass-border-brand);
+    box-shadow: var(--glass-shadow-subtle);
+  }
+  
+  /* Glass on Image (headers, heroes, overlays) */
+  .glass-overlay {
+    background: var(--glass-image-light);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border: var(--glass-border-white);
+    box-shadow: var(--glass-shadow-strong);
+  }
+  
+  /* Glass with Pillar Color Tint */
+  .glass-pillar {
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    box-shadow: var(--glass-shadow-colored);
+  }
+  
+  /* Premium Heavy Blur (hero sections) */
+  .glass-hero {
+    backdrop-filter: blur(48px) saturate(180%);
+    -webkit-backdrop-filter: blur(48px) saturate(180%);
+  }
+  
+  /* CLINICAL GLASS - Apple Pro Display XDR Precision */
+  /* Use for text overlays on images - keeps background CRISP */
+  .clinical-glass-overlay {
+    background: var(--clinical-glass-gradient);
+  }
+  
+  .clinical-glass-blur {
+    backdrop-filter: var(--clinical-glass-blur);
+    -webkit-backdrop-filter: var(--clinical-glass-blur);
+  }
+  
+  /* Clinical Card - Minimal borders, precise shadows */
+  .clinical-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--clinical-card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .clinical-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--clinical-card-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .clinical-card:active {
+    transform: translateY(0px);
+    transition: all 0.1s ease-out;
+  }
+  
+  /* ========================================
+     TYPOGRAPHY SYSTEM - Marketing Aligned
+     ======================================== */
+  
+  /* Eyebrows - Small accent text above headlines */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand-mid);
+  }
+  
+  .eyebrow-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.9;
+  }
+  
+  /* Display Headlines - Large hero text */
+  .headline-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Section Headlines */
+  .headline-section {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Subsection Headlines */
+  .headline-subsection {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Card Headlines */
+  .headline-card {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  /* Body Copy - Primary */
+  .copy-primary {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--foreground);
+    opacity: 0.92;
+  }
+  
+  /* Body Copy - Secondary */
+  .copy-secondary {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--foreground);
+    opacity: 0.85;
+  }
+  
+  /* Body Copy - Small */
+  .copy-small {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--foreground);
+    opacity: 0.75;
+  }
+  
+  /* ========================================
+     JOURNEY ENHANCEMENTS - Warmth & Recognition
+     ======================================== */
+  
+  /* Journey Headline Glow - Subtle brand energy */
+  .journey-headline {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, var(--era-experience) 0%, var(--era-recognize) 50%, var(--era-align) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  
+  /* Journey Headline Underline - ERA signature */
+  .journey-headline-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--era-experience) 0%, var(--era-recognize) 50%, var(--era-align) 100%);
+    opacity: 0.3;
+  }
+  
+  /* Journey Phase Badge - Experience/Recognize/Align */
+  .journey-phase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+  }
+  
+  .journey-phase-badge:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  /* ERA Phase Colors */
+  .phase-experience {
+    border-left: 3px solid var(--era-experience);
+    background: var(--era-experience-light);
+  }
+  
+  .phase-recognize {
+    border-left: 3px solid var(--era-recognize);
+    background: var(--era-recognize-light);
+  }
+  
+  .phase-align {
+    border-left: 3px solid var(--era-align);
+    background: var(--era-align-light);
+  }
+  
+  /* ========================================
+     PILLAR COLOR UTILITIES
+     ======================================== */
+  
+  .text-journey { color: var(--pillar-journey); }
+  .text-navicue { color: var(--pillar-navicue); }
+  .text-wellbeing { color: var(--pillar-wellbeing); }
+  .text-state { color: var(--pillar-state); }
+  .text-navigate { color: var(--pillar-navigate); }
+  .text-momentum { color: var(--pillar-momentum); }
+  
+  .bg-journey-light { background: var(--pillar-journey-light); }
+  .bg-navicue-light { background: var(--pillar-navicue-light); }
+  .bg-wellbeing-light { background: var(--pillar-wellbeing-light); }
+  .bg-state-light { background: var(--pillar-state-light); }
+  .bg-navigate-light { background: var(--pillar-navigate-light); }
+  .bg-momentum-light { background: var(--pillar-momentum-light); }
+  
+  .border-journey { border-color: var(--pillar-journey); }
+  .border-navicue { border-color: var(--pillar-navicue); }
+  .border-wellbeing { border-color: var(--pillar-wellbeing); }
+  .border-state { border-color: var(--pillar-state); }
+  .border-navigate { border-color: var(--pillar-navigate); }
+  .border-momentum { border-color: var(--pillar-momentum); }
+  
+  /* ========================================
+     ERA PHASE COLOR UTILITIES
+     ======================================== */
+  
+  .text-experience { color: var(--era-experience); }
+  .text-recognize { color: var(--era-recognize); }
+  .text-align { color: var(--era-align); }
+  
+  .bg-experience-light { background: var(--era-experience-light); }
+  .bg-recognize-light { background: var(--era-recognize-light); }
+  .bg-align-light { background: var(--era-align-light); }
+  
+  /* ========================================
+     THERAPEUTIC PILLAR COLOR UTILITIES
+     Six Pillars - Soft, safe colors
+     ======================================== */
+  
+  /* Text Colors */
+  .text-emotional-regulation { color: var(--pillar-emotional-regulation); }
+  .text-stress-resilience { color: var(--pillar-stress-resilience); }
+  .text-social-connectivity { color: var(--pillar-social-connectivity); }
+  .text-cognitive-reframing { color: var(--pillar-cognitive-reframing); }
+  .text-identity-integration { color: var(--pillar-identity-integration); }
+  .text-decision-mastery { color: var(--pillar-decision-mastery); }
+  
+  /* Background Colors - Light */
+  .bg-emotional-regulation-light { background: var(--pillar-emotional-regulation-light); }
+  .bg-stress-resilience-light { background: var(--pillar-stress-resilience-light); }
+  .bg-social-connectivity-light { background: var(--pillar-social-connectivity-light); }
+  .bg-cognitive-reframing-light { background: var(--pillar-cognitive-reframing-light); }
+  .bg-identity-integration-light { background: var(--pillar-identity-integration-light); }
+  .bg-decision-mastery-light { background: var(--pillar-decision-mastery-light); }
+  
+  /* Border Colors */
+  .border-emotional-regulation { border-color: var(--pillar-emotional-regulation); }
+  .border-stress-resilience { border-color: var(--pillar-stress-resilience); }
+  .border-social-connectivity { border-color: var(--pillar-social-connectivity); }
+  .border-cognitive-reframing { border-color: var(--pillar-cognitive-reframing); }
+  .border-identity-integration { border-color: var(--pillar-identity-integration); }
+  .border-decision-mastery { border-color: var(--pillar-decision-mastery); }
+  
+  /* infiniteK Design System Utilities - Nov 5, 2025 */
+  
+  /* Square Border Radius (infiniteK standard) */
+  .border-square {
+    border-radius: 0px;
+  }
+  
+  /* Universal Shadow Standard (Exhibition-Grade Elevation) */
+  .shadow-universal {
+    box-shadow: 0 40px 120px rgba(64, 224, 208, 0.2), 0 20px 60px rgba(87, 57, 251, 0.15);
+  }
+  
+  /* Brand Background Colors */
+  .bg-brand-dark {
+    background: var(--brand-dark);
+  }
+  
+  .bg-brand-mid {
+    background: var(--brand-mid);
+  }
+  
+  .bg-brand-cyan {
+    background: #40E0D0;
+  }
+  
+  /* Brand Text Colors */
+  .text-brand-dark {
+    color: var(--brand-dark);
+  }
+  
+  .text-brand-mid {
+    color: var(--brand-mid);
+  }
+  
+  .text-brand-cyan {
+    color: #40E0D0;
+  }
+  
+  /* Backdrop Filter Universal */
+  .backdrop-universal {
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+  }
+  
+  /* Custom Scrollbar for Story Section - PERMANENTLY VISIBLE */
+  .custom-scrollbar {
+    /* Firefox - always show scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #5739FB rgba(62, 43, 184, 0.08);
+    /* Force scrollbar to always be visible, not auto-hide */
+    overflow-y: scroll !important;
+  }
+  
+  /* WebKit Browsers (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    /* Always reserve space for scrollbar */
+    -webkit-appearance: none;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(62, 43, 184, 0.08);
+    border-radius: 0px;
+    border-left: 2px solid rgba(62, 43, 184, 0.15);
+    /* Make track always visible */
+    opacity: 1;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3E2BB8 0%, #5739FB 50%, #40E0D0 100%);
+    border-radius: 3px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 2px 8px rgba(62, 43, 184, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    /* Ensure thumb is always rendered */
+    min-height: 40px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5739FB 0%, #7C67FF 50%, #40E0D0 100%);
+    box-shadow: 
+      0 4px 16px rgba(62, 43, 184, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #3E2BB8 0%, #5739FB 100%);
+  }
+  
+  /* Scrollbar Hide - For horizontal scroll on mobile badges */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+
+  /* ============================================================================
+     MARKETING SECTION HEADERS - Universal Patterns
+     ============================================================================
+     Two alternating patterns for consistent visual rhythm across marketing pages.
+     Update once, propagates everywhere.
+     ============================================================================ */
+  
+  /* SECTION HEADER - LEFT ALIGNED */
+  .section-header-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .section-header-left {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .section-header-left .headline-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .section-header-left .subheading-col {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  /* SECTION HEADER - RIGHT ALIGNED */
+  .section-header-right {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .section-header-right {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .section-header-right .headline-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: right;
+  }
+  
+  .section-header-right .subheading-col {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  /* EYEBROW - Simple text with icon (no box) */
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5739FB;
+    text-shadow: 0 2px 12px rgba(87, 57, 251, 0.3);
+  }
+  
+  .section-header-right .section-eyebrow {
+    justify-content: flex-end;
+  }
+  
+  /* HEADLINE - Homepage/Default (Larger, Centralized Sections) */
+  .section-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #0A192F;
+    text-shadow: 0 4px 20px rgba(62, 43, 184, 0.08);
+  }
+  
+  /* HEADLINE - Therapy Page (Two-Line Pattern: Punchy + Cyan) */
+  .section-headline-therapy {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #0A192F;
+    text-shadow: 0 4px 20px rgba(62, 43, 184, 0.08);
+  }
+  
+  .section-headline .accent,
+  .section-headline-therapy .accent {
+    color: #40E0D0;
+    white-space: nowrap;
+    text-shadow: 0 4px 20px rgba(64, 224, 208, 0.3);
+  }
+  
+  /* SUBHEADING */
+  .section-subheading {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #475569;
+    font-weight: 500;
+  }
+
+  /* ============================================================================
+     BRIDGE SECTIONS - Centered narrative moments
+     Used between major sections to provide context and transition
+     ============================================================================ */
+  
+  .bridge-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #40E0D0;
+  }
+
+  .bridge-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 1.25rem;
+  }
+
+  .bridge-subtext {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .bridge-background-overlay {
+    background: linear-gradient(135deg, rgba(62, 43, 184, 0.92) 0%, rgba(87, 57, 251, 0.88) 100%);
+  }
+
+  /* ============================================================================
+     ICON STYLING - Consistent icon treatment across sections
+     ============================================================================ */
+  
+  .icon-standard {
+    stroke-width: 2.5;
+  }
+
+  .icon-eyebrow {
+    color: #40E0D0;
+    stroke-width: 2.5;
+  }
+
+  /* Container Responsive - Journey and platform pages */
+  .container-responsive {
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-responsive {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}
+
+/* ========================================
+   DARK MODE IMAGE RENDERING FIX
+   ======================================== */
+
+/* Prevent browser from inverting/hiding images in dark mode */
+@media (prefers-color-scheme: dark) {
+  img, picture, video, canvas, svg {
+    /* Prevent color inversion */
+    filter: none !important;
+    /* Ensure images remain visible */
+    opacity: 1 !important;
+    /* Preserve original colors */
+    color-scheme: only light;
+  }
+  
+  /* Prevent background images from being inverted */
+  [style*="background-image"] {
+    filter: none !important;
+  }
+  
+  /* Keep marketing pages in light mode regardless of system preference */
+  body {
+    color-scheme: only light;
+  }
+}
+
+/* ========================================
+   UNIVERSAL PLAYER TOKENS - Same, Same But Different
+   These tokens power ALL content renderers (NaviCue, Block, Practice, Video, Session Prep, etc.)
+   Desktop, Mobile, and LUMA views inherit from these foundational tokens
+   ======================================== */
+  
+/* Universal Player Container */
+--player-bg: rgba(255, 255, 255, 0.05);
+--player-border: rgba(255, 255, 255, 0.1);
+--player-backdrop-blur: 20px;
+--player-padding-desktop: 2rem;
+--player-padding-mobile: 1rem;
+--player-max-width: 800px;
+  
+/* Universal Player Text */
+--player-text-primary: rgba(255, 255, 255, 0.95);
+--player-text-secondary: rgba(255, 255, 255, 0.70);
+--player-text-tertiary: rgba(255, 255, 255, 0.50);
+  
+/* Universal Player Interactive States */
+--player-hover-bg: rgba(255, 255, 255, 0.08);
+--player-active-bg: rgba(255, 255, 255, 0.12);
+--player-focus-outline: 2px solid var(--brand-mid);
+  
+/* Universal Player Dimensions */
+--player-header-height: 64px;
+--player-footer-height: 72px;
+--player-sidebar-width: 320px;
+  
+/* Universal Player Animations */
+--player-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+--player-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+--player-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+/* Professional/Organisation Portal Tokens */
+--portal-card-bg: rgba(255, 255, 255, 0.05);
+--portal-card-border: rgba(255, 255, 255, 0.10);
+--portal-card-hover-border: rgba(255, 255, 255, 0.20);
+--portal-stat-label: rgba(255, 255, 255, 0.70);
+--portal-stat-value: rgba(255, 255, 255, 0.95);
+--portal-risk-red: #EF4444;
+--portal-risk-amber: #F59E0B;
+--portal-risk-green: #10B981;

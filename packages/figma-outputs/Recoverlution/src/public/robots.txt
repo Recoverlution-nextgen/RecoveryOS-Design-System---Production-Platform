@@ -1,0 +1,16 @@
+# Recoverlution - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow unlisted pages (not in sitemap)
+Disallow: /careers/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://recoverlution.com/sitemap.xml
+
+# Disallow admin and API routes (if any in future)
+# Disallow: /admin/
+# Disallow: /api/

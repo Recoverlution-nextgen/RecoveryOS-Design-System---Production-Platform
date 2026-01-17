@@ -1,0 +1,12 @@
+{
+  "imports": {
+    "supabase": "jsr:@supabase/supabase-js@2"
+  },
+  "tasks": {
+    "start": "deno run --allow-all --watch=static/,routes/ dev.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}

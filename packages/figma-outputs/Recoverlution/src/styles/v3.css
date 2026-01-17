@@ -1,0 +1,133 @@
+/* 
+  V3 MARKETING SITE - ATLAS ECOSYSTEM
+  January 2026
+  infiniteK Design System Compliance
+*/
+
+/* Reset & Base */
+* {
+  border-radius: 0 !important; /* NO ROUNDED CORNERS - infiniteK rule */
+}
+
+/* infiniteK Brand Colors */
+:root {
+  --v3-brand-primary: #3E2BB8;
+  --v3-brand-secondary: #5739FB;
+  --v3-brand-gradient: linear-gradient(135deg, #3E2BB8 0%, #5739FB 100%);
+  
+  /* Backgrounds */
+  --v3-bg-darker: #000000;
+  --v3-bg-dark: #0A0B0F;
+  --v3-bg-mid: #1A1B2E;
+  --v3-gradient-dark: linear-gradient(180deg, #0A0B0F 0%, #1A1B2E 100%);
+  
+  /* Text */
+  --v3-text-primary: #FFFFFF;
+  --v3-text-secondary: rgba(255, 255, 255, 0.7);
+  --v3-text-tertiary: rgba(255, 255, 255, 0.5);
+  
+  /* Spacing */
+  --v3-space-xs: 0.5rem;
+  --v3-space-sm: 1rem;
+  --v3-space-md: 2rem;
+  --v3-space-lg: 4rem;
+  --v3-space-xl: 8rem;
+}
+
+/* Typography */
+.v3-headline-1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--v3-text-primary);
+}
+
+.v3-headline-2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: var(--v3-text-primary);
+}
+
+.v3-subhead {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--v3-text-secondary);
+}
+
+.v3-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--v3-text-primary);
+}
+
+/* Section Backgrounds */
+.v3-section-darker {
+  background: var(--v3-bg-darker);
+}
+
+.v3-section-dark {
+  background: var(--v3-bg-dark);
+}
+
+.v3-section-gradient {
+  background: var(--v3-gradient-dark);
+}
+
+/* Utilities */
+.v3-gradient-text {
+  background: var(--v3-brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.v3-glow-purple {
+  box-shadow: 0 0 40px rgba(87, 57, 251, 0.3);
+}
+
+/* Animation Utilities */
+@keyframes v3-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes v3-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.v3-fade-in {
+  animation: v3-fade-in 0.8s ease-out;
+}
+
+.v3-pulse {
+  animation: v3-pulse 3s ease-in-out infinite;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  :root {
+    --v3-space-lg: 2rem;
+    --v3-space-xl: 4rem;
+  }
+}

@@ -1,0 +1,680 @@
+/**
+ * LUMA DESIGN SYSTEM
+ * 
+ * Foundational CSS for all LUMA interfaces
+ * infiniteK aesthetic: glass, blur, 0px borders, intentional opacity
+ */
+
+/* ============================================================================
+   LAYOUT
+   ============================================================================ */
+
+/* Full-screen LUMA interface */
+.luma-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background: black;
+}
+
+/* ============================================================================
+   BACKGROUND OVERLAYS - Differentiated by screen type
+   ============================================================================ */
+
+/* Minimal overlay - for contextual screens like HOME */
+.luma-overlay-minimal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.25) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Strong overlay - for content-heavy screens like PLAY */
+.luma-overlay-strong::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Purple identity overlay - for VOICE popup */
+.luma-overlay-voice::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(62, 43, 184, 0.4) 0%,
+    rgba(87, 57, 251, 0.3) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Purple identity overlay - for TALK popup */
+.luma-overlay-talk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(87, 57, 251, 0.35) 0%,
+    rgba(124, 103, 255, 0.25) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content container with responsive padding */
+.luma-container {
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .luma-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .luma-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ============================================================================
+   CONTAINERS
+   ============================================================================ */
+
+/* Glass container - default for floating UI elements */
+.luma-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+}
+
+/* Dark glass - for overlays on bright backgrounds/images */
+.luma-glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+}
+
+/* LUMA voice container - branded gradient for LUMA responses */
+.luma-voice {
+  padding: 16px 20px;
+  background: linear-gradient(to bottom right, rgba(62, 43, 184, 0.2), rgba(87, 57, 251, 0.1));
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+}
+
+/* LUMA voice message - elevated presence for header communication */
+.luma-voice-message {
+  padding: 24px 24px;
+  background: linear-gradient(135deg, rgba(62, 43, 184, 0.15) 0%, rgba(87, 57, 251, 0.08) 100%);
+  backdrop-filter: blur(32px);
+  border-top: 1px solid rgba(87, 57, 251, 0.2);
+  border-bottom: 1px solid rgba(87, 57, 251, 0.1);
+  position: relative;
+}
+
+.luma-voice-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(87, 57, 251, 0.4) 50%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(87, 57, 251, 0.3);
+}
+
+/* User content container */
+.luma-user {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.luma-user:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Top navigation bar for fullscreen overlays */
+.luma-top-nav {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .luma-top-nav {
+    padding: 24px 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .luma-top-nav {
+    padding: 24px 32px;
+  }
+}
+
+/* Context/option tile for selection screens */
+.luma-context-tile {
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.luma-context-tile:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.luma-context-tile-selected {
+  padding: 16px 20px;
+  background: linear-gradient(to right, rgba(62, 43, 184, 0.3), rgba(87, 57, 251, 0.2));
+  border: 1px solid rgba(62, 43, 184, 0.5);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Message bubble for dialogue */
+.luma-message-bubble {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+}
+
+/* Header bar */
+.luma-header {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Organizer/toolbar bar */
+.luma-toolbar {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer/input bar */
+.luma-footer {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Divider */
+.luma-divider {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+
+/* Icon button - standard 48px */
+.luma-icon-button {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.luma-icon-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.luma-icon-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Small icon button - 40px for compact spaces */
+.luma-icon-button-sm {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.luma-icon-button-sm:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Highlighted small icon button */
+.luma-icon-button-sm-highlight {
+  background: rgba(62, 43, 184, 0.3) !important;
+  border-color: rgba(87, 57, 251, 0.5) !important;
+  color: white !important;
+}
+
+/* Tiny icon button - 32px for nav controls */
+.luma-icon-button-xs {
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.luma-icon-button-xs:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.luma-icon-button-xs:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Text button */
+.luma-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.luma-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Primary branded button */
+.luma-button-primary {
+  background: linear-gradient(to right, #3E2BB8, #5739FB);
+  border: none;
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.luma-button-primary:hover {
+  box-shadow: 0 0 20px rgba(62, 43, 184, 0.3);
+}
+
+/* Toggle button - inactive */
+.luma-toggle {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.luma-toggle:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Toggle button - active */
+.luma-toggle-active {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 0;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Rescue toggle - inactive */
+.luma-toggle-rescue {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.luma-toggle-rescue:hover {
+  color: rgba(255, 100, 100, 0.6);
+}
+
+/* Rescue toggle - active */
+.luma-toggle-rescue-active {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(254, 202, 202, 1);
+}
+
+/* Option button - unselected */
+.luma-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.luma-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Option button - selected (with brand) */
+.luma-option-selected {
+  background: linear-gradient(to right, rgba(62, 43, 184, 0.3), rgba(87, 57, 251, 0.2));
+  border: 1px solid rgba(62, 43, 184, 0.5);
+  border-radius: 0;
+  padding: 10px 12px;
+  color: white;
+}
+
+/* Prompt button (full width) */
+.luma-prompt {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 12px 16px;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.luma-prompt:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Back/Close button pattern - standardized */
+.luma-back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease;
+}
+
+.luma-back-button:hover {
+  color: white;
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+
+/* LUMA voice - when LUMA speaks */
+.luma-voice-text {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: white;
+}
+
+/* Body text - descriptions, user content */
+.luma-body-text {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Title text */
+.luma-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: white;
+}
+
+/* Large title */
+.luma-title-lg {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: white;
+}
+
+/* Label text - small, uppercase, tracked */
+.luma-label {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Section label - slightly larger */
+.luma-section-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Subtitle - for section headings */
+.luma-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: white;
+}
+
+/* Secondary button style - less prominent than primary */
+.luma-button-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.luma-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* ============================================================================
+   INPUTS
+   ============================================================================ */
+
+/* Text input / textarea */
+.luma-input {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white;
+  resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.luma-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.luma-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pillar indicator dot */
+.luma-pillar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+/* Queue indicator dot */
+.luma-queue-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Loading dots animation */
+.luma-loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.4);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Metadata separator dot */
+.luma-separator {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hover states */
+.luma-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.luma-hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .luma-voice-text {
+    font-size: 1rem;
+  }
+  
+  .luma-body-text {
+    font-size: 1rem;
+  }
+  
+  .luma-title {
+    font-size: 1.25rem;
+  }
+}
