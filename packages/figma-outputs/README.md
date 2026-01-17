@@ -25,9 +25,9 @@ Outputs are broken down into smallest possible parts across multiple dimensions:
 - **Shells**:
   - `platform-shell/`: Platform shell/layout
 
-### Command Center (CC2)
-- **Shells**:
-  - `cc2-shell/`: Command Center shell/layout
+### Supabase
+- **Integrations**: Supabase integration code and configurations
+- **APIs**: API definitions and related code
 
 ## Usage
 
