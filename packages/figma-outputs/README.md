@@ -8,9 +8,30 @@ This package (`@recoveryos/figma-outputs`) serves as a staging area for outputs 
 - **Staging**: Push Figma outputs here first, then review, cleanse, and integrate into the design system.
 - **Workflow**: Figma Make can push directly to this folder via GitHub integration.
 
+## Organization Structure
+
+Outputs are broken down into smallest possible parts across multiple dimensions:
+
+### Marketing Site
+- **Components**:
+  - `marketing-components/`: Marketing-specific UI components
+
+### Platform
+- **Components**:
+  - `universal-player/`: Universal Player component
+  - `luma/`: LUMA component
+  - `navicues/`: Navicues component
+  - `journey/`: Journey component
+- **Shells**:
+  - `platform-shell/`: Platform shell/layout
+
+### Command Center (CC2)
+- **Shells**:
+  - `cc2-shell/`: Command Center shell/layout
+
 ## Usage
 
-1. Push Figma-generated components, styles, or assets to this package.
+1. Push Figma-generated components, styles, or assets to the appropriate subfolder above.
 2. Review and align with design system tokens and patterns.
 3. Move cleaned code to `packages/ui` or `lib/design-system`.
 4. Delete from here after integration.
