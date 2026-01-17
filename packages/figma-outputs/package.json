@@ -1,0 +1,14 @@
+{
+  "name": "@recoveryos/figma-outputs",
+  "version": "0.1.0",
+  "description": "Figma Make outputs and creative UI assets - kept separate from the canonical design system",
+  "main": "index.ts",
+  "scripts": {
+    "build": "echo 'No build step for figma outputs'",
+    "dev": "echo 'No dev step for figma outputs'"
+  },
+  "keywords": ["figma", "creative", "ui", "assets"],
+  "author": "RecoveryOS Team",
+  "license": "MIT"
+}</content>
+<parameter name="filePath">/workspaces/RecoveryOS-Design-System---Production-Platform/packages/figma-outputs/package.json
