@@ -1,0 +1,105 @@
+/**
+ * RAW DESIGN TOKENS - V3 READY
+ * InfiniteK design system in raw CSS variables
+ */
+
+export const rawDesignTokens = `
+/* ========================================
+   RAW INFINITEK DESIGN TOKENS
+   Extracted from V2 for V3 use
+   ======================================== */
+
+/* COLORS - 4 Color Palette */
+:root {
+  --infinitek-primary: #FF6B6B;    /* ER - Emotional Regulation */
+  --infinitek-secondary: #4ECDC4;  /* SR - Stress Resilience */
+  --infinitek-tertiary: #95E1D3;   /* SC - Social Connectivity */
+  --infinitek-accent: #FFD93D;     /* CR - Cognitive Reframing */
+
+  /* Neutral grays */
+  --infinitek-black: #000000;
+  --infinitek-white: #FFFFFF;
+  --infinitek-gray-50: #F8F9FA;
+  --infinitek-gray-100: #E9ECEF;
+  --infinitek-gray-200: #DEE2E6;
+  --infinitek-gray-300: #CED4DA;
+  --infinitek-gray-400: #ADB5BD;
+  --infinitek-gray-500: #6C757D;
+  --infinitek-gray-600: #495057;
+  --infinitek-gray-700: #343A40;
+  --infinitek-gray-800: #212529;
+  --infinitek-gray-900: #000000;
+}
+
+/* TYPOGRAPHY */
+:root {
+  --font-family-primary: 'Inter', system-ui, sans-serif;
+  --font-family-secondary: 'Georgia', serif;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+
+  /* Font weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+
+/* SPACING - 8px scale */
+:root {
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-7: 1.75rem;   /* 28px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+}
+
+/* BORDERS - NO ROUNDED CORNERS */
+:root {
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  --border-radius-none: 0;
+  --border-radius-sm: 0;  /* No rounding in InfiniteK */
+  --border-radius-md: 0;
+  --border-radius-lg: 0;
+  --border-radius-full: 0;
+}
+
+/* SHADOWS - Subtle, no card-on-card */
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* BREAKPOINTS */
+:root {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+`;
